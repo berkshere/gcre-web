@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        GCRE | Daily Report
+    </title>
+   <style>
+        /* logo容器样式 */
+        .site-logo {
+            display: flex;
+            align-items: right;
+            gap:10px;
+            text-decoration: none;
+        }
+        .site-logo img {
+            /* 控制logo高度，宽度自动缩放 */
+            height: 100px;
+            width: auto;
+        }
+        .logo-text{
+            font-size:22px;
+            font-weight:bold;
+            color:#1a365d;
+        }
+    </style>
+    <link
+        rel="stylesheet"
+        href="./assets/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="site-wrapper">
+
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+
+   <!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+    <div class="site-header-inner">
+
+        <div class="site-header-inner">
+            <div style="display:flex; align-items:center; gap:12px;">
+            <a href="/" class="site-logo">
+            <!-- logo图片：底部太平洋海水，上方金色船舵 -->
+            <img src="./assets/logo.png" alt="金融海洋｜稳定航行">            
+            </a>
+        <h1>
+        <a
+            href="./index.html" style="font-size:larger; font-weight:bold; align-items:center; height:200%;"
+        class="eyebrow"
+        >
+            GCRE
+        </a>
+        <p style="font-size: 14px;" >
+                AI‑powered investment‑rotation framework built on macroeconomic insights..
+        </p>
+        </h1>
+        </div>
+
+
+        <nav class="site-nav">
+
+            <a href="./index.html">
+                Home
+            </a>
+
+
+            <a href="./latest.html">
+                Latest
+            </a>
+
+
+            <a href="./archive.html">
+                Archive
+            </a>
+            <a href="./subscribe.html">
+                Subscribe
+            </a>
+
+            <a href="./about.html">
+                About
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+    <!-- ==================================================
+         MAIN
+    =================================================== -->
+
+    <main class="main-content">
+
+
+        <section class="page-header">
+
+            <div>
+
+                <div class="section-kicker">
+                    DAILY GCRE REPORT
+                </div>
+
+                <h1 id="report-title">
+                    Global Capital Regime Engine
+                </h1>
+
+                <p id="report-date">
+                    Loading report...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             REPORT
+        =================================================== -->
+
+        <section class="content-section">
+
+
+            <article
+                id="report-content"
+                class="report-content"
+            >
+
+                <div class="loading-state">
+                    Loading report...
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <span>
+                Global Capital Regime Engine
+            </span>
+
+            <span>
+                Systematic Macro Timing Model
+            </span>
+
+        </div>
+
+    </footer>
+
+
+</div>
+
+
+
+<script>
+
+
+/* ======================================================
+   GET REPORT FILE
+====================================================== */
+
+function getReportFile() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const file =
+        params.get("file");
+
+
+    if (file) {
+
+        return file;
+
+    }
+
+
+    /*
+    Default latest report
+    */
+
+    return "GCRE_Sell_Side_Report_20260812.md";
+
+}
+
+
+
+/* ======================================================
+   LOAD REPORT
+====================================================== */
+
+async function loadReport() {
+
+    const content =
+        document.getElementById(
+            "report-content"
+        );
+
+
+    const title =
+        document.getElementById(
+            "report-title"
+        );
+
+
+    const dateElement =
+        document.getElementById(
+            "report-date"
+        );
+
+
+    const file =
+        getReportFile();
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                "./reports/" +
+                encodeURIComponent(file) +
+                "?t=" +
+                Date.now(),
+                {
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " +
+                response.status
+            );
+
+        }
+
+
+        const markdown =
+            await response.text();
+
+
+        /*
+        --------------------------------------------------
+        Convert Markdown to HTML
+        --------------------------------------------------
+        */
+
+        const html =
+            markdownToHTML(
+                markdown
+            );
+
+
+        content.innerHTML =
+            html;
+
+
+        /*
+        --------------------------------------------------
+        Extract report date
+        --------------------------------------------------
+        */
+
+        const date =
+            extractReportDate(
+                markdown,
+                file
+            );
+
+
+        if (date) {
+
+            dateElement.textContent =
+                "Report Date: " + date;
+
+        }
+
+
+        /*
+        --------------------------------------------------
+        Update browser title
+        --------------------------------------------------
+        */
+
+        document.title =
+            "GCRE | " +
+            (
+                date ||
+                "Daily Report"
+            );
+
+
+    }
+    catch (error) {
+
+
+        console.error(
+            "Report loading error:",
+            error
+        );
+
+
+        content.innerHTML = `
+
+            <div class="empty-state">
+
+                Unable to load report.
+
+                <br><br>
+
+                ${escapeHTML(file)}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* ======================================================
+   MARKDOWN → HTML
+====================================================== */
+
+function markdownToHTML(
+    markdown
+) {
+
+
+    let text =
+        markdown
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n");
+
+
+    /*
+    ------------------------------------------------------
+    Escape HTML first
+    ------------------------------------------------------
+    */
+
+    text =
+        escapeHTML(
+            text
+        );
+
+
+    /*
+    ------------------------------------------------------
+    Horizontal rules
+    ------------------------------------------------------
+    */
+
+    text =
+        text.replace(
+            /^\s*---+\s*$/gm,
+            "<hr>"
+        );
+
+
+    /*
+    ------------------------------------------------------
+    Tables
+    ------------------------------------------------------
+    */
+
+    text =
+        convertTables(
+            text
+        );
+
+
+    /*
+    ------------------------------------------------------
+    Headings
+    ------------------------------------------------------
+    */
+
+    text =
+        text.replace(
+            /^###### (.+)$/gm,
+            "<h6>$1</h6>"
+        );
+
+
+    text =
+        text.replace(
+            /^##### (.+)$/gm,
+            "<h5>$1</h5>"
+        );
+
+
+    text =
+        text.replace(
+            /^#### (.+)$/gm,
+            "<h4>$1</h4>"
+        );
+
+
+    text =
+        text.replace(
+            /^### (.+)$/gm,
+            "<h3>$1</h3>"
+        );
+
+
+    text =
+        text.replace(
+            /^## (.+)$/gm,
+            "<h2>$1</h2>"
+        );
+
+
+    text =
+        text.replace(
+            /^# (.+)$/gm,
+            "<h1>$1</h1>"
+        );
+
+
+    /*
+    ------------------------------------------------------
+    Bold
+    ------------------------------------------------------
+    */
+
+    text =
+        text.replace(
+            /\*\*(.+?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+
+    /*
+    ------------------------------------------------------
+    Italic
+    ------------------------------------------------------
+    */
+
+    text =
+        text.replace(
+            /(?<!\*)\*([^*\n]+)\*(?!\*)/g,
+            "<em>$1</em>"
+        );
+
+
+    /*
+    ------------------------------------------------------
+    Numbered lists
+    ------------------------------------------------------
+    */
+
+    text =
+        text.replace(
+            /(?:^|\n)(\d+)\. (.+)(?=\n|$)/g,
+            function(
+                match,
+                number,
+                item
+            ) {
+
+                return (
+                    "\n<ol>" +
+                    "<li>" +
+                    item +
+                    "</li>" +
+                    "</ol>\n"
+                );
+
+            }
+        );
+
+
+    /*
+    ------------------------------------------------------
+    Bullet lists
+    ------------------------------------------------------
+    */
+
+    text =
+        text.replace(
+            /(?:^|\n)[ \t]*[-*] (.+)(?=\n|$)/g,
+            function(
+                match,
+                item
+            ) {
+
+                return (
+                    "\n<ul>" +
+                    "<li>" +
+                    item +
+                    "</li>" +
+                    "</ul>\n"
+                );
+
+            }
+        );
+
+
+    /*
+    ------------------------------------------------------
+    Paragraphs
+    ------------------------------------------------------
+    */
+
+    const blocks =
+        text
+        .split(/\n{2,}/)
+        .map(
+            block =>
+                block.trim()
+        )
+        .filter(
+            block =>
+                block.length > 0
+        );
+
+
+    const result =
+        [];
+
+
+    blocks.forEach(
+        block => {
+
+
+            /*
+            Already HTML block
+            */
+
+            if (
+                block.startsWith("<h1") ||
+                block.startsWith("<h2") ||
+                block.startsWith("<h3") ||
+                block.startsWith("<h4") ||
+                block.startsWith("<h5") ||
+                block.startsWith("<h6") ||
+                block.startsWith("<table") ||
+                block.startsWith("<hr") ||
+                block.startsWith("<ul") ||
+                block.startsWith("<ol")
+            ) {
+
+                result.push(
+                    block
+                );
+
+                return;
+
+            }
+
+
+            /*
+            Single line
+            */
+
+            if (
+                !block.includes("\n")
+            ) {
+
+                result.push(
+                    "<p>" +
+                    block +
+                    "</p>"
+                );
+
+                return;
+
+            }
+
+
+            /*
+            Multi-line text
+            */
+
+            result.push(
+                "<p>" +
+                block.replace(
+                    /\n/g,
+                    "<br>"
+                ) +
+                "</p>"
+            );
+
+        }
+    );
+
+
+    return result.join(
+        "\n"
+    );
+
+}
+
+
+
+/* ======================================================
+   TABLE CONVERTER
+====================================================== */
+
+function convertTables(
+    text
+) {
+
+
+    const lines =
+        text.split("\n");
+
+
+    const output =
+        [];
+
+
+    let i = 0;
+
+
+    while (
+        i < lines.length
+    ) {
+
+
+        const current =
+            lines[i];
+
+
+        /*
+        --------------------------------------------------
+        Detect table header
+        --------------------------------------------------
+        */
+
+        if (
+            current.includes("|") &&
+            i + 1 < lines.length &&
+            isTableSeparator(
+                lines[i + 1]
+            )
+        ) {
+
+
+            const header =
+                parseTableRow(
+                    current
+                );
+
+
+            const separator =
+                lines[i + 1];
+
+
+            i += 2;
+
+
+            const rows =
+                [];
+
+
+            while (
+                i < lines.length &&
+                lines[i].includes("|") &&
+                lines[i].trim() !== ""
+            ) {
+
+                rows.push(
+                    parseTableRow(
+                        lines[i]
+                    )
+                );
+
+                i++;
+
+            }
+
+
+            let html =
+                "<table>" +
+                "<thead>" +
+                "<tr>";
+
+
+            header.forEach(
+                cell => {
+
+                    html +=
+                        "<th>" +
+                        cell.trim() +
+                        "</th>";
+
+                }
+            );
+
+
+            html +=
+                "</tr>" +
+                "</thead>" +
+                "<tbody>";
+
+
+            rows.forEach(
+                row => {
+
+                    html +=
+                        "<tr>";
+
+
+                    row.forEach(
+                        cell => {
+
+                            html +=
+                                "<td>" +
+                                cell.trim() +
+                                "</td>";
+
+                        }
+                    );
+
+
+                    html +=
+                        "</tr>";
+
+                }
+            );
+
+
+            html +=
+                "</tbody>" +
+                "</table>";
+
+
+            output.push(
+                html
+            );
+
+
+            continue;
+
+        }
+
+
+        output.push(
+            current
+        );
+
+
+        i++;
+
+    }
+
+
+    return output.join(
+        "\n"
+    );
+
+}
+
+
+
+/* ======================================================
+   TABLE HELPERS
+====================================================== */
+
+function isTableSeparator(
+    line
+) {
+
+
+    const cells =
+        parseTableRow(
+            line
+        );
+
+
+    if (
+        cells.length < 2
+    ) {
+
+        return false;
+
+    }
+
+
+    return cells.every(
+        cell =>
+            /^:?-{3,}:?$/.test(
+                cell.trim()
+            )
+    );
+
+}
+
+
+
+function parseTableRow(
+    line
+) {
+
+
+    let value =
+        line.trim();
+
+
+    if (
+        value.startsWith("|")
+    ) {
+
+        value =
+            value.substring(
+                1
+            );
+
+    }
+
+
+    if (
+        value.endsWith("|")
+    ) {
+
+        value =
+            value.substring(
+                0,
+                value.length - 1
+            );
+
+    }
+
+
+    return value.split(
+        "|"
+    );
+
+}
+
+
+
+/* ======================================================
+   EXTRACT DATE
+====================================================== */
+
+function extractReportDate(
+    markdown,
+    filename
+) {
+
+
+    const match =
+        markdown.match(
+            /Report Date:\*\*\s*(\d{4}-\d{2}-\d{2})/
+        );
+
+
+    if (match) {
+
+        return match[1];
+
+    }
+
+
+    const fileMatch =
+        filename.match(
+            /(\d{8})/
+        );
+
+
+    if (fileMatch) {
+
+        const value =
+            fileMatch[1];
+
+
+        return (
+            value.substring(0, 4) +
+            "-" +
+            value.substring(4, 6) +
+            "-" +
+            value.substring(6, 8)
+        );
+
+    }
+
+
+    return "";
+
+}
+
+
+
+/* ======================================================
+   ESCAPE HTML
+====================================================== */
+
+function escapeHTML(
+    value
+) {
+
+
+    return String(
+        value
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+
+/* ======================================================
+   START
+====================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadReport
+);
+
+</script>
+
+
+</body>
+
+</html>

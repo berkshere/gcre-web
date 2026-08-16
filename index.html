@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GCRE | Global Capital Regime Engine</title>
+    <style>
+        /* logo容器样式 */
+        .site-logo {
+            display: flex;
+            align-items: right;
+            gap:10px;
+            text-decoration: none;
+        }
+        .site-logo img {
+            /* 控制logo高度，宽度自动缩放 */
+            height: 100px;
+            width: auto;
+        }
+        .logo-text{
+            font-size:22px;
+            font-weight:bold;
+            color:#1a365d;
+        }
+    </style>
+    <link
+        rel="stylesheet"
+        href="./assets/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+    <div style="display: flex;align-items: center;gap:30px;">
+        <a href="/" class="site-logo">
+            <!-- logo图片：底部太平洋海水，上方金色船舵 -->
+                       
+        </a>
+        
+        <div class="site-header-inner">
+            <div style="display:flex; align-items:center; gap:12px;">
+            <a href="/" class="site-logo">
+            <!-- logo图片：底部太平洋海水，上方金色船舵 -->
+            <img src="./assets/logo.png" alt="金融海洋｜稳定航行">            
+            </a>
+        <h1>
+        <a
+            href="./index.html" style="font-size:larger; font-weight:bold; align-items:center; height:200%;"
+        class="eyebrow"
+        >
+            GCRE
+        </a>
+        <p style="font-size: 14px;" >
+                AI‑powered investment‑rotation framework built on macroeconomic insights..
+        </p>
+        </h1>
+        </div>
+
+
+        <nav class="site-nav">
+
+            <a
+                href="./index.html"
+                class="active"
+            >
+                Home
+            </a>
+
+
+            <a href="./latest.html">
+                Latest
+            </a>
+
+
+            <a href="./archive.html">
+                Archive
+            </a>
+             <a href="./subscribe.html">
+                Subscribe
+            </a>
+
+            <a href="./about.html">
+                About
+            </a>
+
+        </nav>
+        </div>
+
+    </div>
+    
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main class="container">
+
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            SYSTEMATIC MACRO TIMING MODEL
+        </div>
+
+
+        <h1>
+            Global Capital Regime Engine
+        </h1>
+
+
+        <p>
+            A systematic framework combining
+            macroeconomic regime detection,
+            market risk conditions, liquidity
+            and trend analysis to dynamically
+            adjust portfolio exposure.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MODEL OVERVIEW
+    ================================================= -->
+
+    <section class="dashboard-section">
+
+        <div class="section-title">
+            MODEL
+        </div>
+
+
+        <div class="dashboard-grid">
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+                    MODEL
+                </div>
+
+                <div
+                    id="model-name"
+                    class="metric-value"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+                    START DATE
+                </div>
+
+                <div
+                    id="model-start-date"
+                    class="metric-value"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+                    RUNNING DAYS
+                </div>
+
+                <div
+                    id="model-running-days"
+                    class="metric-value"
+                >
+                    --
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PERFORMANCE
+    ================================================= -->
+
+    <section class="dashboard-section">
+
+        <div class="section-title">
+            PERFORMANCE
+        </div>
+
+
+        <div class="dashboard-grid">
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+                    NAV
+                </div>
+
+                <div
+                    id="home-nav"
+                    class="metric-value large"
+                >
+                    --
+                </div>
+
+                <div
+                    id="home-nav-date"
+                    class="metric-sub"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+                    TOTAL RETURN
+                </div>
+
+                <div
+                    id="home-return"
+                    class="metric-value"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+                    CAGR
+                </div>
+
+                <div
+                    id="home-cagr"
+                    class="metric-value"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+                    SHARPE
+                </div>
+
+                <div
+                    id="home-sharpe"
+                    class="metric-value"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+                    MAX DRAWDOWN
+                </div>
+
+                <div
+                    id="home-max-drawdown"
+                    class="metric-value"
+                >
+                    --
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PORTFOLIO
+    ================================================= -->
+
+    <section class="dashboard-section">
+
+        <div class="section-title">
+            ALLOCATION
+        </div>
+
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Portfolio Allocation
+            </div>
+
+
+            <div
+                id="portfolio-allocation"
+                class="portfolio-list"
+            >
+
+                <div class="empty-state">
+                    Loading portfolio...
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MACRO
+    ================================================= -->
+
+    <section class="dashboard-section">
+
+        <div class="section-title">
+            MACRO
+        </div>
+
+
+        <div class="panel">
+
+            <div class="panel-title">
+                Macro Risk Dashboard
+            </div>
+
+
+            <div class="macro-grid">
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        US 10Y
+                    </div>
+
+                    <div class="macro-value">
+
+                        <span id="macro-10y">
+                            --
+                        </span>
+
+                        %
+
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        US 2Y
+                    </div>
+
+                    <div class="macro-value">
+
+                        <span id="macro-2y">
+                            --
+                        </span>
+
+                        %
+
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        VIX
+                    </div>
+
+                    <div
+                        id="macro-vix"
+                        class="macro-value"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        MOVE
+                    </div>
+
+                    <div
+                        id="macro-move"
+                        class="macro-value"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        HY OAS
+                    </div>
+
+                    <div class="macro-value">
+
+                        <span id="macro-hy-oas">
+                            --
+                        </span>
+
+                        %
+
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        FED REGIME
+                    </div>
+
+                    <div
+                        id="macro-fed-regime"
+                        class="macro-value text"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        ECONOMIC CYCLE
+                    </div>
+
+                    <div
+                        id="macro-cycle"
+                        class="macro-value text"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        MARKET TREND
+                    </div>
+
+                    <div
+                        id="macro-trend"
+                        class="macro-value text"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        LIQUIDITY ADJUSTMENT
+                    </div>
+
+                    <div
+                        id="macro-liquidity"
+                        class="macro-value"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+
+                <div class="macro-item">
+
+                    <div class="metric-label">
+                        INFLECTION SCORE
+                    </div>
+
+                    <div
+                        id="macro-inflection"
+                        class="macro-value"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         LATEST REPORT
+    ================================================= -->
+
+    <section class="dashboard-section">
+
+        <div class="section-title">
+            REPORT
+        </div>
+
+
+        <div class="panel report-card">
+
+            <div>
+
+                <div class="panel-title">
+                    Latest Sell-Side Report
+                </div>
+
+
+                <div class="panel-description">
+
+                    Daily macro regime,
+                    portfolio exposure and
+                    market risk assessment.
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="./latest.html"
+                class="primary-button"
+            >
+                View Latest Report →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SUBSCRIBE
+    ================================================= -->
+
+    <section class="dashboard-section">
+
+        <div class="panel subscribe-card">
+
+            <div>
+
+                <div class="panel-title">
+                    Daily GCRE Report
+                </div>
+
+
+                <div class="panel-description">
+                    Global Capital Regime Engine
+                </div>
+
+
+                <div class="panel-description">
+                    Daily macro regime,
+                    portfolio exposure and
+                    market risk assessment.
+                </div>
+
+            </div>
+
+
+            <button
+                class="secondary-button"
+                type="button"
+            >
+                Subscribe
+            </button>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer class="site-footer">
+
+    <div>
+        GCRE · Global Capital Regime Engine
+    </div>
+
+
+    <div id="last-updated">
+        --
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     DASHBOARD SCRIPT
+===================================================== -->
+
+<script
+    src="./assets/script.js"
+></script>
+
+
+</body>
+
+</html>

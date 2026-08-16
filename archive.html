@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GCRE | Archive</title>
+   <style>
+        /* logo容器样式 */
+        .site-logo {
+            display: flex;
+            align-items: right;
+            gap:10px;
+            text-decoration: none;
+        }
+        .site-logo img {
+            /* 控制logo高度，宽度自动缩放 */
+            height: 100px;
+            width: auto;
+        }
+        .logo-text{
+            font-size:22px;
+            font-weight:bold;
+            color:#1a365d;
+        }
+    </style>
+    <link
+        rel="stylesheet"
+        href="./assets/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+    <div class="site-header-inner">
+
+         <div class="site-header-inner">
+            <div style="display:flex; align-items:center; gap:12px;">
+            <a href="/" class="site-logo">
+            <!-- logo图片：底部太平洋海水，上方金色船舵 -->
+            <img src="./assets/logo.png" alt="金融海洋｜稳定航行">            
+            </a>
+        <h1>
+        <a
+            href="./index.html" style="font-size:larger; font-weight:bold; align-items:center; height:200%;"
+        class="eyebrow"
+        >
+            GCRE
+        </a>
+        <p style="font-size: 14px;" >
+                AI‑powered investment‑rotation framework built on macroeconomic insights..
+        </p>
+        </h1>
+        </div>
+
+
+        <nav class="site-nav">
+
+            <a href="./index.html">
+                Home
+            </a>
+
+
+            <a href="./latest.html">
+                Latest
+            </a>
+
+
+            <a
+                href="./archive.html"
+                class="active"
+            >
+                Archive
+            </a>
+            
+            <a href="./subscribe.html">
+                Subscribe
+            </a>
+            <a href="./about.html">
+                About
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+
+    <!-- =================================================
+         HERO
+    ================================================= -->
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            GCRE REPORT ARCHIVE
+        </div>
+
+
+        <h1>
+            Historical Reports
+        </h1>
+
+
+        <p>
+            Daily Global Capital Regime Engine
+            sell-side investment reports.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ARCHIVE
+    ================================================= -->
+
+    <section class="dashboard-section">
+
+        <div class="section-title">
+            REPORT ARCHIVE
+        </div>
+
+
+        <div class="panel">
+
+
+            <div class="panel-title">
+                Historical GCRE Reports
+            </div>
+
+
+            <div
+                id="archive-list"
+                class="archive-list"
+            >
+
+                <div class="empty-state">
+                    Loading archive...
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div>
+        GCRE · Global Capital Regime Engine
+    </div>
+
+
+    <div>
+        Historical Reports
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     ARCHIVE SCRIPT
+===================================================== -->
+
+<script>
+
+const ARCHIVE_URL = "./reports/archive.json";
+
+
+/* =====================================================
+   工具函数
+===================================================== */
+
+function formatDate(value) {
+
+    if (!value) {
+        return "--";
+    }
+
+
+    /*
+       兼容：
+
+       20260812
+       2026-08-12
+       2026/08/12
+    */
+
+    const text = String(value);
+
+
+    if (/^\d{8}$/.test(text)) {
+
+        return (
+            text.substring(0, 4)
+            + "-"
+            + text.substring(4, 6)
+            + "-"
+            + text.substring(6, 8)
+        );
+
+    }
+
+
+    return text.substring(0, 10);
+
+}
+
+
+/* =====================================================
+   转义 HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   读取 Archive
+===================================================== */
+
+async function loadArchive() {
+
+    const container =
+        document.getElementById(
+            "archive-list"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(
+            `${ARCHIVE_URL}?t=${Date.now()}`,
+            {
+                cache: "no-store"
+            }
+        );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+
+        }
+
+
+        const archive =
+            await response.json();
+
+
+        console.log(
+            "GCRE archive loaded:",
+            archive
+        );
+
+
+        renderArchive(
+            archive,
+            container
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Archive loading error:",
+            error
+        );
+
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                Unable to load archive.
+
+                <br>
+
+                ${escapeHTML(error.message)}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   生成 Report URL
+===================================================== */
+
+function buildReportURL(file) {
+
+    /*
+    ====================================================
+    关键：
+
+    不直接打开：
+
+    ./reports/xxx.md
+
+    而是：
+
+    ./report.html?file=xxx.md
+
+    由 report.html 负责读取 Markdown。
+    ====================================================
+    */
+
+
+    return (
+        "./report.html?file="
+        +
+        encodeURIComponent(file)
+    );
+
+}
+
+
+/* =====================================================
+   渲染 Archive
+===================================================== */
+
+function renderArchive(
+    archive,
+    container
+) {
+
+
+    /*
+       兼容几种 archive.json 结构
+    */
+
+    let reports = archive;
+
+
+    if (
+        archive &&
+        Array.isArray(
+            archive.reports
+        )
+    ) {
+
+        reports =
+            archive.reports;
+
+    }
+
+
+    if (
+        archive &&
+        Array.isArray(
+            archive.archive
+        )
+    ) {
+
+        reports =
+            archive.archive;
+
+    }
+
+
+    if (
+        !Array.isArray(reports) ||
+        reports.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                No archived reports available.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /*
+       按日期倒序
+    */
+
+    reports.sort(
+        function(a, b) {
+
+            const dateA =
+                String(
+                    a.date ||
+                    a.report_date ||
+                    a.filename ||
+                    a.file ||
+                    ""
+                );
+
+
+            const dateB =
+                String(
+                    b.date ||
+                    b.report_date ||
+                    b.filename ||
+                    b.file ||
+                    ""
+                );
+
+
+            return dateB.localeCompare(
+                dateA
+            );
+
+        }
+    );
+
+
+    let html = "";
+
+
+    reports.forEach(
+        function(item) {
+
+
+            /*
+            ============================================
+            文件名
+            ============================================
+            */
+
+            const file =
+                item.file ||
+                item.report_file ||
+                item.filename ||
+                item.name ||
+                "";
+
+
+            if (!file) {
+                return;
+            }
+
+
+            /*
+            ============================================
+            日期
+            ============================================
+            */
+
+            let date =
+                item.date ||
+                item.report_date ||
+                "";
+
+
+            /*
+            如果 archive.json 没有 date
+            从文件名提取：
+
+            GCRE_Sell_Side_Report_20260812.md
+            */
+
+            if (!date) {
+
+                const match =
+                    String(file).match(
+                        /(\d{8})/
+                    );
+
+
+                if (match) {
+
+                    date =
+                        match[1];
+
+                }
+
+            }
+
+
+            /*
+            ============================================
+            NAV
+            ============================================
+            */
+
+            const nav =
+                item.nav !== undefined
+                    ? item.nav
+                    : "--";
+
+
+            /*
+            ============================================
+            Report URL
+            ============================================
+            */
+
+            const href =
+                buildReportURL(
+                    file
+                );
+
+
+            /*
+            ============================================
+            Row
+            ============================================
+            */
+
+            html += `
+
+                <div class="archive-row">
+
+
+                    <div class="archive-date">
+
+                        ${escapeHTML(
+                            formatDate(date)
+                        )}
+
+                    </div>
+
+
+                    <div class="archive-report-name">
+
+                        Global Capital Regime Engine
+
+                        <div class="archive-file-name">
+
+                            ${escapeHTML(file)}
+
+                        </div>
+
+                    </div>
+                    <div class="archive-link">
+
+                        <a
+                            href="${href}"
+                            class="primary-button"
+                            target="_blank"
+                            rel="noopener"
+                            style="color: #ffffff;"
+                        >
+                            View Report →
+                        </a>
+
+                    </div>
+
+                    <div class="archive-nav">
+
+                        ${
+                            nav !== "--"
+                                ? escapeHTML(
+                                    Number(nav).toFixed(4)
+                                  )
+                                : "--"
+                        }
+
+                    </div>
+
+
+                    
+
+
+                </div>
+                
+            `;
+
+        }
+    );
+
+
+    if (!html) {
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                No archived reports available.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadArchive();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

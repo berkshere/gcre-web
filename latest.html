@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GCRE - Latest Report</title>
+   <style>
+        /* logo容器样式 */
+        .site-logo {
+            display: flex;
+            align-items: right;
+            gap:10px;
+            text-decoration: none;
+        }
+        .site-logo img {
+            /* 控制logo高度，宽度自动缩放 */
+            height: 100px;
+            width: auto;
+        }
+        .logo-text{
+            font-size:22px;
+            font-weight:bold;
+            color:#1a365d;
+        }
+    </style>
+
+    <!--
+    ========================================================
+    使用与 index.html 完全相同的 CSS
+    ========================================================
+    -->
+
+    <link
+        rel="stylesheet"
+        href="./assets/style.css"
+    >
+
+
+    <style>
+
+        /* ==================================================
+           LATEST PAGE
+        ================================================== */
+
+        .latest-page {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding:
+                42px 24px 80px;
+
+        }
+
+
+        /* ==================================================
+           REPORT HEADER
+        ================================================== */
+
+        .latest-report-header {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .latest-report-header h1 {
+
+            margin: 0 0 8px 0;
+
+            font-size: 30px;
+
+            line-height: 1.3;
+
+        }
+
+
+        .latest-report-header p {
+
+            margin: 0;
+
+            font-size: 14px;
+
+            opacity: 0.65;
+
+        }
+
+
+        /* ==================================================
+           REPORT CARD
+        ================================================== */
+
+        .report-container {
+
+            background:
+                var(
+                    --card-bg,
+                    #ffffff
+                );
+
+            border:
+                1px solid
+                var(
+                    --border-color,
+                    #e5e7eb
+                );
+
+            border-radius: 12px;
+
+            padding:
+                42px 48px;
+
+            line-height: 1.7;
+
+            overflow-x: auto;
+
+        }
+
+
+        /* ==================================================
+           REPORT TITLE
+        ================================================== */
+
+        .report-container > h1 {
+
+            margin-top: 0;
+
+            margin-bottom: 28px;
+
+            font-size: 30px;
+
+            line-height: 1.3;
+
+        }
+
+
+        /* ==================================================
+           REPORT H2
+        ================================================== */
+
+        .report-container h2 {
+
+            margin-top: 42px;
+
+            margin-bottom: 18px;
+
+            padding-bottom: 9px;
+
+            font-size: 22px;
+
+            line-height: 1.4;
+
+            border-bottom:
+                1px solid
+                var(
+                    --border-color,
+                    #e5e7eb
+                );
+
+        }
+
+
+        /* ==================================================
+           REPORT H3
+        ================================================== */
+
+        .report-container h3 {
+
+            margin-top: 30px;
+
+            margin-bottom: 12px;
+
+            font-size: 18px;
+
+        }
+
+
+        /* ==================================================
+           PARAGRAPH
+        ================================================== */
+
+        .report-container p {
+
+            margin:
+                12px 0;
+
+        }
+
+
+        /* ==================================================
+           STRONG
+        ================================================== */
+
+        .report-container strong {
+
+            font-weight: 650;
+
+        }
+
+
+        /* ==================================================
+           LIST
+        ================================================== */
+
+        .report-container ul,
+
+        .report-container ol {
+
+            margin:
+                12px 0 20px 22px;
+
+            padding-left: 20px;
+
+        }
+
+
+        .report-container li {
+
+            margin:
+                5px 0;
+
+        }
+
+
+        /* ==================================================
+           TABLE WRAPPER
+        ================================================== */
+
+        .report-table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+
+            margin:
+                20px 0 30px;
+
+        }
+
+
+        /* ==================================================
+           TABLE
+        ================================================== */
+
+        .report-container table {
+
+            width: 100%;
+
+            border-collapse:
+                collapse;
+
+            table-layout:
+                auto;
+
+            font-size: 14px;
+
+        }
+
+
+        /* ==================================================
+           TABLE HEADER
+        ================================================== */
+
+        .report-container th {
+
+            padding:
+                10px 14px;
+
+            font-weight:
+                650;
+
+            text-align:
+                left;
+
+            white-space:
+                nowrap;
+
+            border-bottom:
+                2px solid
+                var(
+                    --border-color,
+                    #d1d5db
+                );
+
+        }
+
+
+        /* ==================================================
+           TABLE CELL
+        ================================================== */
+
+        .report-container td {
+
+            padding:
+                10px 14px;
+
+            vertical-align:
+                top;
+
+            border-bottom:
+                1px solid
+                var(
+                    --border-color,
+                    #e5e7eb
+                );
+
+        }
+
+
+        /* ==================================================
+           NUMERIC COLUMNS
+           
+           由 JS 自动添加：
+           .numeric-column
+        ================================================== */
+
+        .report-container th.numeric-column,
+
+        .report-container td.numeric-column {
+
+            text-align:
+                right;
+
+            font-variant-numeric:
+                tabular-nums;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* ==================================================
+           FIRST COLUMN
+        ================================================== */
+
+        .report-container th:first-child,
+
+        .report-container td:first-child {
+
+            text-align:
+                left;
+
+        }
+
+
+        /* ==================================================
+           ASSET COLUMN
+        ================================================== */
+
+        .report-container td.asset-column {
+
+            font-weight:
+                600;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* ==================================================
+           SIGNAL COLUMN
+        ================================================== */
+
+        .report-container td.signal-column {
+
+            font-weight:
+                600;
+
+            text-align:
+                center;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* ==================================================
+           COMMENT COLUMN
+        ================================================== */
+
+        .report-container td.comment-column {
+
+            min-width:
+                300px;
+
+        }
+
+
+        /* ==================================================
+           HR
+        ================================================== */
+
+        .report-container hr {
+
+            border:
+                0;
+
+            border-top:
+                1px solid
+                var(
+                    --border-color,
+                    #e5e7eb
+                );
+
+            margin:
+                36px 0;
+
+        }
+
+
+        /* ==================================================
+           INLINE CODE
+        ================================================== */
+
+        .report-container code {
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size:
+                0.9em;
+
+        }
+
+
+        /* ==================================================
+           ERROR
+        ================================================== */
+
+        .report-error {
+
+            padding:
+                24px;
+
+            border:
+                1px solid #dc2626;
+
+            border-radius:
+                8px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+
+        @media (
+            max-width: 768px
+        ) {
+
+            .latest-page {
+
+                padding:
+                    24px 14px 50px;
+
+            }
+
+
+            .report-container {
+
+                padding:
+                    28px 20px;
+
+            }
+
+
+            .report-container h1 {
+
+                font-size:
+                    25px;
+
+            }
+
+
+            .report-container h2 {
+
+                font-size:
+                    20px;
+
+            }
+
+
+            .report-container table {
+
+                font-size:
+                    13px;
+
+                min-width:
+                    650px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     HEADER
+
+     注意：
+     这里故意不写 Header。
+
+     JavaScript 会直接读取：
+     
+     index.html
+
+     的 <header>...</header>
+
+     从而保证 Home / Latest 的 Header
+     使用完全相同的 HTML。
+====================================================== -->
+
+
+<div id="site-header"></div>
+
+
+
+<!-- ======================================================
+     MAIN
+====================================================== -->
+
+<main class="latest-page">
+
+
+    <section class="latest-report-header">
+
+        <h1>
+            Latest Report
+        </h1>
+
+
+        <p id="report-date">
+            Loading latest report...
+        </p>
+
+    </section>
+
+
+
+    <section
+        id="report-container"
+        class="report-container"
+    >
+
+        Loading report...
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+/*
+========================================================
+GCRE LATEST PAGE
+FINAL
+
+功能：
+
+1. 从 index.html 获取完全相同的 Header
+2. 自动读取最新 Sell-Side Markdown
+3. Markdown → HTML
+4. Markdown 表格数字列右对齐
+5. 不使用任何 CDN
+6. 不使用 web_data.json
+========================================================
+*/
+
+
+
+/* ======================================================
+   HEADER
+====================================================== */
+
+async function loadSiteHeader() {
+
+    const container =
+        document.getElementById(
+            "site-header"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                "./index.html?t=" +
+                Date.now(),
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to load index.html"
+            );
+
+        }
+
+
+        const html =
+            await response.text();
+
+
+        const parser =
+            new DOMParser();
+
+
+        const doc =
+            parser.parseFromString(
+                html,
+                "text/html"
+            );
+
+
+        const header =
+            doc.querySelector(
+                "header"
+            );
+
+
+        if (!header) {
+
+            throw new Error(
+                "Header not found in index.html"
+            );
+
+        }
+
+
+        container.innerHTML =
+            header.outerHTML;
+
+
+        /*
+        -----------------------------------------------
+        Active Latest navigation
+        -----------------------------------------------
+        */
+
+        const links =
+            container.querySelectorAll(
+                "a"
+            );
+
+
+        links.forEach(
+            link => {
+
+                const href =
+                    (
+                        link.getAttribute(
+                            "href"
+                        ) || ""
+                    ).toLowerCase();
+
+
+                if (
+                    href.includes(
+                        "latest"
+                    )
+                ) {
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        console.log(
+            "GCRE: Header loaded from index.html"
+        );
+
+    }
+    catch (error) {
+
+        console.error(
+            "GCRE Header error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* ======================================================
+   ESCAPE HTML
+====================================================== */
+
+function escapeHtml(
+    text
+) {
+
+    return String(text)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* ======================================================
+   INLINE MARKDOWN
+====================================================== */
+
+function renderInline(
+    text
+) {
+
+    let value =
+        escapeHtml(
+            text
+        );
+
+
+    /*
+    Bold
+    */
+
+    value =
+        value.replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+
+    /*
+    Italic
+    */
+
+    value =
+        value.replace(
+            /(?<!\*)\*([^*]+)\*(?!\*)/g,
+            "<em>$1</em>"
+        );
+
+
+    /*
+    Inline code
+    */
+
+    value =
+        value.replace(
+            /`([^`]+)`/g,
+            "<code>$1</code>"
+        );
+
+
+    /*
+    Markdown link
+    */
+
+    value =
+        value.replace(
+            /\[([^\]]+)\]\(([^)]+)\)/g,
+            '<a href="$2" target="_blank" rel="noopener">$1</a>'
+        );
+
+
+    return value;
+
+}
+
+
+
+/* ======================================================
+   CHECK NUMERIC CELL
+====================================================== */
+
+function isNumericCell(
+    value
+) {
+
+    const text =
+        String(value)
+            .trim()
+            .replace(
+                /,/g,
+                ""
+            );
+
+
+    /*
+    1.0257
+    2.57%
+    -0.01%
+    15.59
+    90.00
+    2026-08-12
+    */
+
+    return /^[-+]?\d+(?:\.\d+)?%?$/.test(
+        text
+    );
+
+}
+
+
+
+/* ======================================================
+   PARSE TABLE ALIGNMENT
+====================================================== */
+
+function parseAlignment(
+    separator
+) {
+
+    const text =
+        separator.trim();
+
+
+    const left =
+        text.startsWith(":");
+
+
+    const right =
+        text.endsWith(":");
+
+
+    if (
+        left &&
+        right
+    ) {
+
+        return "center";
+
+    }
+
+
+    if (right) {
+
+        return "right";
+
+    }
+
+
+    if (left) {
+
+        return "left";
+
+    }
+
+
+    return "left";
+
+}
+
+
+
+/* ======================================================
+   MARKDOWN TABLE
+====================================================== */
+
+function renderTable(
+    tableLines
+) {
+
+    if (
+        tableLines.length < 2
+    ) {
+
+        return "";
+
+    }
+
+
+    const headerLine =
+        tableLines[0];
+
+
+    const separatorLine =
+        tableLines[1];
+
+
+    function splitRow(
+        line
+    ) {
+
+        return line
+            .trim()
+            .replace(
+                /^\|/,
+                ""
+            )
+            .replace(
+                /\|$/,
+                ""
+            )
+            .split("|")
+            .map(
+                cell =>
+                    cell.trim()
+            );
+
+    }
+
+
+    const headers =
+        splitRow(
+            headerLine
+        );
+
+
+    const separators =
+        splitRow(
+            separatorLine
+        );
+
+
+    const alignments =
+        headers.map(
+            (
+                _,
+                index
+            ) => {
+
+                return parseAlignment(
+                    separators[index]
+                    || ""
+                );
+
+            }
+        );
+
+
+    let html = `
+
+        <div class="report-table-wrapper">
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+    `;
+
+
+    headers.forEach(
+        (
+            header,
+            index
+        ) => {
+
+
+            const alignment =
+                alignments[index];
+
+
+            let className =
+                "";
+
+
+            if (
+                alignment === "right"
+            ) {
+
+                className =
+                    "numeric-column";
+
+            }
+
+
+            html +=
+
+                `<th class="${className}">` +
+
+                renderInline(
+                    header
+                ) +
+
+                `</th>`;
+
+        }
+    );
+
+
+    html += `
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+    `;
+
+
+
+    /*
+    -----------------------------------------------
+    Data rows
+    -----------------------------------------------
+    */
+
+    for (
+        let i = 2;
+        i < tableLines.length;
+        i++
+    ) {
+
+
+        const cells =
+            splitRow(
+                tableLines[i]
+            );
+
+
+        if (
+            cells.length === 0
+        ) {
+
+            continue;
+
+        }
+
+
+        html +=
+            "<tr>";
+
+
+        cells.forEach(
+            (
+                cell,
+                index
+            ) => {
+
+
+                let alignment =
+                    alignments[index]
+                    || "left";
+
+
+                /*
+                如果 Markdown 没明确指定右对齐，
+                但内容本身是纯数字，
+                自动右对齐。
+                */
+
+                if (
+                    alignment === "left"
+                    &&
+                    index > 0
+                    &&
+                    isNumericCell(
+                        cell
+                    )
+                ) {
+
+                    alignment =
+                        "right";
+
+                }
+
+
+                let className =
+                    "";
+
+
+                if (
+                    alignment === "right"
+                ) {
+
+                    className =
+                        "numeric-column";
+
+                }
+
+
+                /*
+                Asset
+                */
+
+                if (
+                    index === 0
+                ) {
+
+                    className +=
+                        " asset-column";
+
+                }
+
+
+                /*
+                Signal
+                */
+
+                const header =
+                    (
+                        headers[index]
+                        || ""
+                    ).toLowerCase();
+
+
+                if (
+                    header === "signal"
+                ) {
+
+                    className +=
+                        " signal-column";
+
+                }
+
+
+                /*
+                Comment
+                */
+
+                if (
+                    header === "comment"
+                ) {
+
+                    className +=
+                        " comment-column";
+
+                }
+
+
+                html +=
+
+                    `<td class="${className}">` +
+
+                    renderInline(
+                        cell
+                    ) +
+
+                    `</td>`;
+
+            }
+        );
+
+
+        html +=
+            "</tr>";
+
+    }
+
+
+    html += `
+
+        </tbody>
+
+        </table>
+
+        </div>
+
+    `;
+
+
+    return html;
+
+}
+
+
+
+/* ======================================================
+   MARKDOWN → HTML
+====================================================== */
+
+function markdownToHtml(
+    markdown
+) {
+
+
+    const lines =
+        markdown
+            .replace(
+                /\r\n/g,
+                "\n"
+            )
+            .split("\n");
+
+
+    let html = "";
+
+    let paragraph = [];
+
+    let tableLines = [];
+
+    let listType = null;
+
+
+
+    function flushParagraph() {
+
+        if (
+            paragraph.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const text =
+            paragraph
+                .join(" ")
+                .trim();
+
+
+        if (text) {
+
+            html +=
+
+                "<p>" +
+
+                renderInline(
+                    text
+                ) +
+
+                "</p>";
+
+        }
+
+
+        paragraph = [];
+
+    }
+
+
+
+    function flushTable() {
+
+        if (
+            tableLines.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        html +=
+            renderTable(
+                tableLines
+            );
+
+
+        tableLines = [];
+
+    }
+
+
+
+    function closeList() {
+
+        if (
+            listType === "ul"
+        ) {
+
+            html +=
+                "</ul>";
+
+        }
+
+
+        if (
+            listType === "ol"
+        ) {
+
+            html +=
+                "</ol>";
+
+        }
+
+
+        listType =
+            null;
+
+    }
+
+
+
+    for (
+        let i = 0;
+        i < lines.length;
+        i++
+    ) {
+
+
+        const line =
+            lines[i];
+
+
+        const trimmed =
+            line.trim();
+
+
+
+        /* ------------------------------------------
+           Empty
+        ------------------------------------------ */
+
+        if (
+            trimmed === ""
+        ) {
+
+            flushParagraph();
+
+            flushTable();
+
+            closeList();
+
+            continue;
+
+        }
+
+
+
+        /* ------------------------------------------
+           Table detection
+        ------------------------------------------ */
+
+        if (
+            trimmed.startsWith("|")
+        ) {
+
+
+            flushParagraph();
+
+            closeList();
+
+
+            /*
+            第一行必须有下一行 separator
+            */
+
+            if (
+                tableLines.length === 0
+                &&
+                i + 1 < lines.length
+                &&
+                /^\s*\|?[\s:-]+\|[\s|:-]+\s*$/.test(
+                    lines[i + 1]
+                )
+            ) {
+
+                tableLines.push(
+                    line
+                );
+
+
+                continue;
+
+            }
+
+
+            if (
+                tableLines.length > 0
+            ) {
+
+                tableLines.push(
+                    line
+                );
+
+                continue;
+
+            }
+
+        }
+        else {
+
+            if (
+                tableLines.length > 0
+            ) {
+
+                flushTable();
+
+            }
+
+        }
+
+
+
+        /* ------------------------------------------
+           H1
+        ------------------------------------------ */
+
+        if (
+            trimmed.startsWith("# ")
+        ) {
+
+            flushParagraph();
+
+            closeList();
+
+            html +=
+
+                "<h1>" +
+
+                renderInline(
+                    trimmed.substring(2)
+                ) +
+
+                "</h1>";
+
+            continue;
+
+        }
+
+
+
+        /* ------------------------------------------
+           H2
+        ------------------------------------------ */
+
+        if (
+            trimmed.startsWith("## ")
+        ) {
+
+            flushParagraph();
+
+            closeList();
+
+            html +=
+
+                "<h2>" +
+
+                renderInline(
+                    trimmed.substring(3)
+                ) +
+
+                "</h2>";
+
+            continue;
+
+        }
+
+
+
+        /* ------------------------------------------
+           H3
+        ------------------------------------------ */
+
+        if (
+            trimmed.startsWith("### ")
+        ) {
+
+            flushParagraph();
+
+            closeList();
+
+            html +=
+
+                "<h3>" +
+
+                renderInline(
+                    trimmed.substring(4)
+                ) +
+
+                "</h3>";
+
+            continue;
+
+        }
+
+
+
+        /* ------------------------------------------
+           HR
+        ------------------------------------------ */
+
+        if (
+            /^---+$/.test(
+                trimmed
+            )
+        ) {
+
+            flushParagraph();
+
+            closeList();
+
+            html +=
+                "<hr>";
+
+            continue;
+
+        }
+
+
+
+        /* ------------------------------------------
+           Ordered list
+        ------------------------------------------ */
+
+        const ordered =
+            trimmed.match(
+                /^(\d+)\.\s+(.*)$/
+            );
+
+
+        if (
+            ordered
+        ) {
+
+            flushParagraph();
+
+
+            if (
+                listType !== "ol"
+            ) {
+
+                closeList();
+
+                html +=
+                    "<ol>";
+
+                listType =
+                    "ol";
+
+            }
+
+
+            html +=
+
+                "<li>" +
+
+                renderInline(
+                    ordered[2]
+                ) +
+
+                "</li>";
+
+
+            continue;
+
+        }
+
+
+
+        /* ------------------------------------------
+           Unordered list
+        ------------------------------------------ */
+
+        const unordered =
+            trimmed.match(
+                /^[-*]\s+(.*)$/
+            );
+
+
+        if (
+            unordered
+        ) {
+
+            flushParagraph();
+
+
+            if (
+                listType !== "ul"
+            ) {
+
+                closeList();
+
+                html +=
+                    "<ul>";
+
+                listType =
+                    "ul";
+
+            }
+
+
+            html +=
+
+                "<li>" +
+
+                renderInline(
+                    unordered[1]
+                ) +
+
+                "</li>";
+
+
+            continue;
+
+        }
+
+
+
+        /* ------------------------------------------
+           Normal text
+        ------------------------------------------ */
+
+        closeList();
+
+        paragraph.push(
+            trimmed
+        );
+
+    }
+
+
+    flushParagraph();
+
+    flushTable();
+
+    closeList();
+
+
+    return html;
+
+}
+
+
+
+/* ======================================================
+   FIND LATEST REPORT
+====================================================== */
+
+async function findLatestReport() {
+
+
+    /*
+    GitHub Pages 是静态服务器，
+    无法直接列出 reports 目录。
+
+    当前先通过 archive.json 获取最新文件。
+    如果没有 archive.json，
+    再尝试已知文件。
+    */
+
+
+    try {
+
+        const response =
+            await fetch(
+                "./reports/archive.json?t=" +
+                Date.now(),
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+
+        if (
+            response.ok
+        ) {
+
+            const archive =
+                await response.json();
+
+
+            if (
+                Array.isArray(
+                    archive
+                )
+                &&
+                archive.length > 0
+            ) {
+
+
+                const sorted =
+                    [...archive].sort(
+                        (
+                            a,
+                            b
+                        ) => {
+
+                            const da =
+                                new Date(
+                                    a.date ||
+                                    a.report_date ||
+                                    0
+                                );
+
+
+                            const db =
+                                new Date(
+                                    b.date ||
+                                    b.report_date ||
+                                    0
+                                );
+
+
+                            return db - da;
+
+                        }
+                    );
+
+
+                for (
+                    const item of sorted
+                ) {
+
+                    const file =
+                        item.file ||
+                        item.report_file;
+
+
+                    if (!file) {
+
+                        continue;
+
+                    }
+
+
+                    if (
+                        file.startsWith(
+                            "GCRE_Sell_Side_Report_"
+                        )
+                    ) {
+
+                        return (
+                            "./reports/" +
+                            file
+                        );
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+    catch (
+        error
+    ) {
+
+        console.log(
+            "archive.json unavailable"
+        );
+
+    }
+
+
+
+    /*
+    当前文件作为 fallback
+    */
+
+    const fallback =
+        "GCRE_Sell_Side_Report_20260812.md";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "./reports/" +
+                fallback +
+                "?t=" +
+                Date.now(),
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+
+        if (
+            response.ok
+        ) {
+
+            return (
+                "./reports/" +
+                fallback
+            );
+
+        }
+
+    }
+    catch (
+        error
+    ) {
+
+        console.error(
+            error
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+
+/* ======================================================
+   LOAD REPORT
+====================================================== */
+
+async function loadLatestReport() {
+
+
+    const container =
+        document.getElementById(
+            "report-container"
+        );
+
+
+    const dateElement =
+        document.getElementById(
+            "report-date"
+        );
+
+
+    try {
+
+
+        const reportUrl =
+            await findLatestReport();
+
+
+        if (
+            !reportUrl
+        ) {
+
+            throw new Error(
+                "No GCRE Sell-Side report found."
+            );
+
+        }
+
+
+        const response =
+            await fetch(
+                reportUrl +
+                "?t=" +
+                Date.now(),
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                "HTTP " +
+                response.status
+            );
+
+        }
+
+
+        const markdown =
+            await response.text();
+
+
+        if (
+            !markdown.trim()
+        ) {
+
+            throw new Error(
+                "Report file is empty."
+            );
+
+        }
+
+
+
+        /*
+        ----------------------------------------------
+        Report Date
+        ----------------------------------------------
+        */
+
+        const dateMatch =
+            markdown.match(
+                /\*\*Report Date:\*\*\s*(.+)/
+            );
+
+
+        if (
+            dateMatch
+        ) {
+
+            dateElement.textContent =
+                "Report Date: " +
+                dateMatch[1].trim();
+
+        }
+        else {
+
+            dateElement.textContent =
+                "Latest GCRE Report";
+
+        }
+
+
+
+        /*
+        ----------------------------------------------
+        Markdown Render
+        ----------------------------------------------
+        */
+
+        container.innerHTML =
+            markdownToHtml(
+                markdown
+            );
+
+
+        console.log(
+            "GCRE Latest Report:",
+            reportUrl
+        );
+
+
+    }
+    catch (
+        error
+    ) {
+
+
+        console.error(
+            "GCRE Latest Report Error:",
+            error
+        );
+
+
+        dateElement.textContent =
+            "Unable to load latest report";
+
+
+        container.innerHTML = `
+
+            <div class="report-error">
+
+                <strong>
+                    Unable to load report
+                </strong>
+
+                <br><br>
+
+                ${escapeHtml(
+                    error.message
+                )}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* ======================================================
+   START
+====================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        /*
+        Header 和 index.html 完全同步
+        */
+
+        await loadSiteHeader();
+
+
+        /*
+        再加载报告
+        */
+
+        await loadLatestReport();
+
+    }
+);
+
+</script>
+
+ <section class="dashboard-section">
+
+        <div class="panel subscribe-card">
+
+            <div>
+
+                <div class="panel-title">
+                    Daily GCRE Report
+                </div>
+
+
+                <div class="panel-description">
+                    Global Capital Regime Engine
+                </div>
+
+
+                <div class="panel-description">
+                    Daily macro regime,
+                    portfolio exposure and
+                    market risk assessment.
+                </div>
+
+            </div>
+
+
+            <button
+                class="secondary-button"
+                type="button"
+            >
+                Subscribe
+            </button>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

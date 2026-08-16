@@ -1,0 +1,105 @@
+{
+    "model": {
+        "name": "Global Capital Regime Engine",
+        "version": "V1"
+    },
+    "nav": {
+        "date": "2026-08-11",
+        "nav": 1.0257,
+        "drawdown": 0.0
+    },
+    "performance": {
+        "return": 2.57,
+        "cagr": 116.52,
+        "sharpe": 15.59,
+        "max_drawdown": 0.0
+    },
+    "macro": {
+        "date": "2026-08-12",
+        "vix": 15.49,
+        "move": 75.46,
+        "us02y": 4.05,
+        "us10y": 4.47,
+        "hy_oas": 2.72,
+        "fed_regime": "Neutral",
+        "cycle": "Risk Expansion",
+        "trend": "Neutral",
+        "liquidity_adjustment": 1.0,
+        "inflection_score": 0,
+        "reversal_warning": "No"
+    },
+    "benchmark": {
+        "symbol": "QQQ",
+        "gcre_return": 2.5723,
+        "qqq_return": 5.1057,
+        "alpha": -2.5334,
+        "gcre_start_date": "2026-07-30",
+        "gcre_end_date": "2026-08-11",
+        "qqq_start_date": "2026-07-30",
+        "qqq_end_date": "2026-08-11",
+        "qqq_start_price": 683.55,
+        "qqq_end_price": 718.45
+    },
+    "portfolio": [
+        {
+            "symbol": "CASH",
+            "weight": 54.5,
+            "reason": "weak timing reduce exposure"
+        },
+        {
+            "symbol": "SHNY",
+            "weight": 20.0,
+            "reason": "weak timing reduce exposure"
+        },
+        {
+            "symbol": "BIL",
+            "weight": 15.0,
+            "reason": "weak timing reduce exposure"
+        },
+        {
+            "symbol": "TQQQ",
+            "weight": 3.5,
+            "reason": "weak timing reduce exposure"
+        },
+        {
+            "symbol": "TMF",
+            "weight": 3.5,
+            "reason": "weak timing reduce exposure"
+        },
+        {
+            "symbol": "UCO",
+            "weight": 3.5,
+            "reason": "weak timing reduce exposure"
+        }
+    ],
+    "simulation": {
+        "start_date": "2026-07-30",
+        "running_days": 13,
+        "initial_capital": 100000.0,
+        "current_nav": 1.0257
+    },
+    "history": [
+        {
+            "date": "2026-08-12 16:15:53",
+            "nav": 1.0257230959164436,
+            "total_return": 0.025723,
+            "vix": 15.49,
+            "economic_cycle": "Risk Expansion",
+            "liquidity_adjustment": 1.0,
+            "exposure": 0.455,
+            "report_file": "GCRE_Sell_Side_Report_20260812.md"
+        }
+    ],
+    "risk": {
+        "vix": 15.49,
+        "move": 75.46,
+        "economic_cycle": "Risk Expansion",
+        "market_trend": "Neutral",
+        "liquidity_adjustment": 1.0,
+        "inflection_score": 0,
+        "reversal_warning": "No",
+        "exposure": 1.0,
+        "cash_weight": 0.545,
+        "drawdown": 0.0
+    }
+}
