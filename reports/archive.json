@@ -1,6 +1,10 @@
 {
-  "updated": "2026-08-15T16:15:18.253686",
+  "updated": "2026-08-19T10:36:11.726939",
   "reports": [
+    {
+      "date": "2026-08-17",
+      "file": "GCRE_Sell_Side_Report_20260817.md"
+    },
     {
       "date": "2026-08-12",
       "file": "GCRE_Sell_Side_Report_20260812.md"

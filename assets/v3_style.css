@@ -1,0 +1,2234 @@
+/*
+========================================================
+GCRE WEB
+assets/style.css
+
+用途：
+1. Home Dashboard
+2. Latest Sell-Side Report
+3. Archive
+4. About
+5. GitHub Pages / Local Live Server
+
+完全不依赖第三方 CDN
+========================================================
+*/
+
+
+/* ======================================================
+   RESET
+====================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    margin: 0;
+    padding: 0;
+    background: #f5f7fa;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    color: #172033;
+
+    background: #f5f7fa;
+
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button {
+    font: inherit;
+}
+
+
+/* ======================================================
+   HEADER
+====================================================== */
+
+.site-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-bottom: 1px solid #e5e9ef;
+
+    backdrop-filter: blur(10px);
+}
+
+
+.site-header-inner {
+
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    min-height: 68px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* ======================================================
+   LOGO
+====================================================== */
+
+.site-logo {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+
+    color: #111827;
+
+    white-space: nowrap;
+}
+
+
+.site-logo:hover {
+    color: #2563eb;
+}
+
+
+/* ======================================================
+   NAVIGATION
+====================================================== */
+
+.site-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    height: 68px;
+}
+
+
+.site-nav a {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    height: 68px;
+
+    color: #667085;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition:
+        color 0.15s ease;
+}
+
+
+.site-nav a:hover {
+
+    color: #111827;
+}
+
+
+.site-nav a.active {
+
+    color: #111827;
+
+    font-weight: 650;
+}
+
+
+.site-nav a.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    height: 2px;
+
+    background: #2563eb;
+}
+
+
+/* ======================================================
+   MAIN CONTAINER
+====================================================== */
+
+.container {
+
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding:
+        52px
+        0
+        80px;
+}
+
+
+/* ======================================================
+   HERO
+====================================================== */
+
+.hero {
+
+    max-width: 850px;
+
+    margin-bottom: 52px;
+}
+
+
+.eyebrow {
+
+    margin-bottom: 10px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+}
+
+
+.hero h1 {
+
+    margin: 0 0 18px;
+
+    color: #101828;
+
+    font-size: clamp(32px, 4vw, 48px);
+
+    line-height: 1.12;
+
+    letter-spacing: -1.5px;
+
+    font-weight: 750;
+}
+
+
+.hero p {
+
+    max-width: 760px;
+
+    margin: 0;
+
+    color: #667085;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+
+/* ======================================================
+   DASHBOARD SECTION
+====================================================== */
+
+.dashboard-section {
+
+    margin-top: 38px;
+}
+
+
+.section-title {
+
+    margin-bottom: 15px;
+
+    color: #667085;
+
+    font-size: 11px;
+
+    font-weight: 750;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+
+/* ======================================================
+   DASHBOARD GRID
+====================================================== */
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+.metric-card {
+
+    min-height: 128px;
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9ef;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 1px 2px rgba(16, 24, 40, 0.03);
+}
+
+
+.metric-label {
+
+    margin-bottom: 9px;
+
+    color: #7b8494;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+
+.metric-value {
+
+    color: #111827;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+}
+
+
+.metric-value.large {
+
+    font-size: 30px;
+}
+
+
+.metric-sub {
+
+    margin-top: 7px;
+
+    color: #98a2b3;
+
+    font-size: 12px;
+}
+
+
+/* ======================================================
+   PANEL
+====================================================== */
+
+.panel {
+
+    padding: 26px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9ef;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 1px 2px rgba(16, 24, 40, 0.03);
+}
+
+
+.panel-title {
+
+    color: #111827;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+.panel-description {
+
+    margin-top: 6px;
+
+    color: #667085;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* ======================================================
+   PORTFOLIO
+====================================================== */
+
+.portfolio-list {
+
+    margin-top: 20px;
+}
+
+
+.portfolio-row {
+
+    display: grid;
+
+    grid-template-columns:
+        80px
+        minmax(120px, 1fr)
+        70px;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 42px;
+
+    border-bottom: 1px solid #f0f2f5;
+}
+
+
+.portfolio-row:last-child {
+
+    border-bottom: none;
+}
+
+
+.portfolio-symbol {
+
+    color: #344054;
+
+    font-size: 13px;
+
+    font-weight: 650;
+}
+
+
+.portfolio-bar-container {
+
+    height: 7px;
+
+    overflow: hidden;
+
+    background: #edf1f5;
+
+    border-radius: 999px;
+}
+
+
+.portfolio-bar {
+
+    height: 100%;
+
+    min-width: 2px;
+
+    background: #2563eb;
+
+    border-radius: 999px;
+}
+
+
+.portfolio-weight {
+
+    color: #475467;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    text-align: right;
+}
+
+
+/* ======================================================
+   MACRO DASHBOARD
+====================================================== */
+
+.macro-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 1px;
+
+    margin-top: 22px;
+
+    overflow: hidden;
+
+    background: #e5e9ef;
+
+    border: 1px solid #e5e9ef;
+
+    border-radius: 8px;
+}
+
+
+.macro-item {
+
+    min-height: 105px;
+
+    padding: 18px;
+
+    background: #ffffff;
+}
+
+
+.macro-value {
+
+    margin-top: 5px;
+
+    color: #111827;
+
+    font-size: 21px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+}
+
+
+.macro-value.text {
+
+    font-size: 16px;
+
+    line-height: 1.5;
+}
+
+
+/* ======================================================
+   EMPTY STATE
+====================================================== */
+
+.empty-state {
+
+    padding: 25px 10px;
+
+    color: #98a2b3;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+/* ======================================================
+   REPORT CARD
+====================================================== */
+
+.report-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.primary-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding:
+        0
+        18px;
+
+    color: #ffffff;
+
+    background: #2563eb;
+
+    border: 1px solid #2563eb;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.primary-button:hover {
+
+    background: #1d4ed8;
+
+    border-color: #1d4ed8;
+}
+
+
+/* ======================================================
+   SUBSCRIBE
+====================================================== */
+
+.subscribe-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.secondary-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding:
+        0
+        18px;
+
+    color: #344054;
+
+    background: #ffffff;
+
+    border: 1px solid #d0d5dd;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.secondary-button:hover {
+
+    background: #f8fafc;
+
+    border-color: #98a2b3;
+}
+
+
+/* ======================================================
+   FOOTER
+====================================================== */
+
+.site-footer {
+
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding:
+        24px
+        0
+        35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: #98a2b3;
+
+    border-top: 1px solid #e5e9ef;
+
+    font-size: 12px;
+}
+
+
+/* ======================================================
+   LATEST / REPORT PAGE
+====================================================== */
+
+.report-page {
+
+    width: min(920px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding:
+        55px
+        0
+        90px;
+}
+
+
+.report-header {
+
+    margin-bottom: 40px;
+
+    padding-bottom: 30px;
+
+    border-bottom: 1px solid #e5e9ef;
+}
+
+
+.report-header h1 {
+
+    margin: 0 0 8px;
+
+    color: #101828;
+
+    font-size: 34px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.8px;
+}
+
+
+.report-header .report-date {
+
+    color: #667085;
+
+    font-size: 14px;
+}
+
+
+/* ======================================================
+   MARKDOWN REPORT
+====================================================== */
+
+.markdown-report {
+
+    color: #344054;
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+
+.markdown-report h1 {
+
+    margin:
+        0
+        0
+        24px;
+
+    color: #101828;
+
+    font-size: 34px;
+
+    line-height: 1.2;
+}
+
+
+.markdown-report h2 {
+
+    margin:
+        48px
+        0
+        20px;
+
+    padding-bottom: 10px;
+
+    color: #101828;
+
+    font-size: 23px;
+
+    line-height: 1.35;
+
+    border-bottom: 1px solid #e5e9ef;
+}
+
+
+.markdown-report h3 {
+
+    margin:
+        32px
+        0
+        14px;
+
+    color: #1d2939;
+
+    font-size: 18px;
+}
+
+
+.markdown-report p {
+
+    margin:
+        0
+        0
+        18px;
+}
+
+
+.markdown-report strong {
+
+    color: #111827;
+
+    font-weight: 700;
+}
+
+
+/* ======================================================
+   REPORT LISTS
+====================================================== */
+
+.markdown-report ul,
+.markdown-report ol {
+
+    margin:
+        10px
+        0
+        22px;
+
+    padding-left: 28px;
+}
+
+
+.markdown-report li {
+
+    margin-bottom: 7px;
+}
+
+
+/* ======================================================
+   REPORT TABLE
+====================================================== */
+
+.markdown-report table {
+
+    width: 100%;
+
+    margin:
+        22px
+        0
+        30px;
+
+    border-collapse: collapse;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9ef;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    font-size: 13px;
+}
+
+
+.markdown-report thead {
+
+    background: #f8fafc;
+}
+
+
+.markdown-report th {
+
+    padding:
+        11px
+        13px;
+
+    color: #475467;
+
+    font-size: 11px;
+
+    font-weight: 750;
+
+    letter-spacing: 0.4px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    border-bottom: 1px solid #e5e9ef;
+}
+
+
+.markdown-report td {
+
+    padding:
+        11px
+        13px;
+
+    color: #344054;
+
+    border-bottom: 1px solid #eef1f4;
+
+    vertical-align: top;
+}
+
+
+.markdown-report tr:last-child td {
+
+    border-bottom: none;
+}
+
+
+.markdown-report tr:hover td {
+
+    background: #fafbfc;
+}
+
+
+/* ======================================================
+   REPORT CODE
+====================================================== */
+
+.markdown-report code {
+
+    padding:
+        2px
+        5px;
+
+    color: #344054;
+
+    background: #f2f4f7;
+
+    border-radius: 4px;
+
+    font-family:
+        Consolas,
+        Monaco,
+        "Courier New",
+        monospace;
+
+    font-size: 0.9em;
+}
+
+
+.markdown-report pre {
+
+    margin:
+        22px
+        0;
+
+    padding: 18px;
+
+    overflow-x: auto;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e9ef;
+
+    border-radius: 8px;
+}
+
+
+/* ======================================================
+   REPORT LINKS
+====================================================== */
+
+.markdown-report a {
+
+    color: #2563eb;
+
+    text-decoration: underline;
+
+    text-underline-offset: 2px;
+}
+
+
+.markdown-report a:hover {
+
+    color: #1d4ed8;
+}
+
+
+/* ======================================================
+   REPORT HORIZONTAL RULE
+====================================================== */
+
+.markdown-report hr {
+
+    margin:
+        38px
+        0;
+
+    border: none;
+
+    border-top: 1px solid #e5e9ef;
+}
+
+
+/* ======================================================
+   ARCHIVE PAGE
+====================================================== */
+
+.archive-page {
+
+    width: min(1000px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding:
+        55px
+        0
+        90px;
+}
+
+
+.archive-header {
+
+    margin-bottom: 32px;
+}
+
+
+.archive-header h1 {
+
+    margin: 0 0 8px;
+
+    color: #101828;
+
+    font-size: 34px;
+
+    letter-spacing: -0.8px;
+}
+
+
+.archive-header p {
+
+    margin: 0;
+
+    color: #667085;
+
+    font-size: 14px;
+}
+
+
+.archive-list {
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9ef;
+
+    border-radius: 10px;
+}
+
+
+.archive-row {
+
+    display: grid;
+
+    grid-template-columns:
+        180px
+        130px
+        1fr;
+
+    align-items: center;
+
+    min-height: 62px;
+
+    padding:
+        0
+        22px;
+
+    border-bottom: 1px solid #eef1f4;
+}
+
+
+.archive-row:last-child {
+
+    border-bottom: none;
+}
+
+
+.archive-date {
+
+    color: #344054;
+
+    font-size: 13px;
+
+    font-weight: 650;
+}
+
+
+.archive-nav {
+
+    color: #667085;
+
+    font-size: 13px;
+}
+
+
+.archive-link {
+
+    text-align: right;
+}
+
+
+.archive-link a {
+
+    color: #2563eb;
+
+    font-size: 13px;
+
+    font-weight: 650;
+}
+
+
+.archive-link a:hover {
+
+    color: #1d4ed8;
+
+    text-decoration: underline;
+}
+
+
+/* ======================================================
+   ABOUT PAGE
+====================================================== */
+
+.about-page {
+
+    width: min(900px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding:
+        55px
+        0
+        90px;
+}
+
+
+.about-page h1 {
+
+    margin:
+        0
+        0
+        25px;
+
+    color: #101828;
+
+    font-size: 36px;
+
+    letter-spacing: -0.8px;
+}
+
+
+.about-page h2 {
+
+    margin:
+        40px
+        0
+        14px;
+
+    color: #101828;
+
+    font-size: 21px;
+}
+
+
+.about-page p {
+
+    margin:
+        0
+        0
+        18px;
+
+    color: #475467;
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+
+.about-page ul {
+
+    color: #475467;
+
+    line-height: 1.9;
+}
+
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (max-width: 1000px) {
+
+    .dashboard-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+    }
+
+
+    .macro-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .site-header-inner {
+
+        width: min(
+            100% - 28px,
+            1180px
+        );
+
+        min-height: 60px;
+
+    }
+
+
+    .site-nav {
+
+        gap: 16px;
+
+        height: 60px;
+
+    }
+
+
+    .site-nav a {
+
+        height: 60px;
+
+        font-size: 12px;
+
+    }
+
+
+    .site-logo {
+
+        font-size: 20px;
+
+    }
+
+
+    .container {
+
+        width: min(
+            100% - 28px,
+            1180px
+        );
+
+        padding-top: 38px;
+
+    }
+
+
+    .hero {
+
+        margin-bottom: 38px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .macro-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .report-card,
+    .subscribe-card {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .report-page,
+    .archive-page,
+    .about-page {
+
+        width: min(
+            100% - 28px,
+            920px
+        );
+
+        padding-top: 38px;
+
+    }
+
+
+    .markdown-report {
+
+        font-size: 14px;
+
+    }
+
+
+    .markdown-report table {
+
+        display: block;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+
+    }
+
+
+    .archive-row {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 5px;
+
+        padding:
+            14px
+            18px;
+
+    }
+
+
+    .archive-link {
+
+        text-align: left;
+
+    }
+
+
+    .site-footer {
+
+        width: min(
+            100% - 28px,
+            1180px
+        );
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .site-header-inner {
+
+        gap: 12px;
+
+    }
+
+
+    .site-nav {
+
+        gap: 11px;
+
+    }
+
+
+    .site-nav a {
+
+        font-size: 11px;
+
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .macro-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .metric-card {
+
+        min-height: 110px;
+
+    }
+
+
+    .portfolio-row {
+
+        grid-template-columns:
+            65px
+            minmax(80px, 1fr)
+            60px;
+
+        gap: 9px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 30px;
+
+    }
+
+
+    .report-header h1,
+    .markdown-report h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    .markdown-report h2 {
+
+        font-size: 21px;
+
+    }
+
+}
+/* =====================================================
+   REPORT PAGE
+   Report content centered
+===================================================== */
+
+.content-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.report-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 80px auto;
+    box-sizing: border-box;
+}
+
+
+/* Report header also centered to same width */
+
+.page-header {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+
+/* Markdown tables */
+
+.report-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+/* Prevent long text from breaking layout */
+
+.report-content {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .page-header {
+        width: 100%;
+    }
+
+    .report-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 16px;
+        margin-bottom: 50px;
+    }
+
+}
+/* =========================================================
+   SUBSCRIBE PAGE
+========================================================= */
+
+.subscribe-panel {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 56px;
+}
+
+
+.subscribe-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+.subscribe-header .section-kicker {
+    margin-bottom: 12px;
+}
+
+
+.subscribe-header h2 {
+    margin: 0 0 16px 0;
+}
+
+
+.subscribe-intro {
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+
+.subscribe-form-container {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+
+.subscribe-form {
+    width: 100%;
+}
+
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.form-group input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+
+    border: 1px solid var(--border-color, #d9dde3);
+    border-radius: 6px;
+
+    background: var(--background-color, #ffffff);
+    color: var(--text-color, #1f2933);
+
+    font-size: 15px;
+    font-family: inherit;
+
+    outline: none;
+}
+
+
+.form-group input:focus {
+    border-color: #6b7280;
+}
+
+
+.subscribe-button {
+    width: 100%;
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.subscription-disclaimer {
+    max-width: 560px;
+    margin: 42px auto 0 auto;
+    padding-top: 28px;
+
+    border-top: 1px solid var(--border-color, #e1e4e8);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+.disclaimer-title {
+    margin-bottom: 12px;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+
+.subscription-disclaimer p {
+    margin: 0 0 12px 0;
+}
+
+
+.subscription-disclaimer p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .subscribe-panel {
+        padding: 32px 24px;
+    }
+
+
+    .subscribe-header {
+        margin-bottom: 32px;
+    }
+
+
+    .subscription-disclaimer {
+        margin-top: 32px;
+    }
+
+}
+/* =========================================================
+   ABOUT PAGE
+   Keep all sections aligned to the same content width
+========================================================= */
+
+.about-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+
+.about-item {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+
+.about-number {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+    padding-top: 2px;
+}
+
+
+.about-item-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+
+.about-bullets {
+    margin: 20px 0 0 20px;
+    padding: 0;
+}
+
+
+.about-bullets li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   SYSTEM ARCHITECTURE
+========================================================= */
+
+.architecture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 25px 0 10px 0;
+}
+
+
+.architecture-step {
+    width: 100%;
+    max-width: 420px;
+
+    box-sizing: border-box;
+
+    padding: 14px 20px;
+
+    text-align: center;
+
+    border: 1px solid var(--border-color, #dfe3e8);
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+
+.architecture-arrow {
+    padding: 8px 0;
+
+    font-size: 18px;
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   DISCLAIMER
+========================================================= */
+
+.disclaimer-panel {
+    border-left: 3px solid var(--border-color, #dfe3e8);
+}
+
+
+/* =========================================================
+   ABOUT PAGE CONTENT
+   Force every section to use the same width
+========================================================= */
+
+.about-page .content-section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+.about-page .panel {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .about-item {
+        grid-template-columns: 40px 1fr;
+        gap: 14px;
+    }
+
+
+    .architecture-step {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+/* =========================================================
+   ABOUT PAGE
+   UNIFIED CONTENT WIDTH
+========================================================= */
+
+.about-page {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ALL ABOUT SECTIONS
+========================================================= */
+
+.about-page .content-section {
+    width: 100%;
+    max-width: none;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ALL PANELS
+   Exactly the same width
+========================================================= */
+
+.about-page .content-section .panel {
+    width: 100%;
+    max-width: none;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   Same horizontal alignment
+========================================================= */
+
+.about-page .page-header {
+    width: 100%;
+    max-width: none;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ABOUT LIST
+========================================================= */
+
+.about-list {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+
+.about-item {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+
+.about-number {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+    padding-top: 2px;
+}
+
+
+.about-item-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   ARCHITECTURE
+========================================================= */
+
+.architecture {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 25px 0 10px 0;
+}
+
+
+.architecture-step {
+    width: 100%;
+    max-width: 420px;
+
+    box-sizing: border-box;
+
+    padding: 14px 20px;
+
+    text-align: center;
+
+    border: 1px solid var(--border-color, #dfe3e8);
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+
+.architecture-arrow {
+    padding: 8px 0;
+    font-size: 18px;
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   BULLETS
+========================================================= */
+
+.about-bullets {
+    margin: 20px 0 0 20px;
+    padding: 0;
+}
+
+
+.about-bullets li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   DISCLAIMER
+========================================================= */
+
+.disclaimer-panel {
+    border-left: 3px solid var(--border-color, #dfe3e8);
+}
+
+
+/* =========================================================
+   SUBSCRIBE
+========================================================= */
+
+.about-page .subscribe-card {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .about-page .content-section,
+    .about-page .content-section .panel,
+    .about-page .page-header {
+        width: 100%;
+        max-width: none;
+    }
+
+
+    .about-item {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+
+    .architecture-step {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+/* =====================================================
+   ABOUT PAGE
+   UNIFIED CONTENT WIDTH
+===================================================== */
+
+.about-page {
+    width: 100%;
+}
+
+
+/*
+   所有 About 页面内容区域统一宽度
+*/
+
+.main-content > .page-header,
+.main-content > .content-section {
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+
+/*
+   section 内部 panel 不再自己改变宽度
+*/
+
+.main-content > .content-section > .panel {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+
+
+/* =====================================================
+   ABOUT LIST
+===================================================== */
+
+.about-list {
+    width: 100%;
+    margin-top: 28px;
+}
+
+
+.about-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 22px 0;
+
+    border-top: 1px solid var(--border-color, #e5e7eb);
+}
+
+
+.about-row:last-child {
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+
+.about-number {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.55;
+}
+
+
+.about-row h3 {
+    margin: 0 0 8px 0;
+}
+
+
+.about-row p {
+    margin: 0;
+}
+
+
+
+/* =====================================================
+   ARCHITECTURE
+===================================================== */
+
+.architecture {
+    width: 100%;
+    margin-top: 28px;
+}
+
+
+.architecture-step {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 20px 24px;
+
+    border: 1px solid var(--border-color, #e5e7eb);
+
+    border-radius: 8px;
+}
+
+
+.architecture-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.architecture-description {
+    margin-top: 6px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    opacity: 0.7;
+}
+
+
+.architecture-arrow {
+    width: 100%;
+
+    text-align: center;
+
+    padding: 10px 0;
+
+    opacity: 0.45;
+}
+
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.about-actions {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 28px;
+
+    flex-wrap: wrap;
+}
+
+
+
+/* =====================================================
+   DISCLAIMER
+===================================================== */
+
+.disclaimer-panel {
+    margin-bottom: 40px;
+}
+
+
+.disclaimer-panel p {
+    max-width: 900px;
+
+    line-height: 1.75;
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .main-content > .page-header,
+    .main-content > .content-section {
+        width: calc(100% - 32px);
+
+        max-width: none;
+    }
+
+
+    .about-row {
+        grid-template-columns: 42px 1fr;
+
+        gap: 12px;
+    }
+
+
+    .architecture-step {
+        padding: 16px;
+    }
+
+}

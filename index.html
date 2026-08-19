@@ -11,25 +11,7 @@
     >
 
     <title>GCRE | Global Capital Regime Engine</title>
-    <style>
-        /* logo容器样式 */
-        .site-logo {
-            display: flex;
-            align-items: right;
-            gap:10px;
-            text-decoration: none;
-        }
-        .site-logo img {
-            /* 控制logo高度，宽度自动缩放 */
-            height: 100px;
-            width: auto;
-        }
-        .logo-text{
-            font-size:22px;
-            font-weight:bold;
-            color:#1a365d;
-        }
-    </style>
+
     <link
         rel="stylesheet"
         href="./assets/style.css"
@@ -47,33 +29,50 @@
 
 <header class="site-header">
 
-    <div style="display: flex;align-items: center;gap:30px;">
-        <a href="/" class="site-logo">
-            <!-- logo图片：底部太平洋海水，上方金色船舵 -->
-                       
-        </a>
-        
-        <div class="site-header-inner">
-            <div style="display:flex; align-items:center; gap:12px;">
-            <a href="/" class="site-logo">
-            <!-- logo图片：底部太平洋海水，上方金色船舵 -->
-            <img src="./assets/logo.png" alt="金融海洋｜稳定航行">            
+    <div class="site-header-inner">
+
+        <!-- BRAND -->
+        <div class="site-brand">
+
+            <a
+                href="./index.html"
+                class="site-logo"
+            >
+                <img
+                    src="./assets/logo.png"
+                    alt="金融海洋｜稳定航行"
+                >
             </a>
-        <h1>
-        <a
-            href="./index.html" style="font-size:larger; font-weight:bold; align-items:center; height:200%;"
-        class="eyebrow"
-        >
-            GCRE
-        </a>
-        <p style="font-size: 14px;" >
-                AI‑powered investment‑rotation framework built on macroeconomic insights..
-        </p>
-        </h1>
+
+            <div class="site-brand-text">
+
+                <h1>
+
+                    <a
+                        href="./index.html"
+                        class="eyebrow brand-title"
+                    >
+                        GCRE
+                    </a>
+
+                </h1>
+
+                <p>
+                    AI-powered investment-rotation framework
+                    built on macroeconomic insights.
+                </p>
+
+            </div>
+
         </div>
 
 
-        <nav class="site-nav">
+        <!-- NAVIGATION -->
+
+        <nav
+            class="site-nav"
+            aria-label="Main navigation"
+        >
 
             <a
                 href="./index.html"
@@ -82,16 +81,15 @@
                 Home
             </a>
 
-
             <a href="./latest.html">
                 Latest
             </a>
 
-
             <a href="./archive.html">
                 Archive
             </a>
-             <a href="./subscribe.html">
+
+            <a href="./subscribe.html">
                 Subscribe
             </a>
 
@@ -100,10 +98,9 @@
             </a>
 
         </nav>
-        </div>
 
     </div>
-    
+
 </header>
 
 
@@ -385,6 +382,7 @@
                 </div>
 
 
+
                 <div class="macro-item">
 
                     <div class="metric-label">
@@ -404,6 +402,7 @@
                 </div>
 
 
+
                 <div class="macro-item">
 
                     <div class="metric-label">
@@ -420,6 +419,7 @@
                 </div>
 
 
+
                 <div class="macro-item">
 
                     <div class="metric-label">
@@ -434,6 +434,7 @@
                     </div>
 
                 </div>
+
 
 
                 <div class="macro-item">
@@ -455,6 +456,7 @@
                 </div>
 
 
+
                 <div class="macro-item">
 
                     <div class="metric-label">
@@ -469,6 +471,7 @@
                     </div>
 
                 </div>
+
 
 
                 <div class="macro-item">
@@ -487,6 +490,7 @@
                 </div>
 
 
+
                 <div class="macro-item">
 
                     <div class="metric-label">
@@ -501,6 +505,7 @@
                     </div>
 
                 </div>
+
 
 
                 <div class="macro-item">
@@ -519,6 +524,7 @@
                 </div>
 
 
+
                 <div class="macro-item">
 
                     <div class="metric-label">
@@ -533,6 +539,7 @@
                     </div>
 
                 </div>
+
 
             </div>
 
@@ -592,6 +599,11 @@
 
     <section class="dashboard-section">
 
+        <div class="section-title">
+            SUBSCRIBE
+        </div>
+
+
         <div class="panel subscribe-card">
 
             <div>
@@ -615,21 +627,26 @@
             </div>
 
 
-            <button
+            <a
+                href="./subscribe.html"
                 class="secondary-button"
-                type="button"
             >
                 Subscribe
-            </button>
+            </a>
 
         </div>
 
     </section>
 
 
+
 </main>
 
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer class="site-footer">
 
