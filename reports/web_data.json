@@ -4,26 +4,26 @@
         "version": "V1"
     },
     "nav": {
-        "date": "2026-08-14",
-        "nav": 1.0252,
-        "drawdown": -0.0006
+        "date": "2026-08-18",
+        "nav": 1.0194,
+        "drawdown": -0.0061
     },
     "performance": {
-        "return": 2.52,
-        "cagr": 83.05,
-        "sharpe": 13.01,
-        "max_drawdown": -0.06
+        "return": 1.94,
+        "cagr": 44.73,
+        "sharpe": 6.97,
+        "max_drawdown": -0.61
     },
     "macro": {
-        "date": "2026-08-17",
-        "vix": 14.96,
-        "move": 69.5796,
+        "date": "2026-08-19",
+        "vix": 15.84,
+        "move": 74.9787,
         "us02y": 4.05,
         "us10y": 4.47,
         "hy_oas": 2.72,
         "fed_regime": "Neutral",
         "cycle": "Risk Expansion",
-        "trend": "Bullish",
+        "trend": "Bearish",
         "liquidity_adjustment": 1.0,
         "inflection_score": 0,
         "reversal_warning": "No"
@@ -36,40 +36,40 @@
     "portfolio": [
         {
             "symbol": "CASH",
-            "weight": 54.5,
-            "reason": "weak timing reduce exposure"
+            "weight": 50.0,
+            "reason": "neutral timing hold exposure"
         },
         {
             "symbol": "SHNY",
             "weight": 20.0,
-            "reason": "weak timing reduce exposure"
+            "reason": "neutral timing hold exposure"
         },
         {
             "symbol": "BIL",
             "weight": 15.0,
-            "reason": "weak timing reduce exposure"
+            "reason": "neutral timing hold exposure"
         },
         {
             "symbol": "TQQQ",
-            "weight": 3.5,
-            "reason": "weak timing reduce exposure"
+            "weight": 5.0,
+            "reason": "neutral timing hold exposure"
         },
         {
             "symbol": "TMF",
-            "weight": 3.5,
-            "reason": "weak timing reduce exposure"
+            "weight": 5.0,
+            "reason": "neutral timing hold exposure"
         },
         {
             "symbol": "UCO",
-            "weight": 3.5,
-            "reason": "weak timing reduce exposure"
+            "weight": 5.0,
+            "reason": "neutral timing hold exposure"
         }
     ],
     "simulation": {
         "start_date": "2026-07-30",
-        "running_days": 16,
+        "running_days": 20,
         "initial_capital": 100000.0,
-        "current_nav": 1.0252
+        "current_nav": 1.0194
     },
     "history": [
         {
@@ -111,18 +111,48 @@
             "exposure": 0.455,
             "report_file": "GCRE_Sell_Side_Report_20260817.md",
             "liquidity_adjustment": 1.0
+        },
+        {
+            "date": "2026-08-19 00:00:00",
+            "nav": 1.0194293942847832,
+            "total_return": 0.019429,
+            "vix": 15.84,
+            "economic_cycle": "Risk Expansion",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260819.md",
+            "liquidity_adjustment": 1.0
+        },
+        {
+            "date": "2026-08-19 00:00:00",
+            "nav": 1.0194293942847832,
+            "total_return": 0.019429,
+            "vix": 15.84,
+            "economic_cycle": "Risk Expansion",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260819.md",
+            "liquidity_adjustment": 1.0
+        },
+        {
+            "date": "2026-08-19 00:00:00",
+            "nav": 1.0194293942847832,
+            "total_return": 0.019429,
+            "vix": 15.84,
+            "economic_cycle": "Risk Expansion",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260819.md",
+            "liquidity_adjustment": 1.0
         }
     ],
     "risk": {
-        "vix": 14.96,
-        "move": 69.5796,
+        "vix": 15.84,
+        "move": 74.9787,
         "economic_cycle": "Risk Expansion",
-        "market_trend": "Bullish",
+        "market_trend": "Bearish",
         "liquidity_adjustment": 1.0,
         "inflection_score": 0,
         "reversal_warning": "No",
         "exposure": 1.0,
-        "cash_weight": 0.545,
-        "drawdown": -0.0005507666509901
+        "cash_weight": 0.5,
+        "drawdown": -0.0061358681077929
     }
 }
