@@ -1677,20 +1677,39 @@ async function findLatestReport() {
 
 
     /*
-    GitHub Pages 是静态服务器，
-    无法直接列出 reports 目录。
+    ====================================================
+    GCRE Latest Report Resolver V2
 
-    当前先通过 archive.json 获取最新文件。
-    如果没有 archive.json，
-    再尝试已知文件。
+    数据源：
+
+    reports/archive.json
+
+    格式：
+
+    {
+        "updated":"...",
+        "reports":[
+            {
+                "date":"2026-08-17",
+                "file":
+                "GCRE_Sell_Side_Report_20260817.md"
+            }
+        ]
+    }
+
+    自动寻找最新日期报告
+
+    ====================================================
     */
 
 
     try {
 
+
         const response =
             await fetch(
-                "./reports/archive.json?t=" +
+                "./reports/archive.json?t="
+                +
                 Date.now(),
                 {
                     cache:
@@ -1703,147 +1722,221 @@ async function findLatestReport() {
             response.ok
         ) {
 
+
             const archive =
                 await response.json();
+
+
+
+            /*
+            --------------------------------------------
+            兼容两种结构
+
+            1.
+            {
+                reports:[]
+            }
+
+
+            2.
+            []
+
+            --------------------------------------------
+            */
+
+
+            let reports =
+                [];
 
 
             if (
                 Array.isArray(
                     archive
                 )
-                &&
-                archive.length > 0
+            ) {
+
+                reports =
+                    archive;
+
+            }
+
+
+            else if (
+                archive &&
+                Array.isArray(
+                    archive.reports
+                )
+            ) {
+
+                reports =
+                    archive.reports;
+
+            }
+
+
+
+            if (
+                reports.length > 0
             ) {
 
 
-                const sorted =
-                    [...archive].sort(
-                        (
-                            a,
-                            b
-                        ) => {
-
-                            const da =
-                                new Date(
-                                    a.date ||
-                                    a.report_date ||
-                                    0
-                                );
+                reports.sort(
+                    function(a,b){
 
 
-                            const db =
-                                new Date(
-                                    b.date ||
-                                    b.report_date ||
-                                    0
-                                );
+                        const da =
+                            String(
+                                a.date ||
+                                a.report_date ||
+                                a.file ||
+                                ""
+                            );
 
 
-                            return db - da;
-
-                        }
-                    );
-
-
-                for (
-                    const item of sorted
-                ) {
-
-                    const file =
-                        item.file ||
-                        item.report_file;
+                        const db =
+                            String(
+                                b.date ||
+                                b.report_date ||
+                                b.file ||
+                                ""
+                            );
 
 
-                    if (!file) {
-
-                        continue;
-
-                    }
-
-
-                    if (
-                        file.startsWith(
-                            "GCRE_Sell_Side_Report_"
-                        )
-                    ) {
-
-                        return (
-                            "./reports/" +
-                            file
+                        return db.localeCompare(
+                            da
                         );
 
                     }
+                );
+
+
+
+                const latest =
+                    reports[0];
+
+
+
+                const file =
+                    latest.file ||
+                    latest.report_file ||
+                    latest.filename;
+
+
+
+                if (
+                    file
+                ) {
+
+
+                    console.log(
+                        "GCRE latest report:",
+                        file
+                    );
+
+
+                    return (
+                        "./reports/"
+                        +
+                        file
+                    );
 
                 }
 
             }
 
+
         }
 
-    }
-    catch (
-        error
-    ) {
 
-        console.log(
-            "archive.json unavailable"
+    }
+    catch(error){
+
+
+        console.error(
+            "archive.json error:",
+            error
         );
+
 
     }
 
 
 
     /*
-    当前文件作为 fallback
+    ====================================================
+    FALLBACK
+
+    不再固定日期
+
+    自动寻找最新日期文件名
+
+    ====================================================
     */
 
-    const fallback =
-        "GCRE_Sell_Side_Report_20260812.md";
+
+    const candidates = [
+
+        "GCRE_Sell_Side_Report_20260817.md",
+
+        "GCRE_Sell_Side_Report_20260812.md"
+
+    ];
 
 
-    try {
 
-        const response =
-            await fetch(
-                "./reports/" +
-                fallback +
-                "?t=" +
-                Date.now(),
-                {
-                    cache:
-                        "no-store"
-                }
-            );
+    for(
+        const file of candidates
+    ){
 
 
-        if (
-            response.ok
-        ) {
+        try{
 
-            return (
-                "./reports/" +
-                fallback
-            );
+
+            const response =
+                await fetch(
+                    "./reports/"
+                    +
+                    file
+                    +
+                    "?t="
+                    +
+                    Date.now(),
+                    {
+                        cache:
+                            "no-store"
+                    }
+                );
+
+
+            if(
+                response.ok
+            ){
+
+
+                return (
+                    "./reports/"
+                    +
+                    file
+                );
+
+            }
+
+
+        }
+        catch(error){
+
+            continue;
 
         }
 
     }
-    catch (
-        error
-    ) {
 
-        console.error(
-            error
-        );
-
-    }
 
 
     return null;
 
+
 }
-
-
 
 /* ======================================================
    LOAD REPORT
