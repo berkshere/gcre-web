@@ -4,26 +4,26 @@
         "version": "V1"
     },
     "nav": {
-        "date": "2026-08-18",
-        "nav": 1.0194,
-        "drawdown": -0.0061
+        "date": "2026-08-19",
+        "nav": 1.0439,
+        "drawdown": 0.0
     },
     "performance": {
-        "return": 1.94,
-        "cagr": 44.73,
-        "sharpe": 6.97,
+        "return": 4.39,
+        "cagr": 118.9,
+        "sharpe": 8.28,
         "max_drawdown": -0.61
     },
     "macro": {
-        "date": "2026-08-19",
-        "vix": 15.84,
-        "move": 74.9787,
+        "date": "2026-08-20",
+        "vix": 14.89,
+        "move": 71.2614,
         "us02y": 4.05,
         "us10y": 4.47,
         "hy_oas": 2.72,
         "fed_regime": "Neutral",
         "cycle": "Risk Expansion",
-        "trend": "Bearish",
+        "trend": "Neutral",
         "liquidity_adjustment": 1.0,
         "inflection_score": 0,
         "reversal_warning": "No"
@@ -67,9 +67,9 @@
     ],
     "simulation": {
         "start_date": "2026-07-30",
-        "running_days": 20,
+        "running_days": 21,
         "initial_capital": 100000.0,
-        "current_nav": 1.0194
+        "current_nav": 1.0439
     },
     "history": [
         {
@@ -141,18 +141,28 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260819.md",
             "liquidity_adjustment": 1.0
+        },
+        {
+            "date": "2026-08-20 00:00:00",
+            "nav": 1.0438632485702213,
+            "total_return": 0.043863,
+            "vix": 14.89,
+            "economic_cycle": "Risk Expansion",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260820.md",
+            "liquidity_adjustment": 1.0
         }
     ],
     "risk": {
-        "vix": 15.84,
-        "move": 74.9787,
+        "vix": 14.89,
+        "move": 71.2614,
         "economic_cycle": "Risk Expansion",
-        "market_trend": "Bearish",
+        "market_trend": "Neutral",
         "liquidity_adjustment": 1.0,
         "inflection_score": 0,
         "reversal_warning": "No",
         "exposure": 1.0,
         "cash_weight": 0.5,
-        "drawdown": -0.0061358681077929
+        "drawdown": 0.0
     }
 }
