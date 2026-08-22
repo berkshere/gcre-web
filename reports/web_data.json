@@ -4,26 +4,26 @@
         "version": "V1"
     },
     "nav": {
-        "date": "2026-08-19",
-        "nav": 1.0439,
+        "date": "2026-08-21",
+        "nav": 1.0583,
         "drawdown": 0.0
     },
     "performance": {
-        "return": 4.39,
-        "cagr": 118.9,
-        "sharpe": 8.28,
+        "return": 5.83,
+        "cagr": 156.17,
+        "sharpe": 9.84,
         "max_drawdown": -0.61
     },
     "macro": {
-        "date": "2026-08-21",
-        "vix": 15.79,
-        "move": 73.177,
+        "date": "2026-08-22",
+        "vix": 15.13,
+        "move": 73.399,
         "us02y": 4.05,
         "us10y": 4.47,
         "hy_oas": 2.72,
         "fed_regime": "Neutral",
         "cycle": "Risk Expansion",
-        "trend": "Bearish",
+        "trend": "Neutral",
         "liquidity_adjustment": 1.0,
         "inflection_score": 0,
         "reversal_warning": "No"
@@ -67,9 +67,9 @@
     ],
     "simulation": {
         "start_date": "2026-07-30",
-        "running_days": 21,
+        "running_days": 23,
         "initial_capital": 100000.0,
-        "current_nav": 1.0439
+        "current_nav": 1.0583
     },
     "history": [
         {
@@ -151,13 +151,23 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260820.md",
             "liquidity_adjustment": 1.0
+        },
+        {
+            "date": "2026-08-22 00:00:00",
+            "nav": 1.0583371537950697,
+            "total_return": 0.058337,
+            "vix": 15.13,
+            "economic_cycle": "Risk Expansion",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260822.md",
+            "liquidity_adjustment": 1.0
         }
     ],
     "risk": {
-        "vix": 15.79,
-        "move": 73.177,
+        "vix": 15.13,
+        "move": 73.399,
         "economic_cycle": "Risk Expansion",
-        "market_trend": "Bearish",
+        "market_trend": "Neutral",
         "liquidity_adjustment": 1.0,
         "inflection_score": 0,
         "reversal_warning": "No",
