@@ -4,20 +4,20 @@
         "version": "V1"
     },
     "nav": {
-        "date": "2026-08-24",
-        "nav": 1.0612,
+        "date": "2026-08-25",
+        "nav": 1.0628,
         "drawdown": 0.0
     },
     "performance": {
-        "return": 6.12,
-        "cagr": 138.13,
-        "sharpe": 9.88,
+        "return": 6.28,
+        "cagr": 135.26,
+        "sharpe": 9.69,
         "max_drawdown": -0.61
     },
     "macro": {
-        "date": "2026-08-25",
-        "vix": 15.79,
-        "move": 73.975,
+        "date": "2026-08-26",
+        "vix": 15.45,
+        "move": 71.919,
         "us02y": 4.17,
         "us10y": 4.48,
         "hy_oas": 2.74,
@@ -68,22 +68,11 @@
     ],
     "simulation": {
         "start_date": "2026-07-30",
-        "running_days": 26,
+        "running_days": 27,
         "initial_capital": 100000.0,
-        "current_nav": 1.0612
+        "current_nav": 1.0628
     },
     "history": [
-        {
-            "date": "2026-08-10",
-            "nav": 1.0257,
-            "total_return": null,
-            "vix": 15.49,
-            "economic_cycle": "UNKNOWN",
-            "exposure": null,
-            "report_file": "GCRE_Sell_Side_Report_20260810.md",
-            "liquidity_adjustment": null,
-            "risk_regime": "UNKNOWN"
-        },
         {
             "date": "2026-08-11",
             "nav": 1.0257,
@@ -182,11 +171,22 @@
             "report_file": "GCRE_Sell_Side_Report_20260825.md",
             "liquidity_adjustment": 1.0,
             "risk_regime": "RISK_EXPANSION"
+        },
+        {
+            "date": "2026-08-26 00:00:00",
+            "nav": 1.0628349450092516,
+            "total_return": 0.062835,
+            "vix": 15.45,
+            "economic_cycle": "UNKNOWN",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260826.md",
+            "liquidity_adjustment": 1.0,
+            "risk_regime": "RISK_EXPANSION"
         }
     ],
     "risk": {
-        "vix": 15.79,
-        "move": 73.975,
+        "vix": 15.45,
+        "move": 71.919,
         "economic_cycle": "UNKNOWN",
         "risk_regime": "RISK_EXPANSION",
         "market_trend": "Neutral",
