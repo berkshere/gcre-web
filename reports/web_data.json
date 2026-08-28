@@ -4,26 +4,25 @@
         "version": "V1"
     },
     "nav": {
-        "date": "2026-08-25",
-        "nav": 1.0628,
-        "drawdown": 0.0
+        "date": "2026-08-27",
+        "nav": 1.0563,
+        "drawdown": -0.0062
     },
     "performance": {
-        "return": 6.28,
-        "cagr": 135.26,
-        "sharpe": 9.69,
-        "max_drawdown": -0.61
+        "return": 5.63,
+        "cagr": 104.13,
+        "sharpe": 7.84,
+        "max_drawdown": -0.62
     },
     "macro": {
-        "date": "2026-08-26",
-        "vix": 15.45,
-        "move": 71.919,
+        "date": "2026-08-28",
+        "vix": 14.57,
+        "move": 69.859,
         "us02y": 4.17,
         "us10y": 4.48,
         "hy_oas": 2.74,
-        "fed_regime": "Neutral",
+        "fed_regime": "PAUSE_HIGH_RATE",
         "cycle": "UNKNOWN",
-        "risk_regime": "RISK_EXPANSION",
         "trend": "Neutral",
         "liquidity_adjustment": 1.0,
         "inflection_score": 0,
@@ -68,22 +67,11 @@
     ],
     "simulation": {
         "start_date": "2026-07-30",
-        "running_days": 27,
+        "running_days": 29,
         "initial_capital": 100000.0,
-        "current_nav": 1.0628
+        "current_nav": 1.0563
     },
     "history": [
-        {
-            "date": "2026-08-11",
-            "nav": 1.0257,
-            "total_return": null,
-            "vix": 15.49,
-            "economic_cycle": "UNKNOWN",
-            "exposure": null,
-            "report_file": "GCRE_Sell_Side_Report_20260811.md",
-            "liquidity_adjustment": null,
-            "risk_regime": "RISK_EXPANSION"
-        },
         {
             "date": "2026-08-12",
             "nav": 1.0257,
@@ -93,7 +81,7 @@
             "exposure": null,
             "report_file": "GCRE_Sell_Side_Report_20260812.md",
             "liquidity_adjustment": null,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
         },
         {
             "date": "2026-08-17 00:00:00",
@@ -104,7 +92,7 @@
             "exposure": 0.455,
             "report_file": "GCRE_Sell_Side_Report_20260817.md",
             "liquidity_adjustment": 1.0,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
         },
         {
             "date": "2026-08-19 00:00:00",
@@ -115,7 +103,7 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260819.md",
             "liquidity_adjustment": 1.0,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
         },
         {
             "date": "2026-08-19 00:00:00",
@@ -126,7 +114,7 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260819.md",
             "liquidity_adjustment": 1.0,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
         },
         {
             "date": "2026-08-19 00:00:00",
@@ -137,7 +125,7 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260819.md",
             "liquidity_adjustment": 1.0,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
         },
         {
             "date": "2026-08-20 00:00:00",
@@ -148,7 +136,7 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260820.md",
             "liquidity_adjustment": 1.0,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
         },
         {
             "date": "2026-08-22 00:00:00",
@@ -159,7 +147,7 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260822.md",
             "liquidity_adjustment": 1.0,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
         },
         {
             "date": "2026-08-25 00:00:00",
@@ -170,7 +158,7 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260825.md",
             "liquidity_adjustment": 1.0,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
         },
         {
             "date": "2026-08-26 00:00:00",
@@ -181,20 +169,31 @@
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260826.md",
             "liquidity_adjustment": 1.0,
-            "risk_regime": "RISK_EXPANSION"
+            "risk_regime": "GROWTH"
+        },
+        {
+            "date": "2026-08-28 00:00:00",
+            "nav": 1.05626603150721,
+            "total_return": 0.056266,
+            "vix": 14.57,
+            "economic_cycle": "UNKNOWN",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260828.md",
+            "liquidity_adjustment": 1.0,
+            "risk_regime": "GROWTH"
         }
     ],
     "risk": {
-        "vix": 15.45,
-        "move": 71.919,
+        "vix": 14.57,
+        "move": 69.859,
         "economic_cycle": "UNKNOWN",
-        "risk_regime": "RISK_EXPANSION",
+        "risk_regime": "GROWTH",
         "market_trend": "Neutral",
         "liquidity_adjustment": 1.0,
         "inflection_score": 0,
         "reversal_warning": "No",
         "exposure": 1.0,
         "cash_weight": 0.5,
-        "drawdown": 0.0
+        "drawdown": -0.0061805584516082
     }
 }
