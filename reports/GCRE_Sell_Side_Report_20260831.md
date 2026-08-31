@@ -1,23 +1,23 @@
 # GCRE Sell Side Asset Rotation Report
 
-**Report Date:** 2026-08-28
+**Report Date:** 2026-08-31
 **Model:** Global Capital Regime Engine
 **Target Source:** NORMAL_TARGET
 **Crisis Level:** NORMAL
-**Current NAV:** 1.055167
-**Portfolio Value:** $105,516.68
-**Cumulative Return:** 5.52%
-**Latest Daily Return:** -0.10%
-**Current Drawdown:** -0.72%
+**Current NAV:** 1.054978
+**Portfolio Value:** $105,497.75
+**Cumulative Return:** 5.50%
+**Latest Daily Return:** -0.12%
+**Current Drawdown:** -0.74%
 
 ---
 
 # 2. Macro Regime
 Start Date: 2026-08-05
-End Date: 2026-08-28
-Running Days: 24 days
+End Date: 2026-08-31
+Running Days: 27 days
 
-**Current Macro Regime:** UNKNOWN
+**Current Macro Regime:** EXPANSION
 
 | Indicator | Current |
 | --- | ---: |
@@ -62,22 +62,23 @@ Running Days: 24 days
 
 **Target Source:** NORMAL_TARGET
 
-**Actual Portfolio Value:** $105,516.68
+**Actual Portfolio Value:** $105,497.75
 
 | Asset | Target | Actual | Difference | Status |
 | --- | ---: | ---: | ---: | --- |
-| CASH | 50.00% | 30.00% | -20.00% | UNDERWEIGHT |
-| SHNY | 20.00% | 19.81% | -0.19% | UNDERWEIGHT |
-| BIL | 15.00% | 3.96% | -11.04% | UNDERWEIGHT |
-| TQQQ | 5.00% | 11.83% | +6.83% | OVERWEIGHT |
-| TMF | 5.00% | 2.76% | -2.24% | UNDERWEIGHT |
-| UCO | 5.00% | 11.83% | +6.83% | OVERWEIGHT |
+| CASH | 30.00% | 29.99% | -0.01% | ALIGNED |
+| QQQ | 19.81% | 19.81% | +0.00% | ALIGNED |
+| SHNY | 19.81% | 19.81% | +0.00% | ALIGNED |
+| UCO | 11.83% | 11.83% | +0.00% | ALIGNED |
+| TQQQ | 11.83% | 11.83% | +0.00% | ALIGNED |
+| BIL | 3.96% | 3.96% | +0.00% | ALIGNED |
+| TMF | 2.76% | 2.76% | -0.00% | ALIGNED |
 
 **Target Total:** 100.00%
 
-**Actual Known Weight:** 80.19%
+**Actual Known Weight:** 100.00%
 
-**Account Total Value:** $105,516.68
+**Account Total Value:** $105,497.75
 
 ---
 
@@ -85,12 +86,12 @@ Running Days: 24 days
 
 | Metric | Value |
 | --- | ---: |
-| NAV | 1.055167 |
-| Portfolio Value | $105,516.68 |
-| Daily Return | -0.10% |
-| Cumulative Return | 5.52% |
+| NAV | 1.054978 |
+| Portfolio Value | $105,497.75 |
+| Daily Return | -0.12% |
+| Cumulative Return | 5.50% |
 | Peak NAV | 1.062835 |
-| Drawdown | -0.72% |
+| Drawdown | -0.74% |
 
 ---
 
@@ -99,15 +100,15 @@ Running Days: 24 days
 | Metric | Value |
 | --- | ---: |
 | Initial Value | $100,000.00 |
-| Final Value | $105,516.68 |
+| Final Value | $105,497.75 |
 | Start Date | 2026-07-30 |
 | End Date | 2026-08-28 |
-| Total Return | 5.52% |
-| CAGR | 96.57% |
-| Volatility | 12.39% |
-| Max Drawdown | -0.72% |
-| Sharpe Ratio | 7.3494 |
-| Calmar Ratio | 133.8551 |
+| Total Return | 5.50% |
+| CAGR | 96.13% |
+| Volatility | 12.41% |
+| Max Drawdown | -0.74% |
+| Sharpe Ratio | 7.3178 |
+| Calmar Ratio | 130.0305 |
 | Positive Days | 9 |
 | Negative Days | 4 |
 
@@ -117,39 +118,45 @@ Running Days: 24 days
 
 ### CASH
 
-Target Weight: **50.00%**
+Target Weight: **30.00%**
 
 Reason: systematic portfolio allocation
 
+### QQQ
+
+Target Weight: **19.81%**
+
+Reason: price>MA20;MA20>MA60;MA60>MA120;MA20 rising;volatility normal;weak momentum
+
 ### SHNY
 
-Target Weight: **20.00%**
+Target Weight: **19.81%**
 
 Reason: price>MA20;MA20>MA60;MA20 rising;volatility normal;acceptable position;healthy momentum
-
-### BIL
-
-Target Weight: **15.00%**
-
-Reason: price>MA20;MA60>MA120;volatility normal;overbought
-
-### TQQQ
-
-Target Weight: **5.00%**
-
-Reason: price>MA20;MA60>MA120;MA20 rising;volatility normal;acceptable position;weak momentum
-
-### TMF
-
-Target Weight: **5.00%**
-
-Reason: price>MA20;acceptable position;healthy momentum
 
 ### UCO
 
-Target Weight: **5.00%**
+Target Weight: **11.83%**
 
 Reason: price>MA20;MA20>MA60;MA20 rising;volatility normal;acceptable position;healthy momentum
+
+### TQQQ
+
+Target Weight: **11.83%**
+
+Reason: price>MA20;MA60>MA120;MA20 rising;volatility normal;acceptable position;weak momentum
+
+### BIL
+
+Target Weight: **3.96%**
+
+Reason: price>MA20;MA60>MA120;volatility normal;overbought
+
+### TMF
+
+Target Weight: **2.76%**
+
+Reason: price>MA20;acceptable position;healthy momentum
 
 ---
 
@@ -159,7 +166,7 @@ The portfolio remains under systematic macro, timing and portfolio-risk controls
 
 The Crisis Engine currently identifies no absolute crisis condition. Normal portfolio risk controls remain active.
 
-The model currently shows a cumulative return of 5.52% with a current drawdown of -0.72%.
+The model currently shows a cumulative return of 5.50% with a current drawdown of -0.74%.
 
 Allocation decisions are determined by the interaction of macro regime, timing signals, portfolio constraints and crisis controls.
 
@@ -176,7 +183,7 @@ Historical NAV observations: **15**
 | 2 | 2026-08-24 | 1.061228 | 6.12% | 0.00% |
 | 3 | 2026-08-21 | 1.058337 | 5.83% | 0.00% |
 | 4 | 2026-08-27 | 1.056266 | 5.63% | -0.62% |
-| 5 | 2026-08-28 | 1.055167 | 5.52% | -0.72% |
+| 5 | 2026-08-28 | 1.054978 | 5.50% | -0.74% |
 | 6 | 2026-08-19 | 1.043863 | 4.39% | 0.00% |
 | 7 | 2026-08-11 | 1.025723 | 2.57% | 0.00% |
 | 8 | 2026-08-10 | 1.025336 | 2.53% | 0.00% |
@@ -188,7 +195,7 @@ Historical NAV observations: **15**
 | 14 | 2026-08-04 | 1.009790 | 0.98% | 0.00% |
 | 15 | 2026-07-30 | 1.000000 | 0.00% | 0.00% |
 
-**Current NAV:** 1.055167
+**Current NAV:** 1.054978
 
 **Current NAV Rank:** 5 / 15
 
