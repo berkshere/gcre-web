@@ -2,31 +2,31 @@
 
 # 1 Summary
 
-**Report Date:** 2026-08-31
+**Report Date:** 2026-09-01
 **Model:** Global Capital Regime Engine
 **Target Source:** NORMAL_TARGET
 **Crisis Level:** NORMAL
-**Current NAV:** 1.033456
-**Portfolio Value:** $103,345.64
-**Cumulative Return:** 3.35%
-**Latest Daily Return:** -2.16%
-**Current Drawdown:** -2.76%
+**Current NAV:** 1.038924
+**Portfolio Value:** $103,892.42
+**Cumulative Return:** 3.89%
+**Latest Daily Return:** 0.53%
+**Current Drawdown:** -2.25%
 
 ---
 
 # 2. Macro Regime
 Start Date: 2026-08-05
-End Date: 2026-08-31
-Running Days: 27 days
+End Date: 2026-09-01
+Running Days: 28 days
 
 **Current Macro Regime:** EXPANSION
 
 | Indicator | Current |
 | --- | ---: |
 
-| VIX | 14.5700 |
+| VIX | 14.9200 |
 
-| MOVE | 69.8590 |
+| MOVE | 75.3190 |
 
 | HY OAS | 2.7400 |
 
@@ -64,23 +64,23 @@ Running Days: 27 days
 
 **Target Source:** NORMAL_TARGET
 
-**Actual Portfolio Value:** $103,345.64
+**Actual Portfolio Value:** $103,892.42
 
 | Asset | Target | Actual | Difference | Status |
 | --- | ---: | ---: | ---: | --- |
 | CASH | 30.00% | 30.00% | +0.00% | ALIGNED |
-| SHNY | 22.34% | 22.34% | -0.00% | ALIGNED |
-| UCO | 14.89% | 14.89% | +0.00% | ALIGNED |
-| QQQ | 14.89% | 14.89% | +0.00% | ALIGNED |
-| TQQQ | 9.93% | 9.93% | +0.00% | ALIGNED |
-| BIL | 4.47% | 4.47% | +0.00% | ALIGNED |
-| TMF | 3.48% | 3.48% | +0.00% | ALIGNED |
+| SHNY | 19.09% | 19.09% | -0.00% | ALIGNED |
+| BIL | 12.73% | 12.73% | -0.00% | ALIGNED |
+| QQQ | 12.73% | 12.73% | +0.00% | ALIGNED |
+| TQQQ | 11.40% | 11.40% | -0.00% | ALIGNED |
+| UCO | 11.40% | 11.40% | +0.00% | ALIGNED |
+| TMF | 2.66% | 2.66% | -0.00% | ALIGNED |
 
 **Target Total:** 100.00%
 
 **Actual Known Weight:** 100.00%
 
-**Account Total Value:** $103,345.64
+**Account Total Value:** $103,892.42
 
 ---
 
@@ -88,12 +88,12 @@ Running Days: 27 days
 
 | Metric | Value |
 | --- | ---: |
-| NAV | 1.033456 |
-| Portfolio Value | $103,345.64 |
-| Daily Return | -2.16% |
-| Cumulative Return | 3.35% |
+| NAV | 1.038924 |
+| Portfolio Value | $103,892.42 |
+| Daily Return | 0.53% |
+| Cumulative Return | 3.89% |
 | Peak NAV | 1.062835 |
-| Drawdown | -2.76% |
+| Drawdown | -2.25% |
 
 ---
 
@@ -102,16 +102,16 @@ Running Days: 27 days
 | Metric | Value |
 | --- | ---: |
 | Initial Value | $100,000.00 |
-| Final Value | $103,345.64 |
+| Final Value | $103,892.42 |
 | Start Date | 2026-07-30 |
-| End Date | 2026-08-28 |
-| Total Return | 3.35% |
-| CAGR | 51.32% |
-| Volatility | 16.09% |
+| End Date | 2026-08-31 |
+| Total Return | 3.89% |
+| CAGR | 54.58% |
+| Volatility | 15.60% |
 | Max Drawdown | -2.76% |
-| Sharpe Ratio | 3.5140 |
-| Calmar Ratio | 18.5646 |
-| Positive Days | 9 |
+| Sharpe Ratio | 3.9341 |
+| Calmar Ratio | 19.7464 |
+| Positive Days | 10 |
 | Negative Days | 4 |
 
 ---
@@ -126,39 +126,39 @@ Reason: systematic portfolio allocation
 
 ### SHNY
 
-Target Weight: **22.34%**
+Target Weight: **19.09%**
 
-Reason: price>MA20;MA20>MA60;MA20 rising;volatility normal;acceptable position;healthy momentum
+Reason: MA20>MA60;MA20 rising;volatility normal;acceptable position;healthy momentum
 
-### UCO
+### BIL
 
-Target Weight: **14.89%**
+Target Weight: **12.73%**
 
-Reason: price>MA20;MA20>MA60;MA20 rising;volatility normal;healthy momentum
+Reason: price>MA20;MA20>MA60;MA60>MA120;MA20 rising;volatility normal;overbought
 
 ### QQQ
 
-Target Weight: **14.89%**
+Target Weight: **12.73%**
 
 Reason: MA20>MA60;MA60>MA120;MA20 rising;volatility normal;weak momentum
 
 ### TQQQ
 
-Target Weight: **9.93%**
+Target Weight: **11.40%**
 
-Reason: MA60>MA120;MA20 rising;volatility normal;acceptable position;weak momentum
+Reason: MA20>MA60;MA60>MA120;MA20 rising;volatility normal;acceptable position;weak momentum
 
-### BIL
+### UCO
 
-Target Weight: **4.47%**
+Target Weight: **11.40%**
 
-Reason: price>MA20;MA60>MA120;volatility normal;overbought
+Reason: price>MA20;MA20>MA60;MA20 rising;volatility normal;healthy momentum
 
 ### TMF
 
-Target Weight: **3.48%**
+Target Weight: **2.66%**
 
-Reason: price>MA20;acceptable position;healthy momentum
+Reason: MA20 rising;acceptable position;healthy momentum
 
 ---
 
@@ -168,7 +168,7 @@ The portfolio remains under systematic macro, timing and portfolio-risk controls
 
 The Crisis Engine currently identifies no absolute crisis condition. Normal portfolio risk controls remain active.
 
-The model currently shows a cumulative return of 3.35% with a current drawdown of -2.76%.
+The model currently shows a cumulative return of 3.89% with a current drawdown of -2.25%.
 
 Allocation decisions are determined by the interaction of macro regime, timing signals, portfolio constraints and crisis controls.
 
@@ -177,7 +177,7 @@ Current Crisis Engine assessment: NORMAL: absolute risk indicators remain below 
 ---
 
 # 9. Historical Ranking
-Historical NAV observations: **15**
+Historical NAV observations: **16**
 
 | Rank | Date | NAV | Cumulative Return | Drawdown |
 | ---: | --- | ---: | ---: | ---: |
@@ -186,22 +186,23 @@ Historical NAV observations: **15**
 | 3 | 2026-08-21 | 1.058337 | 5.83% | 0.00% |
 | 4 | 2026-08-27 | 1.056266 | 5.63% | -0.62% |
 | 5 | 2026-08-19 | 1.043863 | 4.39% | 0.00% |
-| 6 | 2026-08-28 | 1.033456 | 3.35% | -2.76% |
-| 7 | 2026-08-11 | 1.025723 | 2.57% | 0.00% |
-| 8 | 2026-08-10 | 1.025336 | 2.53% | 0.00% |
-| 9 | 2026-08-14 | 1.025158 | 2.52% | -0.06% |
-| 10 | 2026-08-17 | 1.019429 | 1.94% | -0.61% |
-| 11 | 2026-08-18 | 1.019429 | 1.94% | -0.61% |
-| 12 | 2026-08-07 | 1.016608 | 1.66% | 0.00% |
-| 13 | 2026-08-05 | 1.015406 | 1.54% | 0.00% |
-| 14 | 2026-08-04 | 1.009790 | 0.98% | 0.00% |
-| 15 | 2026-07-30 | 1.000000 | 0.00% | 0.00% |
+| 6 | 2026-08-31 | 1.038924 | 3.89% | -2.25% |
+| 7 | 2026-08-28 | 1.033456 | 3.35% | -2.76% |
+| 8 | 2026-08-11 | 1.025723 | 2.57% | 0.00% |
+| 9 | 2026-08-10 | 1.025336 | 2.53% | 0.00% |
+| 10 | 2026-08-14 | 1.025158 | 2.52% | -0.06% |
+| 11 | 2026-08-17 | 1.019429 | 1.94% | -0.61% |
+| 12 | 2026-08-18 | 1.019429 | 1.94% | -0.61% |
+| 13 | 2026-08-07 | 1.016608 | 1.66% | 0.00% |
+| 14 | 2026-08-05 | 1.015406 | 1.54% | 0.00% |
+| 15 | 2026-08-04 | 1.009790 | 0.98% | 0.00% |
+| 16 | 2026-07-30 | 1.000000 | 0.00% | 0.00% |
 
-**Current NAV:** 1.033456
+**Current NAV:** 1.038924
 
-**Current NAV Rank:** 6 / 15
+**Current NAV Rank:** 6 / 16
 
-**Historical NAV Percentile:** 64.29%
+**Historical NAV Percentile:** 66.67%
 
 ---
 
