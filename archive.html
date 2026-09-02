@@ -1,42 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+<html>
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta
-      name="description"
-      content="GCRE is a systematic global capital regime engine combining macro analysis, market risk monitoring, timing signals and dynamic portfolio allocation."
-    >
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta charset="UTF-8">
 
-    <title>GCRE | Archive | Global Capital Regime Engine</title>
-   <style>
-        /* logo容器样式 */
-        .site-logo {
-            display: flex;
-            align-items: right;
-            gap:10px;
-            text-decoration: none;
-        }
-        .site-logo img {
-            /* 控制logo高度，宽度自动缩放 */
-            height: 100px;
-            width: auto;
-        }
-        .logo-text{
-            font-size:22px;
-            font-weight:bold;
-            color:#1a365d;
-        }
-    </style>
-    <link
-        rel="stylesheet"
-        href="./assets/style.css"
-    >
+<title>
+GCRE Archive
+</title>
+
+
+<link rel="stylesheet"
+href="assets/style.css">
+
 
 </head>
 
@@ -44,648 +21,420 @@
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+<div class="container">
 
-<header class="site-header">
 
-    <div class="site-header-inner">
+<div class="panel">
 
-         <div class="site-header-inner">
-            <div style="display:flex; align-items:center; gap:12px;">
-            <a href="/" class="site-logo">
-            <!-- logo图片：底部太平洋海水，上方金色船舵 -->
-            <img src="./assets/logo.png" alt="金融海洋｜稳定航行">            
-            </a>
-        <h1>
-        <a
-            href="./index.html" style="font-size:larger; font-weight:bold; align-items:center; height:200%;"
-        class="eyebrow"
-        >
-            GCRE
-        </a>
-        <p style="font-size: 14px;" >
-                AI‑powered investment‑rotation framework built on macroeconomic insights..
-        </p>
-        </h1>
-        </div>
 
+<h1>
+GCRE Report Archive
+</h1>
 
-        <nav class="site-nav">
 
-            <a href="./index.html">
-                Home
-            </a>
+<table>
 
 
-            <a href="./latest.html">
-                Latest
-            </a>
+<tr>
 
+<th>Date</th>
+<th>NAV</th>
+<th>Return</th>
+<th>VIX</th>
+<th>Cycle</th>
+<th>Report</th>
 
-            <a
-                href="./archive.html"
-                class="active"
-            >
-                Archive
-            </a>
-            
-            <a href="./subscribe.html">
-                Subscribe
-            </a>
-            <a href="./about.html">
-                About
-            </a>
+</tr>
 
-        </nav>
 
-    </div>
 
-</header>
 
+<tr>
 
+<td>2026-07-30</td>
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+<td>1.0000</td>
 
-<main class="container">
+<td>0.00%</td>
 
+<td>nan</td>
 
-    <!-- =================================================
-         HERO
-    ================================================= -->
+<td>nan</td>
 
-    <section class="hero">
-
-        <div class="eyebrow">
-            GCRE REPORT ARCHIVE
-        </div>
-
-
-        <h1>
-            Historical Reports
-        </h1>
-
-
-        <p>
-            Daily Global Capital Regime Engine
-            sell-side investment reports.
-        </p>
-
-    </section>
-
-
-
-    <!-- =================================================
-         ARCHIVE
-    ================================================= -->
-
-    <section class="dashboard-section">
-
-        <div class="section-title">
-            REPORT ARCHIVE
-        </div>
-
-
-        <div class="panel">
-
-
-            <div class="panel-title">
-                Historical GCRE Reports
-            </div>
-
-
-            <div
-                id="archive-list"
-                class="archive-list"
-            >
-
-                <div class="empty-state">
-                    Loading archive...
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-</main>
-
-
-
-
-
-
-
-
-
-<!-- =====================================================
-     ARCHIVE SCRIPT
-===================================================== -->
-
-<script>
-
-const ARCHIVE_URL = "./reports/archive.json";
-
-
-/* =====================================================
-   工具函数
-===================================================== */
-
-function formatDate(value) {
-
-    if (!value) {
-        return "--";
-    }
-
-
-    /*
-       兼容：
-
-       20260812
-       2026-08-12
-       2026/08/12
-    */
-
-    const text = String(value);
-
-
-    if (/^\d{8}$/.test(text)) {
-
-        return (
-            text.substring(0, 4)
-            + "-"
-            + text.substring(4, 6)
-            + "-"
-            + text.substring(6, 8)
-        );
-
-    }
-
-
-    return text.substring(0, 10);
-
-}
-
-
-/* =====================================================
-   转义 HTML
-===================================================== */
-
-function escapeHTML(value) {
-
-    if (
-        value === null ||
-        value === undefined
-    ) {
-
-        return "";
-
-    }
-
-
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =====================================================
-   读取 Archive
-===================================================== */
-
-async function loadArchive() {
-
-    const container =
-        document.getElementById(
-            "archive-list"
-        );
-
-
-    if (!container) {
-        return;
-    }
-
-
-    try {
-
-        const response = await fetch(
-            `${ARCHIVE_URL}?t=${Date.now()}`,
-            {
-                cache: "no-store"
-            }
-        );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                `HTTP ${response.status}`
-            );
-
-        }
-
-
-        const archive =
-            await response.json();
-
-
-        console.log(
-            "GCRE archive loaded:",
-            archive
-        );
-
-
-        renderArchive(
-            archive,
-            container
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "Archive loading error:",
-            error
-        );
-
-
-        container.innerHTML = `
-
-            <div class="empty-state">
-
-                Unable to load archive.
-
-                <br>
-
-                ${escapeHTML(error.message)}
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-
-/* =====================================================
-   生成 Report URL
-===================================================== */
-
-function buildReportURL(file) {
-
-    /*
-    ====================================================
-    关键：
-
-    不直接打开：
-
-    ./reports/xxx.md
-
-    而是：
-
-    ./report.html?file=xxx.md
-
-    由 report.html 负责读取 Markdown。
-    ====================================================
-    */
-
-
-    return (
-        "./report.html?file="
-        +
-        encodeURIComponent(file)
-    );
-
-}
-
-
-/* =====================================================
-   渲染 Archive
-===================================================== */
-
-function renderArchive(
-    archive,
-    container
-) {
-
-
-    /*
-       兼容几种 archive.json 结构
-    */
-
-    let reports = archive;
-
-
-    if (
-        archive &&
-        Array.isArray(
-            archive.reports
-        )
-    ) {
-
-        reports =
-            archive.reports;
-
-    }
-
-
-    if (
-        archive &&
-        Array.isArray(
-            archive.archive
-        )
-    ) {
-
-        reports =
-            archive.archive;
-
-    }
-
-
-    if (
-        !Array.isArray(reports) ||
-        reports.length === 0
-    ) {
-
-        container.innerHTML = `
-
-            <div class="empty-state">
-
-                No archived reports available.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    /*
-       按日期倒序
-    */
-
-    reports.sort(
-        function(a, b) {
-
-            const dateA =
-                String(
-                    a.date ||
-                    a.report_date ||
-                    a.filename ||
-                    a.file ||
-                    ""
-                );
-
-
-            const dateB =
-                String(
-                    b.date ||
-                    b.report_date ||
-                    b.filename ||
-                    b.file ||
-                    ""
-                );
-
-
-            return dateB.localeCompare(
-                dateA
-            );
-
-        }
-    );
-
-
-    let html = "";
-
-
-    reports.forEach(
-        function(item) {
-
-
-            /*
-            ============================================
-            文件名
-            ============================================
-            */
-
-            const file =
-                item.file ||
-                item.report_file ||
-                item.filename ||
-                item.name ||
-                "";
-
-
-            if (!file) {
-                return;
-            }
-
-
-            /*
-            ============================================
-            日期
-            ============================================
-            */
-
-            let date =
-                item.date ||
-                item.report_date ||
-                "";
-
-
-            /*
-            如果 archive.json 没有 date
-            从文件名提取：
-
-            GCRE_Sell_Side_Report_20260812.md
-            */
-
-            if (!date) {
-
-                const match =
-                    String(file).match(
-                        /(\d{8})/
-                    );
-
-
-                if (match) {
-
-                    date =
-                        match[1];
-
-                }
-
-            }
-
-
-            /*
-            ============================================
-            NAV
-            ============================================
-            */
-
-            const nav =
-                item.nav !== undefined
-                    ? item.nav
-                    : "--";
-
-
-            /*
-            ============================================
-            Report URL
-            ============================================
-            */
-
-            const href =
-                buildReportURL(
-                    file
-                );
-
-
-            /*
-            ============================================
-            Row
-            ============================================
-            */
-
-            html += `
-
-                <div class="archive-row">
-
-
-                    <div class="archive-date">
-
-                        ${escapeHTML(
-                            formatDate(date)
-                        )}
-
-                    </div>
-
-
-                    <div class="archive-report-name">
-
-                        Global Capital Regime Engine
-
-                        <div class="archive-file-name">
-
-                            ${escapeHTML(file)}
-
-                        </div>
-
-                    </div>
-                    <div class="archive-link">
-
-                        <a
-                            href="${href}"
-                            class="primary-button"
-                            target="_blank"
-                            rel="noopener"
-                            style="color: #ffffff;"
-                        >
-                            View Report →
-                        </a>
-
-                    </div>
-
-                    <div class="archive-nav">
-
-                        ${
-                            nav !== "--"
-                                ? escapeHTML(
-                                    Number(nav).toFixed(4)
-                                  )
-                                : "--"
-                        }
-
-                    </div>
-
-
-                    
-
-
-                </div>
-                
-            `;
-
-        }
-    );
-
-
-    if (!html) {
-
-        container.innerHTML = `
-
-            <div class="empty-state">
-
-                No archived reports available.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        html;
-
-}
-
-
-/* =====================================================
-   START
-===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        loadArchive();
-
-    }
-);
-
-</script>
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="site-footer">
-
-    <div>
-        GCRE · Global Capital Regime Engine
-    </div>
-   <div>
-
-<a href="./privacy.html">
-Privacy Policy
+<td>
+<a href="./latest.html">
+Report
 </a>
+</td>
 
-|
+</tr>
 
-<a href="./terms.html">
-Terms
+
+
+<tr>
+
+<td>2026-08-04</td>
+
+<td>1.0098</td>
+
+<td>0.98%</td>
+
+<td>nan</td>
+
+<td>nan</td>
+
+<td>
+<a href="./latest.html">
+Report
 </a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-05</td>
+
+<td>1.0154</td>
+
+<td>1.54%</td>
+
+<td>16.5</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-07</td>
+
+<td>1.0166</td>
+
+<td>1.66%</td>
+
+<td>15.15</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-10</td>
+
+<td>1.0253</td>
+
+<td>2.53%</td>
+
+<td>nan</td>
+
+<td>nan</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-11</td>
+
+<td>1.0257</td>
+
+<td>2.57%</td>
+
+<td>15.49</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-14</td>
+
+<td>1.0252</td>
+
+<td>2.52%</td>
+
+<td>nan</td>
+
+<td>nan</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-17</td>
+
+<td>1.0194</td>
+
+<td>1.94%</td>
+
+<td>14.96</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-18</td>
+
+<td>1.0194</td>
+
+<td>1.94%</td>
+
+<td>nan</td>
+
+<td>nan</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-19</td>
+
+<td>1.0439</td>
+
+<td>4.39%</td>
+
+<td>15.84</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-21</td>
+
+<td>1.0583</td>
+
+<td>5.83%</td>
+
+<td>15.77</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-24</td>
+
+<td>1.0612</td>
+
+<td>6.12%</td>
+
+<td>15.91</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-25</td>
+
+<td>1.0628</td>
+
+<td>6.28%</td>
+
+<td>15.79</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-27</td>
+
+<td>1.0563</td>
+
+<td>5.63%</td>
+
+<td>nan</td>
+
+<td>nan</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-28</td>
+
+<td>1.0335</td>
+
+<td>3.35%</td>
+
+<td>14.57</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-08-31</td>
+
+<td>1.0389</td>
+
+<td>3.89%</td>
+
+<td>15.29</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-09-01</td>
+
+<td>1.0229</td>
+
+<td>2.29%</td>
+
+<td>14.92</td>
+
+<td>EXPANSION</td>
+
+<td>
+<a href="./latest.html">
+Report
+</a>
+</td>
+
+</tr>
+
+
+
+
+</table>
+
 
 </div>
-</footer>
+
+
+</div>
+
 
 </body>
 
+
 </html>
+
