@@ -888,25 +888,28 @@ function renderTable(tableLines) {
         return "";
     }
     function splitRow(line) {
-    let text = line.trim();
 
-    // --------------------------------------------------
-    // GCRE Markdown Table Parser
+    let text = String(line).trim();
+
     // 支持：
-    // | VIX | 15.2200 |
-    // \| VIX | 15.2200 |
-    // --------------------------------------------------
+    // | Asset | Target | Actual |
+    // \| Asset | Target | Actual |
 
-    // 处理表格开头被转义的 \|
-    text = text.replace(/^\\\|/, "");
+    if (text.startsWith("\\|")) {
+        text = text.substring(2);
+    }
+    else if (text.startsWith("|")) {
+        text = text.substring(1);
+    }
 
-    // 处理正常的表格开头 |
-    text = text.replace(/^\|/, "");
+    // 去掉最后一个 |
+    if (text.endsWith("|")) {
+        text = text.substring(
+            0,
+            text.length - 1
+        );
+    }
 
-    // 去掉表格结尾 |
-    text = text.replace(/\|$/, "");
-
-    // 按真正的 | 分割列
     return text
         .split("|")
         .map(cell => cell.trim());
@@ -1111,14 +1114,9 @@ function markdownToHtml(
 
 
 
-        /* ------------------------------------------
-           Table detection
-        ------------------------------------------ */
-
-        /* ------------------------------------------
+       /* ------------------------------------------
    Table detection
    支持：
-
    | VIX | 15.2200 |
    \| VIX | 15.2200 |
 
@@ -1130,7 +1128,10 @@ if (
     trimmed.startsWith("\\|")
 ) {
 
+    // ------------------------------------------
     // 找下一条非空行
+    // ------------------------------------------
+
     let nextIndex = i + 1;
 
     while (
@@ -1145,29 +1146,62 @@ if (
             ? lines[nextIndex].trim()
             : "";
 
-    // 去掉开头的 \|，统一成 |
-    const normalizedNextLine =
-        nextLine.replace(/^\\\|/, "|");
+    // ------------------------------------------
+    // 判断下一行是不是 Markdown separator
+    // ------------------------------------------
 
-    // 判断是否为 Markdown separator
-    const isSeparator =
-        /^\|?\s*:?-+:?\s*\|\s*(?::?-+:?\s*\|?)+$/
-            .test(normalizedNextLine);
+    function isSeparatorRow(line) {
 
-    if (isSeparator) {
+        let text = line.trim();
+
+        if (text.startsWith("\\|")) {
+            text = text.substring(2);
+        }
+        else if (text.startsWith("|")) {
+            text = text.substring(1);
+        }
+
+        if (text.endsWith("|")) {
+            text = text.substring(
+                0,
+                text.length - 1
+            );
+        }
+
+        const cells =
+            text
+                .split("|")
+                .map(cell => cell.trim());
+
+        if (cells.length < 2) {
+            return false;
+        }
+
+        return cells.every(
+            cell => /^:?-{3,}:?$/.test(cell)
+        );
+    }
+
+    if (isSeparatorRow(nextLine)) {
 
         flushParagraph();
         closeList();
 
         const tableLines = [];
 
+        // ------------------------------------------
+        // 收集整张表
+        // ------------------------------------------
+
         while (i < lines.length) {
 
             const current =
                 lines[i].trim();
 
-            // 空行：
-            // 如果后面还是表格行，则跳过
+            // --------------------------------------
+            // 空行
+            // --------------------------------------
+
             if (current === "") {
 
                 let lookAhead = i + 1;
@@ -1191,6 +1225,7 @@ if (
                             .startsWith("\\|")
                     )
                 ) {
+
                     i++;
                     continue;
                 }
@@ -1198,22 +1233,38 @@ if (
                 break;
             }
 
+            // --------------------------------------
             // 表格行
+            // --------------------------------------
+
             if (
                 current.startsWith("|") ||
                 current.startsWith("\\|")
             ) {
-                tableLines.push(lines[i]);
+
+                tableLines.push(
+                    lines[i]
+                );
+
                 i++;
                 continue;
             }
 
+            // --------------------------------------
+            // 非表格内容
+            // --------------------------------------
+
             break;
         }
 
-        html += renderTable(tableLines);
+        html +=
+            renderTable(
+                tableLines
+            );
 
         continue;
+       
+    
     }
 }
 
