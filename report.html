@@ -34,6 +34,71 @@
             font-weight:bold;
             color:#1a365d;
         }
+      
+/* =====================================================
+   REPORT TABLE
+   与 latest.html 保持一致
+===================================================== */
+
+.report-content .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.report-content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+    margin: 18px 0 28px 0;
+}
+
+.report-content table th,
+.report-content table td {
+    padding: 10px 24px;
+    text-align: left;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.report-content table th {
+    font-weight: 600;
+}
+
+.report-content table td {
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+/* 第一列 */
+.report-content table th:first-child,
+.report-content table td:first-child {
+    padding-left: 0;
+    padding-right: 70px;
+    text-align: left;
+}
+
+/* 第二列 */
+.report-content table th:nth-child(2),
+.report-content table td:nth-child(2) {
+    padding-left: 20px;
+    padding-right: 70px;
+    text-align: left;
+}
+
+/* 第三列以后继续拉开 */
+.report-content table th:nth-child(n+3),
+.report-content table td:nth-child(n+3) {
+    padding-left: 24px;
+    padding-right: 60px;
+    text-align: left;
+}
+
+/* 最后一列 */
+.report-content table th:last-child,
+.report-content table td:last-child {
+    padding-right: 0;
+}
+
     </style>
     <link
         rel="stylesheet"
@@ -534,18 +599,17 @@ function markdownToHTML(
     ------------------------------------------------------
     */
 
-    const blocks =
-        text
-        .split(/\n{2,}/)
-        .map(
-            block =>
-                block.trim()
-        )
-        .filter(
-            block =>
-                block.length > 0
-        );
-
+   const blocks =
+    text
+    .split(/\n{2,}/)
+    .map(
+        block =>
+            block.trim()
+    )
+    .filter(
+        block =>
+            block.length > 0
+    );
 
     const result =
         [];
@@ -567,6 +631,7 @@ function markdownToHTML(
                 block.startsWith("<h5") ||
                 block.startsWith("<h6") ||
                 block.startsWith("<table") ||
+                block.startsWith("<div class=\"table-wrapper\"") ||
                 block.startsWith("<hr") ||
                 block.startsWith("<ul") ||
                 block.startsWith("<ol")
@@ -628,114 +693,247 @@ function markdownToHTML(
 /* ======================================================
    TABLE CONVERTER
 ====================================================== */
+/* ======================================================
+   TABLE CONVERTER
+   GCRE ROBUST MARKDOWN TABLE PARSER
+====================================================== */
 
-function convertTables(
-    text
-) {
+function convertTables(text) {
 
+    const lines = text
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        .split("\n");
 
-    const lines =
-        text.split("\n");
-
-
-    const output =
-        [];
-
+    const output = [];
 
     let i = 0;
 
-
-    while (
-        i < lines.length
-    ) {
-
+    while (i < lines.length) {
 
         const current =
-            lines[i];
-
+            lines[i].trim();
 
         /*
         --------------------------------------------------
-        Detect table header
+        空行
+        --------------------------------------------------
+        */
+        if (current === "") {
+
+            output.push("");
+
+            i++;
+
+            continue;
+        }
+
+        /*
+        --------------------------------------------------
+        判断当前行是否可能是表格行
+        支持：
+
+        | VIX | 15.2200 |
+        \| VIX | 15.2200 |
         --------------------------------------------------
         */
 
-        if (
-            current.includes("|") &&
-            i + 1 < lines.length &&
-            isTableSeparator(
-                lines[i + 1]
-            )
-        ) {
+        const currentIsTableRow =
+            current.startsWith("|") ||
+            current.startsWith("\\|");
 
+        if (currentIsTableRow) {
 
-            const header =
-                parseTableRow(
-                    current
-                );
+            /*
+            --------------------------------------------------
+            找下一条非空行
+            --------------------------------------------------
+            */
 
-
-            const separator =
-                lines[i + 1];
-
-
-            i += 2;
-
-
-            const rows =
-                [];
-
+            let separatorIndex =
+                i + 1;
 
             while (
-                i < lines.length &&
-                lines[i].includes("|") &&
-                lines[i].trim() !== ""
+                separatorIndex < lines.length &&
+                lines[separatorIndex].trim() === ""
             ) {
-
-                rows.push(
-                    parseTableRow(
-                        lines[i]
-                    )
-                );
-
-                i++;
-
+                separatorIndex++;
             }
 
+            /*
+            --------------------------------------------------
+            判断下一条是否为 Markdown separator
+            --------------------------------------------------
+            */
 
-            let html =
-                "<table>" +
-                "<thead>" +
-                "<tr>";
+            if (
+                separatorIndex < lines.length &&
+                isTableSeparator(
+                    lines[separatorIndex]
+                )
+            ) {
 
+                const header =
+                    parseTableRow(
+                        lines[i]
+                    );
 
-            header.forEach(
-                cell => {
+                /*
+                跳过：
 
-                    html +=
-                        "<th>" +
-                        cell.trim() +
-                        "</th>";
+                header
+                blank lines
+                separator
+                blank lines
+                */
 
+                i =
+                    separatorIndex + 1;
+
+                const rows = [];
+
+                /*
+                --------------------------------------------------
+                收集表格数据行
+
+                允许：
+
+                | VIX | 15.22 |
+
+                空行
+
+                | MOVE | 79.71 |
+                --------------------------------------------------
+                */
+
+                while (
+                    i < lines.length
+                ) {
+
+                    const rowLine =
+                        lines[i].trim();
+
+                    /*
+                    空行
+                    */
+
+                    if (rowLine === "") {
+
+                        let lookAhead =
+                            i + 1;
+
+                        while (
+                            lookAhead < lines.length &&
+                            lines[lookAhead].trim() === ""
+                        ) {
+                            lookAhead++;
+                        }
+
+                        /*
+                        后面还是表格行
+                        */
+
+                        if (
+                            lookAhead < lines.length &&
+                            (
+                                lines[lookAhead]
+                                    .trim()
+                                    .startsWith("|") ||
+
+                                lines[lookAhead]
+                                    .trim()
+                                    .startsWith("\\|")
+                            )
+                        ) {
+
+                            i++;
+
+                            continue;
+                        }
+
+                        /*
+                        表格结束
+                        */
+
+                        break;
+                    }
+
+                    /*
+                    表格行
+                    */
+
+                    if (
+                        rowLine.startsWith("|") ||
+                        rowLine.startsWith("\\|")
+                    ) {
+
+                        rows.push(
+                            parseTableRow(
+                                lines[i]
+                            )
+                        );
+
+                        i++;
+
+                        continue;
+                    }
+
+                    /*
+                    非表格内容
+                    */
+
+                    break;
                 }
-            );
 
+                /*
+                --------------------------------------------------
+                生成 HTML
+                --------------------------------------------------
+                */
 
-            html +=
-                "</tr>" +
-                "</thead>" +
-                "<tbody>";
+                let html = `
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+`;
 
+                header.forEach(
+                    cell => {
 
-            rows.forEach(
-                row => {
+                        html +=
+                            "<th>" +
+                            cell.trim() +
+                            "</th>";
 
-                    html +=
-                        "<tr>";
+                    }
+                );
 
+                html += `
+</tr>
+</thead>
+<tbody>
+`;
 
-                    row.forEach(
-                        cell => {
+                rows.forEach(
+                    row => {
+
+                        html += "<tr>";
+
+                        /*
+                        保证列数与 header 一致
+                        */
+
+                        for (
+                            let index = 0;
+                            index < header.length;
+                            index++
+                        ) {
+
+                            const cell =
+                                row[index] !== undefined
+                                    ? row[index]
+                                    : "";
 
                             html +=
                                 "<td>" +
@@ -743,45 +941,49 @@ function convertTables(
                                 "</td>";
 
                         }
-                    );
 
+                        html +=
+                            "</tr>";
 
-                    html +=
-                        "</tr>";
+                    }
+                );
 
-                }
-            );
+                html += `
+</tbody>
+</table>
+</div>
+`;
 
+                output.push(
+                    html
+                );
 
-            html +=
-                "</tbody>" +
-                "</table>";
+                /*
+                不再 i++
+                因为上面的 while
+                已经把 i 推到了表格结束位置
+                */
 
-
-            output.push(
-                html
-            );
-
-
-            continue;
-
+                continue;
+            }
         }
 
+        /*
+        --------------------------------------------------
+        普通内容
+        --------------------------------------------------
+        */
 
         output.push(
-            current
+            lines[i]
         );
 
-
         i++;
-
     }
 
-
-    return output.join(
-        "\n"
-    );
-
+    return output
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n");
 }
 
 
@@ -790,57 +992,75 @@ function convertTables(
    TABLE HELPERS
 ====================================================== */
 
-function isTableSeparator(
-    line
-) {
+/* ======================================================
+   TABLE SEPARATOR DETECTOR
+====================================================== */
 
+function isTableSeparator(line) {
 
     const cells =
-        parseTableRow(
-            line
-        );
+        parseTableRow(line);
 
-
-    if (
-        cells.length < 2
-    ) {
-
+    if (cells.length < 2) {
         return false;
-
     }
 
-
     return cells.every(
-        cell =>
-            /^:?-{3,}:?$/.test(
-                cell.trim()
-            )
-    );
+        cell => {
 
+            const value =
+                cell.trim();
+
+            return /^:?-{3,}:?$/.test(
+                value
+            );
+
+        }
+    );
 }
 
+/* ======================================================
+   TABLE ROW PARSER
+   支持：
 
+   | VIX | 15.2200 |
 
-function parseTableRow(
-    line
-) {
+   \| VIX | 15.2200 |
+====================================================== */
 
+function parseTableRow(line) {
 
     let value =
         line.trim();
 
+    /*
+    --------------------------------------------------
+    去掉 Markdown 转义的开头 \|
+    --------------------------------------------------
+    */
 
     if (
+        value.startsWith("\\|")
+    ) {
+
+        value =
+            value.substring(2);
+
+    }
+    else if (
         value.startsWith("|")
     ) {
 
         value =
-            value.substring(
-                1
-            );
+            value.substring(1);
 
     }
 
+    /*
+    --------------------------------------------------
+    去掉最后一个 |
+    --------------------------------------------------
+    */
 
     if (
         value.endsWith("|")
@@ -854,11 +1074,12 @@ function parseTableRow(
 
     }
 
-
-    return value.split(
-        "|"
-    );
-
+    return value
+        .split("|")
+        .map(
+            cell =>
+                cell.trim()
+        );
 }
 
 

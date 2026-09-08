@@ -254,68 +254,32 @@
         ================================================== */
 
         .report-container table {
-
-            width: 100%;
-
-            border-collapse:
-                collapse;
-
-            table-layout:
-                auto;
-
-            font-size: 14px;
-
-        }
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+}
 
 
         /* ==================================================
            TABLE HEADER
         ================================================== */
 
-        .report-container th {
-
-            padding:
-                10px 14px;
-
-            font-weight:
-                650;
-
-            text-align:
-                left;
-
-            white-space:
-                nowrap;
-
-            border-bottom:
-                2px solid
-                var(
-                    --border-color,
-                    #d1d5db
-                );
-
+        .report-container table th,
+.report-container table td {
+    padding: 10px 0;
+    text-align: left;
+}
+        .report-container td {
+            padding: 10px 28px 10px 14px;
+            vertical-align: top;
+            border-bottom: 1px solid var(--border-color,#e5e7eb);
         }
 
 
         /* ==================================================
            TABLE CELL
         ================================================== */
-
-        .report-container td {
-
-            padding:
-                10px 14px;
-
-            vertical-align:
-                top;
-
-            border-bottom:
-                1px solid
-                var(
-                    --border-color,
-                    #e5e7eb
-                );
-
-        }
 
 
         /* ==================================================
@@ -328,15 +292,14 @@
         .report-container th.numeric-column,
 
         .report-container td.numeric-column {
-
             text-align:
-                right;
+            left;
 
             font-variant-numeric:
-                tabular-nums;
+            tabular-nums;
 
             white-space:
-                nowrap;
+            nowrap;
 
         }
 
@@ -345,16 +308,16 @@
            FIRST COLUMN
         ================================================== */
 
-        .report-container th:first-child,
-
-        .report-container td:first-child {
-
-            text-align:
-                left;
-
-        }
-
-
+        .report-container table th:first-child,
+.report-container table td:first-child {
+    width: 180px;
+    padding-right: 60px;
+    text-align: left;
+}
+         .report-container table th:nth-child(2),
+            .report-container table td:nth-child(2) {
+                padding-left: 20px;
+                text-align: left;}
         /* ==================================================
            ASSET COLUMN
         ================================================== */
@@ -920,306 +883,81 @@ function parseAlignment(
    MARKDOWN TABLE
 ====================================================== */
 
-function renderTable(
-    tableLines
-) {
-
-    if (
-        tableLines.length < 2
-    ) {
-
+function renderTable(tableLines) {
+    if (!tableLines || tableLines.length < 2) {
         return "";
-
     }
+    function splitRow(line) {
+    let text = line.trim();
 
+    // --------------------------------------------------
+    // GCRE Markdown Table Parser
+    // 支持：
+    // | VIX | 15.2200 |
+    // \| VIX | 15.2200 |
+    // --------------------------------------------------
 
-    const headerLine =
-        tableLines[0];
+    // 处理表格开头被转义的 \|
+    text = text.replace(/^\\\|/, "");
 
+    // 处理正常的表格开头 |
+    text = text.replace(/^\|/, "");
 
-    const separatorLine =
-        tableLines[1];
+    // 去掉表格结尾 |
+    text = text.replace(/\|$/, "");
 
-
-    function splitRow(
-        line
-    ) {
-
-        return line
-            .trim()
-            .replace(
-                /^\|/,
-                ""
-            )
-            .replace(
-                /\|$/,
-                ""
-            )
-            .split("|")
-            .map(
-                cell =>
-                    cell.trim()
-            );
-
-    }
-
-
-    const headers =
-        splitRow(
-            headerLine
-        );
-
-
-    const separators =
-        splitRow(
-            separatorLine
-        );
-
-
-    const alignments =
-        headers.map(
-            (
-                _,
-                index
-            ) => {
-
-                return parseAlignment(
-                    separators[index]
-                    || ""
-                );
-
-            }
-        );
-
+    // 按真正的 | 分割列
+    return text
+        .split("|")
+        .map(cell => cell.trim());
+}
+    
+    const headers = splitRow(tableLines[0]);
 
     let html = `
-
-        <div class="report-table-wrapper">
-
+        <div class="table-wrapper">
         <table>
-
-        <thead>
-
-        <tr>
-
+            <thead>
+                <tr>
     `;
 
-
-    headers.forEach(
-        (
-            header,
-            index
-        ) => {
-
-
-            const alignment =
-                alignments[index];
-
-
-            let className =
-                "";
-
-
-            if (
-                alignment === "right"
-            ) {
-
-                className =
-                    "numeric-column";
-
-            }
-
-
-            html +=
-
-                `<th class="${className}">` +
-
-                renderInline(
-                    header
-                ) +
-
-                `</th>`;
-
-        }
-    );
-
+    // 所有表头统一左对齐
+    headers.forEach(header => {
+        html += `<th>${renderInline(header)}</th>`;
+    });
 
     html += `
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
+                </tr>
+            </thead>
+            <tbody>
     `;
 
+    // 从第 3 行开始读取数据
+    for (let i = 2; i < tableLines.length; i++) {
+        const cells = splitRow(tableLines[i]);
 
+        html += "<tr>";
 
-    /*
-    -----------------------------------------------
-    Data rows
-    -----------------------------------------------
-    */
+        headers.forEach((header, index) => {
+            const cell = cells[index] !== undefined
+                ? cells[index]
+                : "";
 
-    for (
-        let i = 2;
-        i < tableLines.length;
-        i++
-    ) {
+            // 所有数据统一左对齐
+            html += `<td>${renderInline(cell)}</td>`;
+        });
 
-
-        const cells =
-            splitRow(
-                tableLines[i]
-            );
-
-
-        if (
-            cells.length === 0
-        ) {
-
-            continue;
-
-        }
-
-
-        html +=
-            "<tr>";
-
-
-        cells.forEach(
-            (
-                cell,
-                index
-            ) => {
-
-
-                let alignment =
-                    alignments[index]
-                    || "left";
-
-
-                /*
-                如果 Markdown 没明确指定右对齐，
-                但内容本身是纯数字，
-                自动右对齐。
-                */
-
-                if (
-                    alignment === "left"
-                    &&
-                    index > 0
-                    &&
-                    isNumericCell(
-                        cell
-                    )
-                ) {
-
-                    alignment =
-                        "right";
-
-                }
-
-
-                let className =
-                    "";
-
-
-                if (
-                    alignment === "right"
-                ) {
-
-                    className =
-                        "numeric-column";
-
-                }
-
-
-                /*
-                Asset
-                */
-
-                if (
-                    index === 0
-                ) {
-
-                    className +=
-                        " asset-column";
-
-                }
-
-
-                /*
-                Signal
-                */
-
-                const header =
-                    (
-                        headers[index]
-                        || ""
-                    ).toLowerCase();
-
-
-                if (
-                    header === "signal"
-                ) {
-
-                    className +=
-                        " signal-column";
-
-                }
-
-
-                /*
-                Comment
-                */
-
-                if (
-                    header === "comment"
-                ) {
-
-                    className +=
-                        " comment-column";
-
-                }
-
-
-                html +=
-
-                    `<td class="${className}">` +
-
-                    renderInline(
-                        cell
-                    ) +
-
-                    `</td>`;
-
-            }
-        );
-
-
-        html +=
-            "</tr>";
-
+        html += "</tr>";
     }
 
-
     html += `
-
-        </tbody>
-
+            </tbody>
         </table>
-
         </div>
-
     `;
 
-
     return html;
-
 }
-
 
 
 /* ======================================================
@@ -1232,12 +970,9 @@ function markdownToHtml(
 
 
     const lines =
-        markdown
-            .replace(
-                /\r\n/g,
-                "\n"
-            )
-            .split("\n");
+    markdown
+        .replace(/\r\n/g, "\n")
+        .split("\n");
 
 
     let html = "";
@@ -1380,65 +1115,107 @@ function markdownToHtml(
            Table detection
         ------------------------------------------ */
 
-        if (
-            trimmed.startsWith("|")
-        ) {
+        /* ------------------------------------------
+   Table detection
+   支持：
 
+   | VIX | 15.2200 |
+   \| VIX | 15.2200 |
 
-            flushParagraph();
+   同时允许表格行之间存在空行
+------------------------------------------ */
 
-            closeList();
+if (
+    trimmed.startsWith("|") ||
+    trimmed.startsWith("\\|")
+) {
 
+    // 找下一条非空行
+    let nextIndex = i + 1;
 
-            /*
-            第一行必须有下一行 separator
-            */
+    while (
+        nextIndex < lines.length &&
+        lines[nextIndex].trim() === ""
+    ) {
+        nextIndex++;
+    }
 
+    const nextLine =
+        nextIndex < lines.length
+            ? lines[nextIndex].trim()
+            : "";
+
+    // 去掉开头的 \|，统一成 |
+    const normalizedNextLine =
+        nextLine.replace(/^\\\|/, "|");
+
+    // 判断是否为 Markdown separator
+    const isSeparator =
+        /^\|?\s*:?-+:?\s*\|\s*(?::?-+:?\s*\|?)+$/
+            .test(normalizedNextLine);
+
+    if (isSeparator) {
+
+        flushParagraph();
+        closeList();
+
+        const tableLines = [];
+
+        while (i < lines.length) {
+
+            const current =
+                lines[i].trim();
+
+            // 空行：
+            // 如果后面还是表格行，则跳过
+            if (current === "") {
+
+                let lookAhead = i + 1;
+
+                while (
+                    lookAhead < lines.length &&
+                    lines[lookAhead].trim() === ""
+                ) {
+                    lookAhead++;
+                }
+
+                if (
+                    lookAhead < lines.length &&
+                    (
+                        lines[lookAhead]
+                            .trim()
+                            .startsWith("|") ||
+
+                        lines[lookAhead]
+                            .trim()
+                            .startsWith("\\|")
+                    )
+                ) {
+                    i++;
+                    continue;
+                }
+
+                break;
+            }
+
+            // 表格行
             if (
-                tableLines.length === 0
-                &&
-                i + 1 < lines.length
-                &&
-                /^\s*\|?[\s:-]+\|[\s|:-]+\s*$/.test(
-                    lines[i + 1]
-                )
+                current.startsWith("|") ||
+                current.startsWith("\\|")
             ) {
-
-                tableLines.push(
-                    line
-                );
-
-
+                tableLines.push(lines[i]);
+                i++;
                 continue;
-
             }
 
-
-            if (
-                tableLines.length > 0
-            ) {
-
-                tableLines.push(
-                    line
-                );
-
-                continue;
-
-            }
-
-        }
-        else {
-
-            if (
-                tableLines.length > 0
-            ) {
-
-                flushTable();
-
-            }
-
+            break;
         }
 
+        html += renderTable(tableLines);
+
+        continue;
+    }
+}
 
 
         /* ------------------------------------------
