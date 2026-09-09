@@ -4,20 +4,20 @@
         "version": "V1"
     },
     "nav": {
-        "date": "2026-09-02",
-        "nav": 1.0313,
-        "drawdown": -0.0297
+        "date": "2026-09-04",
+        "nav": 1.0382,
+        "drawdown": -0.0232
     },
     "performance": {
-        "return": 3.13,
-        "cagr": 39.19,
-        "sharpe": 2.71,
+        "return": 3.82,
+        "cagr": 46.21,
+        "sharpe": 3.17,
         "max_drawdown": -3.81
     },
     "macro": {
-        "date": "2026-09-04",
-        "vix": 14.1,
-        "move": 74.6812,
+        "date": "2026-09-09",
+        "vix": 15.65,
+        "move": 76.143,
         "us02y": 4.17,
         "us10y": 4.48,
         "hy_oas": 2.74,
@@ -43,58 +43,47 @@
     "portfolio": [
         {
             "symbol": "CASH",
-            "weight": 30.0,
+            "weight": 25.0,
             "reason": "portfolio engine allocation"
         },
         {
             "symbol": "SHNY",
-            "weight": 18.56,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "BIL",
-            "weight": 15.47,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "QQQ",
-            "weight": 15.47,
+            "weight": 23.0,
             "reason": "portfolio engine allocation"
         },
         {
             "symbol": "UCO",
-            "weight": 10.0,
+            "weight": 20.0,
+            "reason": "portfolio engine allocation"
+        },
+        {
+            "symbol": "QQQ",
+            "weight": 11.5,
+            "reason": "portfolio engine allocation"
+        },
+        {
+            "symbol": "BIL",
+            "weight": 11.5,
             "reason": "portfolio engine allocation"
         },
         {
             "symbol": "TQQQ",
-            "weight": 8.0,
+            "weight": 5.0,
             "reason": "portfolio engine allocation"
         },
         {
             "symbol": "TMF",
-            "weight": 2.5,
+            "weight": 4.0,
             "reason": "portfolio engine allocation"
         }
     ],
     "simulation": {
         "start_date": "2026-07-30",
-        "running_days": 35,
+        "running_days": 37,
         "initial_capital": 100000.0,
-        "current_nav": 1.0313
+        "current_nav": 1.0382
     },
     "history": [
-        {
-            "date": "2026-08-28 00:00:00",
-            "nav": 1.0551668388117323,
-            "total_return": 0.055167,
-            "vix": 14.57,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260828.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
         {
             "date": "2026-08-31 00:00:00",
             "nav": 1.0549775358522555,
@@ -193,11 +182,22 @@
             "report_file": "GCRE_Sell_Side_Report_20260903.md",
             "liquidity_adjustment": 1.0,
             "risk_regime": "GROWTH"
+        },
+        {
+            "date": "2026-09-04 00:00:00",
+            "nav": 1.0381809996418188,
+            "total_return": 0.038181,
+            "vix": 14.1,
+            "economic_cycle": "REFLATION",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260904.md",
+            "liquidity_adjustment": 1.0,
+            "risk_regime": "REFLATION"
         }
     ],
     "risk": {
-        "vix": 14.1,
-        "move": 74.6812,
+        "vix": 15.65,
+        "move": 76.143,
         "economic_cycle": "REFLATION",
         "risk_regime": "REFLATION",
         "market_trend": "Bullish",
@@ -206,6 +206,6 @@
         "reversal_warning": "No",
         "exposure": 1.0,
         "cash_weight": 0.5,
-        "drawdown": -0.029690905709562
+        "drawdown": -0.023196400798826
     }
 }
