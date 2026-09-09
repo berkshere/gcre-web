@@ -47,33 +47,28 @@
             "reason": "portfolio engine allocation"
         },
         {
-            "symbol": "SHNY",
-            "weight": 23.0,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "UCO",
+            "symbol": "GOLD",
             "weight": 20.0,
             "reason": "portfolio engine allocation"
         },
         {
-            "symbol": "QQQ",
-            "weight": 11.5,
+            "symbol": "COMMODITY",
+            "weight": 20.0,
             "reason": "portfolio engine allocation"
         },
         {
-            "symbol": "BIL",
-            "weight": 11.5,
+            "symbol": "EQUITY",
+            "weight": 15.0,
             "reason": "portfolio engine allocation"
         },
         {
-            "symbol": "TQQQ",
+            "symbol": "SHORT_DURATION",
+            "weight": 15.0,
+            "reason": "portfolio engine allocation"
+        },
+        {
+            "symbol": "DURATION",
             "weight": 5.0,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "TMF",
-            "weight": 4.0,
             "reason": "portfolio engine allocation"
         }
     ],
@@ -84,28 +79,6 @@
         "current_nav": 1.0382
     },
     "history": [
-        {
-            "date": "2026-08-31 00:00:00",
-            "nav": 1.0549775358522555,
-            "total_return": 0.054978,
-            "vix": 14.57,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260831.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
-        {
-            "date": "2026-08-31 00:00:00",
-            "nav": 1.0334563682086455,
-            "total_return": 0.033456,
-            "vix": 14.57,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260831.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
         {
             "date": "2026-08-31 00:00:00",
             "nav": 1.0334563682086455,
@@ -191,6 +164,28 @@
             "economic_cycle": "REFLATION",
             "exposure": 0.5,
             "report_file": "GCRE_Sell_Side_Report_20260904.md",
+            "liquidity_adjustment": 1.0,
+            "risk_regime": "REFLATION"
+        },
+        {
+            "date": "2026-09-04 00:00:00",
+            "nav": 1.0381809996418188,
+            "total_return": 0.038181,
+            "vix": 15.65,
+            "economic_cycle": "REFLATION",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260904.md",
+            "liquidity_adjustment": 1.0,
+            "risk_regime": "REFLATION"
+        },
+        {
+            "date": "2026-09-09 00:00:00",
+            "nav": 1.0381809996418188,
+            "total_return": 0.038181,
+            "vix": 15.65,
+            "economic_cycle": "REFLATION",
+            "exposure": 0.5,
+            "report_file": "GCRE_Sell_Side_Report_20260909.md",
             "liquidity_adjustment": 1.0,
             "risk_regime": "REFLATION"
         }
