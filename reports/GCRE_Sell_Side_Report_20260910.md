@@ -2,7 +2,7 @@
 
 ## 1. Executive Summary
 
-**Report Date:** 2026-09-04
+**Report Date:** 2026-09-10
 **Market Date:** 2026-09-08 00:00:00
 
 **Macro Regime:** REFLATION
@@ -13,11 +13,11 @@
 
 **Positioning Structure:** BALANCED
 
-**Risk Pressure:** FALLING
+**Risk Pressure:** RISING
 
 **Crisis Level:** NORMAL
 
-**Portfolio Stance:** RISK_ON
+**Portfolio Stance:** CAUTIOUS
 
 **Current NAV:** 1.038181
 
@@ -45,8 +45,8 @@
 
 | Indicator | Current |
 | --- | ---: |
-| VIX | 15.6500 |
-| MOVE | 76.1430 |
+| VIX | 16.4600 |
+| MOVE | 76.7413 |
 | US 2Y | 4.1700 |
 | US 10Y | 4.4800 |
 | HY OAS | 2.7400 |
@@ -55,7 +55,7 @@
 
 # 3. Market Risk
 
-**Risk Pressure:** FALLING
+**Risk Pressure:** RISING
 
 **Crisis Level:** NORMAL
 
@@ -65,10 +65,10 @@
 
 | Indicator | Value |
 | --- | ---: |
-| VIX | 14.1000 |
-| VIX Change | -1.1200 |
-| MOVE | 74.6812 |
-| MOVE Change | -5.0318 |
+| VIX | 15.6500 |
+| VIX Change | +1.5500 |
+| MOVE | 76.1430 |
+| MOVE Change | +1.4618 |
 | HY OAS | 2.7400 |
 | HY OAS Change | +0.0000 |
 
@@ -85,12 +85,11 @@ The final portfolio below represents the authoritative target allocation produce
 | Asset | Final Target Weight |
 | --- | ---: |
 | CASH | 25.0000% |
-| SHNY | 23.0000% |
-| UCO | 20.0000% |
-| QQQ | 11.5000% |
-| BIL | 11.5000% |
-| TQQQ | 5.0000% |
-| TMF | 4.0000% |
+| GOLD | 20.0000% |
+| COMMODITY | 20.0000% |
+| EQUITY | 15.0000% |
+| SHORT_DURATION | 15.0000% |
+| DURATION | 5.0000% |
 
 **Total Target Weight:** 100.0000%
 
@@ -194,11 +193,11 @@ Signal Engine output is presented as market intelligence only. It does not overr
 
 ## Executive Market View
 
-GCRE identifies a REFLATION macro regime with the economic cycle in REFLATION. Positioning is positive and stable, while leadership is characterized by rotation_shifting. The current leaders are USO, UCO, while TLT, TMF occupy the weakest end of the cross-section. Risk pressure is falling, but the crisis level remains NORMAL. The resulting portfolio stance is risk_on.
+GCRE identifies a REFLATION macro regime with the economic cycle in REFLATION. Positioning is positive and strengthening, while leadership is characterized by rotation_shifting. The current leaders are QQQ, UCO, while TMF, UUP occupy the weakest end of the cross-section. Risk pressure is rising, but the crisis level remains NORMAL. The resulting portfolio stance is cautious.
 
 ## Why It Matters
 
-The current leadership structure remains relatively balanced across the cross-section. The leadership transition is more important than the absolute ranking alone because it indicates that the market's preferred exposure is changing. Risk indicators do not currently provide a strong counter-signal to the positioning structure.
+The current leadership structure remains relatively balanced across the cross-section. The leadership transition is more important than the absolute ranking alone because it indicates that the market's preferred exposure is changing. At the same time, rising risk pressure argues against interpreting the leadership improvement as a broad-based risk-on signal.
 
 ## Leadership Transition
 
@@ -221,11 +220,11 @@ The current leadership structure remains relatively balanced across the cross-se
 
 ## Bull Case
 
-The macro regime does not currently provide a strong structural headwind to the leading assets. USO, UCO remain at the center of the current leadership structure. Stable or improving risk indicators would provide confirmation for continued leadership.
+The macro regime does not currently provide a strong structural headwind to the leading assets. QQQ, UCO remain at the center of the current leadership structure. If VIX and MOVE stabilize or reverse lower, the current leadership could develop into a broader risk-allocation opportunity.
 
 ## Bear Case
 
-Recent short-term timing deterioration could become more significant if it spreads beyond isolated assets. A renewed increase in volatility would challenge the current positioning structure. If the current positioning spread of 35.0 points begins to narrow materially, the current leadership advantage would weaken.
+Recent sharp deterioration in USO could become more significant if it spreads beyond isolated assets. If VIX and MOVE continue to rise, cross-sectional weakness could broaden. If the current positioning spread of 30.0 points begins to narrow materially, the current leadership advantage would weaken.
 
 ## Analyst Conviction
 
@@ -233,9 +232,9 @@ Recent short-term timing deterioration could become more significant if it sprea
 | --- | --- |
 | Macro | NEUTRAL |
 | Positioning | POSITIVE |
-| Leadership | USO, UCO |
+| Leadership | QQQ, UCO |
 | Rotation | ACTIVE |
-| Risk | FALLING |
+| Risk | RISING |
 | Crisis | NORMAL |
 | Overall Conviction | MODERATE |
 | Conviction Score | 4 / 5 |
@@ -262,7 +261,7 @@ Signal Engine data is presented separately as market intelligence and does not o
 
 **Timing Adjustment Executed:** YES
 
-**Timing Exposure:** 104.00%
+**Timing Exposure:** 100.00%
 
 **Constraint Executed:** YES
 
@@ -300,125 +299,125 @@ Signal Engine data is presented separately as market intelligence and does not o
 
 **Signal Reason:** N/A
 
-### SHNY
+### GOLD
 
 #### PortfolioEngine Decision
 
 **Base Weight:** 20.00%
 
-**Timing Score:** 65
+**Timing Score:** N/A
 
 **Timing Multiplier:** 1.00x
 
 **Timing Adjusted Weight:** 20.00%
 
-**Constraint:** Applied; final weight differs by +3.0000% after portfolio-level constraint / normalization
-
-**Final Target Weight:** 23.00%
-
-**Timing Reason:** position_bias=HOLD; multiplier=1.00
-
-#### Signal Intelligence
-
-**Signal Timing Score:** 65
-
-**Signal Direction:** HOLD
-
-**Positioning Trend:** STRONG_WEAKENING
-
-**Signal Reason:** MA20>MA60;MA20 rising;volatility normal;acceptable position;weak momentum
-
-### UCO
-
-#### PortfolioEngine Decision
-
-**Base Weight:** 25.00%
-
-**Timing Score:** 80
-
-**Timing Multiplier:** 1.20x
-
-**Timing Adjusted Weight:** 30.00%
-
-**Constraint:** Applied; final weight differs by -10.0000% after portfolio-level constraint / normalization
+**Constraint:** Applied; No change weight change
 
 **Final Target Weight:** 20.00%
 
-**Timing Reason:** position_bias=ADD; multiplier=1.20
+**Timing Reason:** MISSING_TIMING_SIGNAL
 
 #### Signal Intelligence
 
-**Signal Timing Score:** 80
+**Signal Timing Score:** N/A
 
-**Signal Direction:** BUY
+**Signal Direction:** N/A
 
-**Positioning Trend:** STABLE
+**Positioning Trend:** N/A
 
-**Signal Reason:** price>MA20;MA20>MA60;MA20 rising;volatility normal;near yearly high;healthy momentum
+**Signal Reason:** N/A
 
-### QQQ
+### COMMODITY
 
 #### PortfolioEngine Decision
 
-**Base Weight:** 10.00%
+**Base Weight:** 20.00%
 
-**Timing Score:** 70
+**Timing Score:** N/A
 
 **Timing Multiplier:** 1.00x
 
-**Timing Adjusted Weight:** 10.00%
+**Timing Adjusted Weight:** 20.00%
 
-**Constraint:** Applied; final weight differs by +1.5000% after portfolio-level constraint / normalization
+**Constraint:** Applied; No change weight change
 
-**Final Target Weight:** 11.50%
+**Final Target Weight:** 20.00%
 
-**Timing Reason:** position_bias=HOLD; multiplier=1.00
+**Timing Reason:** MISSING_TIMING_SIGNAL
 
 #### Signal Intelligence
 
-**Signal Timing Score:** 80
+**Signal Timing Score:** N/A
 
-**Signal Direction:** BUY
+**Signal Direction:** N/A
 
-**Positioning Trend:** STRONG_STRENGTHENING
+**Positioning Trend:** N/A
 
-**Signal Reason:** price>MA20;MA20>MA60;MA60>MA120;volatility normal;healthy momentum
+**Signal Reason:** N/A
 
-### BIL
+### EQUITY
 
 #### PortfolioEngine Decision
 
-**Base Weight:** 10.00%
+**Base Weight:** 15.00%
 
-**Timing Score:** 65
+**Timing Score:** N/A
 
 **Timing Multiplier:** 1.00x
 
-**Timing Adjusted Weight:** 10.00%
+**Timing Adjusted Weight:** 15.00%
 
-**Constraint:** Applied; final weight differs by +1.5000% after portfolio-level constraint / normalization
+**Constraint:** Applied; No change weight change
 
-**Final Target Weight:** 11.50%
+**Final Target Weight:** 15.00%
 
-**Timing Reason:** position_bias=HOLD; multiplier=1.00
+**Timing Reason:** MISSING_TIMING_SIGNAL
 
 #### Signal Intelligence
 
-**Signal Timing Score:** 55
+**Signal Timing Score:** N/A
 
-**Signal Direction:** HOLD
+**Signal Direction:** N/A
 
-**Positioning Trend:** STRONG_STRENGTHENING
+**Positioning Trend:** N/A
 
-**Signal Reason:** MA20>MA60;MA60>MA120;volatility normal;acceptable position
+**Signal Reason:** N/A
 
-### TQQQ
+### SHORT_DURATION
+
+#### PortfolioEngine Decision
+
+**Base Weight:** 15.00%
+
+**Timing Score:** N/A
+
+**Timing Multiplier:** 1.00x
+
+**Timing Adjusted Weight:** 15.00%
+
+**Constraint:** Applied; No change weight change
+
+**Final Target Weight:** 15.00%
+
+**Timing Reason:** MISSING_TIMING_SIGNAL
+
+#### Signal Intelligence
+
+**Signal Timing Score:** N/A
+
+**Signal Direction:** N/A
+
+**Positioning Trend:** N/A
+
+**Signal Reason:** N/A
+
+### DURATION
 
 #### PortfolioEngine Decision
 
 **Base Weight:** 5.00%
 
-**Timing Score:** 65
+**Timing Score:** N/A
 
 **Timing Multiplier:** 1.00x
 
@@ -428,45 +427,17 @@ Signal Engine data is presented separately as market intelligence and does not o
 
 **Final Target Weight:** 5.00%
 
-**Timing Reason:** position_bias=HOLD; multiplier=1.00
+**Timing Reason:** MISSING_TIMING_SIGNAL
 
 #### Signal Intelligence
 
-**Signal Timing Score:** 50
+**Signal Timing Score:** N/A
 
-**Signal Direction:** WATCH
+**Signal Direction:** N/A
 
-**Positioning Trend:** STRONG_WEAKENING
+**Positioning Trend:** N/A
 
-**Signal Reason:** MA60>MA120;volatility normal;acceptable position;weak momentum
-
-### TMF
-
-#### PortfolioEngine Decision
-
-**Base Weight:** 5.00%
-
-**Timing Score:** 45
-
-**Timing Multiplier:** 0.80x
-
-**Timing Adjusted Weight:** 4.00%
-
-**Constraint:** Applied; No change weight change
-
-**Final Target Weight:** 4.00%
-
-**Timing Reason:** position_bias=WATCH; multiplier=0.80
-
-#### Signal Intelligence
-
-**Signal Timing Score:** 50
-
-**Signal Direction:** WATCH
-
-**Positioning Trend:** STRENGTHENING
-
-**Signal Reason:** volatility normal;acceptable position;healthy momentum
+**Signal Reason:** N/A
 
 ---
 
@@ -474,9 +445,9 @@ Signal Engine data is presented separately as market intelligence and does not o
 
 The portfolio is managed through a systematic interaction between macro regime, market timing, cross-sectional positioning, portfolio constraints and crisis controls.
 
-The current macro regime is **REFLATION**, with positioning classified as **POSITIVE** and portfolio stance at **RISK_ON**.
+The current macro regime is **REFLATION**, with positioning classified as **POSITIVE** and portfolio stance at **CAUTIOUS**.
 
-Risk pressure is currently **FALLING**, while the Crisis Engine remains at **NORMAL**.
+Risk pressure is currently **RISING**, while the Crisis Engine remains at **NORMAL**.
 
 Portfolio exposure cap is **100.00%**.
 
@@ -486,7 +457,7 @@ Current leadership: **QQQ, UCO**.
 
 Weak assets: **TMF, UUP**.
 
-Current portfolio stance: **RISK_ON**.
+Current portfolio stance: **CAUTIOUS**.
 
 ---
 
