@@ -1,206 +1,212 @@
 {
-    "model": {
-        "name": "Global Capital Regime Engine",
-        "version": "V1"
+  "schema": {
+    "name": "GCRE Web Data",
+    "version": "V2"
+  },
+  "model": {
+    "name": "GCRE",
+    "short_name": "GCRE",
+    "version": null,
+    "methodology": "Systematic Macro Asset Allocation"
+  },
+  "generated": {
+    "timestamp": "2026-09-11T07:33:08.639749+00:00"
+  },
+  "as_of": {
+    "macro": "2026-09-11",
+    "crisis": null,
+    "risk": "2026-09-10",
+    "portfolio": "2026-09-11",
+    "nav": "2026-09-04",
+    "performance": "2026-09-04",
+    "benchmark": "2026-08-11",
+    "tracking": null
+  },
+  "decision": {
+    "macro_regime": "REFLATION",
+    "economic_cycle": "REFLATION",
+    "fed_regime": "PAUSE_HIGH_RATE",
+    "market_condition": "NEUTRAL",
+    "crisis_state": null
+  },
+  "macro_environment": {
+    "vix": 17.51,
+    "move": 82.095,
+    "us02y": 4.17,
+    "us10y": 4.48,
+    "yield_curve_10y2y": null,
+    "hy_oas": 2.74,
+    "market_trend": "Bearish",
+    "liquidity_adjustment": 1.0,
+    "inflection_score": 0,
+    "reversal_warning": "No"
+  },
+  "portfolio": [
+    {
+      "asset": "CASH",
+      "target_weight": 0.25,
+      "base_weight": 0.25,
+      "ri": null,
+      "risk_level": null,
+      "risk_transition": null,
+      "signal_confidence": null,
+      "asset_risk_multiplier": null,
+      "timing_score": null,
+      "timing_multiplier": 1.0,
+      "timing_adjusted_weight": 0.25,
+      "underlying_asset": null,
+      "selected_instrument": null,
+      "leverage_eligible": null,
+      "effective_exposure": null,
+      "final_weight": 0.25,
+      "weight_change": null,
+      "timing_reason": "CASH_NOT_APPLICABLE"
     },
-    "nav": {
-        "date": "2026-09-04",
-        "nav": 1.0382,
-        "drawdown": -0.0232
+    {
+      "asset": "GOLD",
+      "target_weight": 0.2,
+      "base_weight": 0.2,
+      "ri": null,
+      "risk_level": null,
+      "risk_transition": null,
+      "signal_confidence": null,
+      "asset_risk_multiplier": null,
+      "timing_score": null,
+      "timing_multiplier": 1.0,
+      "timing_adjusted_weight": 0.2,
+      "underlying_asset": null,
+      "selected_instrument": null,
+      "leverage_eligible": null,
+      "effective_exposure": null,
+      "final_weight": 0.2,
+      "weight_change": null,
+      "timing_reason": "MISSING_TIMING_SIGNAL"
     },
-    "performance": {
-        "return": 3.82,
-        "cagr": 46.21,
-        "sharpe": 3.17,
-        "max_drawdown": -3.81
+    {
+      "asset": "COMMODITY",
+      "target_weight": 0.2,
+      "base_weight": 0.2,
+      "ri": null,
+      "risk_level": null,
+      "risk_transition": null,
+      "signal_confidence": null,
+      "asset_risk_multiplier": null,
+      "timing_score": null,
+      "timing_multiplier": 1.0,
+      "timing_adjusted_weight": 0.2,
+      "underlying_asset": null,
+      "selected_instrument": null,
+      "leverage_eligible": null,
+      "effective_exposure": null,
+      "final_weight": 0.2,
+      "weight_change": null,
+      "timing_reason": "MISSING_TIMING_SIGNAL"
     },
-    "macro": {
-        "date": "2026-09-10",
-        "vix": 16.46,
-        "move": 76.7413,
-        "us02y": 4.17,
-        "us10y": 4.48,
-        "hy_oas": 2.74,
-        "fed_regime": "PAUSE_HIGH_RATE",
-        "cycle": "REFLATION",
-        "trend": "Bullish",
-        "liquidity_adjustment": 1.0,
-        "inflection_score": 0,
-        "reversal_warning": "No"
+    {
+      "asset": "EQUITY",
+      "target_weight": 0.15,
+      "base_weight": 0.15,
+      "ri": null,
+      "risk_level": null,
+      "risk_transition": null,
+      "signal_confidence": null,
+      "asset_risk_multiplier": null,
+      "timing_score": null,
+      "timing_multiplier": 1.0,
+      "timing_adjusted_weight": 0.15,
+      "underlying_asset": null,
+      "selected_instrument": null,
+      "leverage_eligible": null,
+      "effective_exposure": null,
+      "final_weight": 0.15,
+      "weight_change": null,
+      "timing_reason": "MISSING_TIMING_SIGNAL"
     },
-    "benchmark": {
-        "symbol": "QQQ",
-        "gcre_return": 2.5723,
-        "qqq_return": 5.1057,
-        "alpha": -2.5334,
-        "gcre_start_date": "2026-07-30",
-        "gcre_end_date": "2026-08-11",
-        "qqq_start_date": "2026-07-30",
-        "qqq_end_date": "2026-08-11",
-        "qqq_start_price": 683.55,
-        "qqq_end_price": 718.45
+    {
+      "asset": "SHORT_DURATION",
+      "target_weight": 0.15,
+      "base_weight": 0.15,
+      "ri": null,
+      "risk_level": null,
+      "risk_transition": null,
+      "signal_confidence": null,
+      "asset_risk_multiplier": null,
+      "timing_score": null,
+      "timing_multiplier": 1.0,
+      "timing_adjusted_weight": 0.15,
+      "underlying_asset": null,
+      "selected_instrument": null,
+      "leverage_eligible": null,
+      "effective_exposure": null,
+      "final_weight": 0.15,
+      "weight_change": null,
+      "timing_reason": "MISSING_TIMING_SIGNAL"
     },
-    "portfolio": [
-        {
-            "symbol": "CASH",
-            "weight": 25.0,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "GOLD",
-            "weight": 20.0,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "COMMODITY",
-            "weight": 20.0,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "EQUITY",
-            "weight": 15.0,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "SHORT_DURATION",
-            "weight": 15.0,
-            "reason": "portfolio engine allocation"
-        },
-        {
-            "symbol": "DURATION",
-            "weight": 5.0,
-            "reason": "portfolio engine allocation"
-        }
-    ],
-    "simulation": {
-        "start_date": "2026-07-30",
-        "running_days": 37,
-        "initial_capital": 100000.0,
-        "current_nav": 1.0382
-    },
-    "history": [
-        {
-            "date": "2026-09-01 00:00:00",
-            "nav": 1.0389242401711662,
-            "total_return": 0.038924,
-            "vix": 14.92,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260901.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
-        {
-            "date": "2026-09-02 00:00:00",
-            "nav": 1.0229053658835912,
-            "total_return": 0.022905,
-            "vix": 16.34,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260902.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
-        {
-            "date": "2026-09-02 00:00:00",
-            "nav": 1.0222944577634476,
-            "total_return": 0.022294,
-            "vix": 16.34,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260902.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
-        {
-            "date": "2026-09-03 00:00:00",
-            "nav": 1.0222944577634476,
-            "total_return": 0.022294,
-            "vix": 16.34,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260903.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
-        {
-            "date": "2026-09-03 00:00:00",
-            "nav": 1.0312784128721544,
-            "total_return": 0.031278,
-            "vix": 15.22,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260903.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
-        {
-            "date": "2026-09-03 00:00:00",
-            "nav": 1.0312784128721544,
-            "total_return": 0.031278,
-            "vix": 15.22,
-            "economic_cycle": "EXPANSION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260903.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "GROWTH"
-        },
-        {
-            "date": "2026-09-04 00:00:00",
-            "nav": 1.0381809996418188,
-            "total_return": 0.038181,
-            "vix": 14.1,
-            "economic_cycle": "REFLATION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260904.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "REFLATION"
-        },
-        {
-            "date": "2026-09-04 00:00:00",
-            "nav": 1.0381809996418188,
-            "total_return": 0.038181,
-            "vix": 15.65,
-            "economic_cycle": "REFLATION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260904.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "REFLATION"
-        },
-        {
-            "date": "2026-09-09 00:00:00",
-            "nav": 1.0381809996418188,
-            "total_return": 0.038181,
-            "vix": 15.65,
-            "economic_cycle": "REFLATION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260909.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "REFLATION"
-        },
-        {
-            "date": "2026-09-10 00:00:00",
-            "nav": 1.0381809996418188,
-            "total_return": 0.038181,
-            "vix": 16.46,
-            "economic_cycle": "REFLATION",
-            "exposure": 0.5,
-            "report_file": "GCRE_Sell_Side_Report_20260910.md",
-            "liquidity_adjustment": 1.0,
-            "risk_regime": "REFLATION"
-        }
-    ],
-    "risk": {
-        "vix": 16.46,
-        "move": 76.7413,
-        "economic_cycle": "REFLATION",
-        "risk_regime": "REFLATION",
-        "market_trend": "Bullish",
-        "liquidity_adjustment": 1.0,
-        "inflection_score": 0,
-        "reversal_warning": "No",
-        "exposure": 1.0,
-        "cash_weight": 0.5,
-        "drawdown": -0.023196400798826
+    {
+      "asset": "DURATION",
+      "target_weight": 0.05,
+      "base_weight": 0.05,
+      "ri": null,
+      "risk_level": null,
+      "risk_transition": null,
+      "signal_confidence": null,
+      "asset_risk_multiplier": null,
+      "timing_score": null,
+      "timing_multiplier": 1.0,
+      "timing_adjusted_weight": 0.05,
+      "underlying_asset": null,
+      "selected_instrument": null,
+      "leverage_eligible": null,
+      "effective_exposure": null,
+      "final_weight": 0.05,
+      "weight_change": null,
+      "timing_reason": "MISSING_TIMING_SIGNAL"
     }
+  ],
+  "performance": {
+    "nav": 1.0381809996418188,
+    "drawdown": -0.023196400798826,
+    "total_return": 3.8181,
+    "cagr": 46.2147,
+    "sharpe_ratio": 3.173,
+    "max_drawdown": -3.8143999999999996,
+    "start_date": "2026-07-30",
+    "end_date": "2026-09-04",
+    "initial_value": 100000.0,
+    "final_value": 103818.1,
+    "running_days": null
+  },
+  "benchmark": {
+    "symbol": "QQQ",
+    "start_date": "2026-07-30",
+    "end_date": "2026-08-11",
+    "gcre_return": 2.5723,
+    "benchmark_return": 5.1057,
+    "alpha": -2.5334,
+    "start_price": 683.55,
+    "end_price": 718.45
+  },
+  "tracking": {
+    "available": false,
+    "latest_decision_date": null,
+    "decision_count": null
+  },
+  "data_quality": {
+    "status": "PARTIAL",
+    "macro_contract": "EXACT",
+    "portfolio_contract": "EXACT",
+    "asset_risk_contract": "PARTIAL",
+    "crisis_contract": "ENGINE_GAP",
+    "capital_efficiency_contract": "ENGINE_GAP",
+    "tracking_contract": "ENGINE_GAP",
+    "attribution_contract": "ENGINE_GAP",
+    "warnings": [
+      "crisis_signal.csv does not expose the exact date + crisis_state contract; crisis_state remains null.",
+      "asset_risk_daily.csv does not contain risk_transition; portfolio.risk_transition remains null.",
+      "final_portfolio.csv has no date column; asset-risk fields cannot be joined safely and remain null.",
+      "Formal Decision Ledger / Tracking Engine is not available; tracking remains unavailable.",
+      "Capital-efficiency fields are not present in the current Portfolio Engine output; underlying_asset, selected_instrument, leverage_eligible and effective_exposure remain null.",
+      "Formal portfolio attribution is not implemented; weight_change remains null."
+    ]
+  }
 }

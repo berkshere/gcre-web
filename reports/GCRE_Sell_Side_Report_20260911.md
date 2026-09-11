@@ -2,14 +2,14 @@
 
 ## 1. Executive Summary
 
-**Report Date:** 2026-09-10
-**Market Date:** 2026-09-09 00:00:00
+**Report Date:** 2026-09-11
+**Market Date:** 2026-09-10 00:00:00
 
 **Macro Regime:** REFLATION
 
 **Economic Cycle:** REFLATION
 
-**Positioning:** POSITIVE
+**Positioning:** NEUTRAL
 
 **Positioning Structure:** BALANCED
 
@@ -41,12 +41,12 @@
 
 **Market Condition:** NEUTRAL
 
-**Market Trend:** Bullish
+**Market Trend:** Bearish
 
 | Indicator | Current |
 | --- | ---: |
-| VIX | 16.4600 |
-| MOVE | 76.7413 |
+| VIX | 17.5100 |
+| MOVE | 82.0950 |
 | US 2Y | 4.1700 |
 | US 10Y | 4.4800 |
 | HY OAS | 2.7400 |
@@ -105,17 +105,17 @@ Signal Engine output is presented as market intelligence only. It does not overr
 
 | Asset | Timing Score | Direction | Positioning Trend | Signal Change |
 | --- | ---: | --- | --- | --- |
-| UCO | 80 | BUY | STABLE | UNCHANGED |
-| GLD | 65 | HOLD | STRONG_WEAKENING | BUY_TO_HOLD |
-| QQQ | 65 | HOLD | MIXED | BUY_TO_HOLD |
-| SHNY | 65 | HOLD | STRONG_WEAKENING | UNCHANGED |
+| QQQ | 65 | HOLD | STABLE | UNCHANGED |
+| UCO | 60 | HOLD | STRONG_WEAKENING | BUY_TO_HOLD |
 | USO | 60 | HOLD | STRONG_WEAKENING | UNCHANGED |
-| UUP | 60 | HOLD | WEAKENING | WATCH_TO_HOLD |
-| BIL | 55 | HOLD | WEAKENING | UNCHANGED |
-| SPY | 55 | HOLD | STRONG_WEAKENING | UNCHANGED |
-| TQQQ | 50 | WATCH | STRONG_WEAKENING | UNCHANGED |
-| TLT | 30 | REDUCE | STRONG_WEAKENING | WATCH_TO_REDUCE |
-| TMF | 30 | REDUCE | STRONG_WEAKENING | WATCH_TO_REDUCE |
+| UUP | 60 | HOLD | WEAKENING | UNCHANGED |
+| BIL | 55 | HOLD | STRONG_WEAKENING | UNCHANGED |
+| GLD | 55 | HOLD | STRONG_WEAKENING | UNCHANGED |
+| SPY | 55 | HOLD | STABLE | UNCHANGED |
+| TQQQ | 50 | WATCH | STABLE | UNCHANGED |
+| SHNY | 45 | WATCH | STRONG_WEAKENING | HOLD_TO_WATCH |
+| TLT | 10 | REDUCE | STRONG_WEAKENING | UNCHANGED |
+| TMF | 10 | REDUCE | STRONG_WEAKENING | UNCHANGED |
 
 > **Decision Hierarchy:** PortfolioEngine determines the final target allocation. Signal Engine provides directional and positioning intelligence only.
 
@@ -149,43 +149,43 @@ Signal Engine output is presented as market intelligence only. It does not overr
 
 # 7. Signal Intelligence
 
-**Positioning State:** POSITIVE
+**Positioning State:** NEUTRAL
 
 **Positioning Structure:** BALANCED
 
-**Positioning Trend:** WEAKENING
+**Positioning Trend:** MIXED
 
 **Rotation Change:** ROTATION_SHIFTING
 
-**Positioning Spread:** 42.50
+**Positioning Spread:** 52.50
 
-**Previous Spread:** 30.00
+**Previous Spread:** 42.50
 
-**Spread Change:** +12.50
+**Spread Change:** +10.00
 
-**Current Leaders:** UCO, QQQ
+**Current Leaders:** QQQ, UUP
 
-**Previous Leaders:** QQQ, UCO
+**Previous Leaders:** UCO, QQQ
 
 **Current Weak Assets:** TLT, TMF
 
-**Previous Weak Assets:** TMF, UUP
+**Previous Weak Assets:** TLT, TMF
 
 ## Asset Signal Changes
 
 | Asset | Score | 1D Δ | 5D Δ | Trend | Signal Change |
 | --- | ---: | ---: | ---: | --- | --- |
-| BIL | 55 | +0 | -5 | WEAKENING | UNCHANGED |
-| GLD | 65 | -10 | -25 | STRONG_WEAKENING | BUY_TO_HOLD |
-| QQQ | 65 | -15 | +0 | MIXED | BUY_TO_HOLD |
-| SHNY | 65 | +0 | -10 | STRONG_WEAKENING | UNCHANGED |
-| SPY | 55 | +0 | -10 | STRONG_WEAKENING | UNCHANGED |
-| TLT | 30 | -20 | -25 | STRONG_WEAKENING | WATCH_TO_REDUCE |
-| TMF | 30 | -20 | -10 | STRONG_WEAKENING | WATCH_TO_REDUCE |
-| TQQQ | 50 | +0 | -25 | STRONG_WEAKENING | UNCHANGED |
-| UCO | 80 | +0 | +0 | STABLE | UNCHANGED |
+| BIL | 55 | +0 | -10 | STRONG_WEAKENING | UNCHANGED |
+| GLD | 55 | -10 | -10 | STRONG_WEAKENING | UNCHANGED |
+| QQQ | 65 | +0 | +0 | STABLE | UNCHANGED |
+| SHNY | 45 | -20 | -20 | STRONG_WEAKENING | HOLD_TO_WATCH |
+| SPY | 55 | +0 | +0 | STABLE | UNCHANGED |
+| TLT | 10 | -20 | -20 | STRONG_WEAKENING | UNCHANGED |
+| TMF | 10 | -20 | -20 | STRONG_WEAKENING | UNCHANGED |
+| TQQQ | 50 | +0 | +0 | STABLE | UNCHANGED |
+| UCO | 60 | -20 | -20 | STRONG_WEAKENING | BUY_TO_HOLD |
 | USO | 60 | +0 | -20 | STRONG_WEAKENING | UNCHANGED |
-| UUP | 60 | +10 | -5 | WEAKENING | WATCH_TO_HOLD |
+| UUP | 60 | +0 | -5 | WEAKENING | UNCHANGED |
 
 ---
 
@@ -193,7 +193,7 @@ Signal Engine output is presented as market intelligence only. It does not overr
 
 ## Executive Market View
 
-GCRE identifies a REFLATION macro regime with the economic cycle in REFLATION. Positioning is positive and weakening, while leadership is characterized by rotation_shifting. The current leaders are UCO, QQQ, while TLT, TMF occupy the weakest end of the cross-section. Risk pressure is rising, but the crisis level remains NORMAL. The resulting portfolio stance is cautious.
+GCRE identifies a REFLATION macro regime with the economic cycle in REFLATION. Positioning is neutral and mixed, while leadership is characterized by rotation_shifting. The current leaders are QQQ, UUP, while TLT, TMF occupy the weakest end of the cross-section. Risk pressure is rising, but the crisis level remains NORMAL. The resulting portfolio stance is cautious.
 
 ## Why It Matters
 
@@ -203,39 +203,41 @@ The widening leadership spread indicates increasing cross-sectional dispersion, 
 
 | Leadership | Assets |
 | --- | --- |
-| Previous Leaders | QQQ, UCO |
-| Current Leaders | UCO, QQQ |
+| Previous Leaders | UCO, QQQ |
+| Current Leaders | QQQ, UUP |
 
-**Retained Leadership:** UCO, QQQ
+**Entered Leadership:** UUP
 
-**Leadership Transition:** No change in the leader group.
+**Retained Leadership:** QQQ
 
-**Positioning Spread:** 42.50
+**Left Leadership:** UCO
 
-**Previous Spread:** 30.00
+**Positioning Spread:** 52.50
 
-**Spread Change:** +12.50
+**Previous Spread:** 42.50
+
+**Spread Change:** +10.00
 
 ## Bull Case
 
-The macro regime does not currently provide a strong structural headwind to the leading assets. UCO, QQQ remain at the center of the current leadership structure. If VIX and MOVE stabilize or reverse lower, the current leadership could develop into a broader risk-allocation opportunity.
+The macro regime does not currently provide a strong structural headwind to the leading assets. QQQ, UUP remain at the center of the current leadership structure. If VIX and MOVE stabilize or reverse lower, the current leadership could develop into a broader risk-allocation opportunity.
 
 ## Bear Case
 
-Recent sharp deterioration in TLT, TMF could become more significant if it spreads beyond isolated assets. If VIX and MOVE continue to rise, cross-sectional weakness could broaden. If the current positioning spread of 42.5 points begins to narrow materially, the current leadership advantage would weaken.
+Recent sharp deterioration in SHNY, TLT, TMF, UCO could become more significant if it spreads beyond isolated assets. If VIX and MOVE continue to rise, cross-sectional weakness could broaden. If the current positioning spread of 52.5 points begins to narrow materially, the current leadership advantage would weaken.
 
 ## Analyst Conviction
 
 | Dimension | Assessment |
 | --- | --- |
 | Macro | NEUTRAL |
-| Positioning | POSITIVE |
-| Leadership | UCO, QQQ |
+| Positioning | NEUTRAL |
+| Leadership | QQQ, UUP |
 | Rotation | ACTIVE |
 | Risk | RISING |
 | Crisis | NORMAL |
-| Overall Conviction | MODERATE |
-| Conviction Score | 3 / 5 |
+| Overall Conviction | LOW |
+| Conviction Score | 2 / 5 |
 
 ---
 
@@ -443,7 +445,7 @@ Signal Engine data is presented separately as market intelligence and does not o
 
 The portfolio is managed through a systematic interaction between macro regime, market timing, cross-sectional positioning, portfolio constraints and crisis controls.
 
-The current macro regime is **REFLATION**, with positioning classified as **POSITIVE** and portfolio stance at **CAUTIOUS**.
+The current macro regime is **REFLATION**, with positioning classified as **NEUTRAL** and portfolio stance at **CAUTIOUS**.
 
 Risk pressure is currently **RISING**, while the Crisis Engine remains at **NORMAL**.
 
@@ -451,7 +453,7 @@ Portfolio exposure cap is **100.00%**.
 
 Signal Engine positioning structure: **BALANCED**.
 
-Current leadership: **UCO, QQQ**.
+Current leadership: **QQQ, UUP**.
 
 Weak assets: **TLT, TMF**.
 

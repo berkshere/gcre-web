@@ -2,16 +2,19 @@
 ========================================================
 GCRE WEB
 assets/script.js
-FINAL V1
+V2
 
 用途：
 
 1. 读取 reports/web_data.json
-2. 更新 Home Dashboard
+2. 按 web_data.json V2 数据契约更新 Home
 3. 更新 Portfolio Allocation
-4. 更新 Macro Risk Dashboard
-5. 不负责 Latest Markdown Report
-6. 不依赖第三方 CDN
+4. 更新 Macro Environment
+5. 更新 Performance
+6. 保持 null -> "--"
+7. 不推导 Engine 未提供的数据
+8. 不依赖第三方 CDN
+9. 不负责 Latest Markdown Report
 ========================================================
 */
 
@@ -82,6 +85,9 @@ function formatNumber(
 
 /* ======================================================
    PERCENT
+   Input is already expressed in percentage points.
+   Example:
+       3.8181 -> 3.82%
 ====================================================== */
 
 function formatPercent(
@@ -102,6 +108,38 @@ function formatPercent(
 
     return (
         Number(value).toFixed(decimals)
+        + "%"
+    );
+
+}
+
+
+
+/* ======================================================
+   WEIGHT
+   V2 portfolio weights are decimals.
+   Example:
+       0.25 -> 25.0%
+====================================================== */
+
+function formatWeight(
+    value,
+    decimals = 1
+) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === "" ||
+        Number.isNaN(Number(value))
+    ) {
+
+        return "--";
+
+    }
+
+    return (
+        Number(value * 100).toFixed(decimals)
         + "%"
     );
 
@@ -211,7 +249,7 @@ async function loadWebData() {
 
 
         console.log(
-            "GCRE: web_data.json loaded",
+            "GCRE: web_data.json V2 loaded",
             data
         );
 
@@ -250,30 +288,47 @@ async function loadWebData() {
 
 function updateHomePage(data) {
 
-
     console.log(
-        "GCRE: updating Home Dashboard"
+        "GCRE: updating Home Dashboard V2"
     );
+
+
+    /*
+    ------------------------------------------------------
+    V2 DATA CONTRACT
+    ------------------------------------------------------
+
+    model
+    as_of
+    decision
+    macro_environment
+    portfolio[]
+    performance
+    benchmark
+    tracking
+    data_quality
+    ------------------------------------------------------
+    */
 
 
     const model =
         data.model || {};
 
 
-    const nav =
-        data.nav || {};
+    const asOf =
+        data.as_of || {};
+
+
+    const decision =
+        data.decision || {};
 
 
     const performance =
         data.performance || {};
 
 
-    const simulation =
-        data.simulation || {};
-
-
-    const macro =
-        data.macro || {};
+    const macroEnvironment =
+        data.macro_environment || {};
 
 
 
@@ -281,20 +336,11 @@ function updateHomePage(data) {
        MODEL
     ================================================== */
 
-
     const modelName =
-        [
-            safeValue(
-                model.name,
-                "Global Capital Regime Engine"
-            ),
-
-            safeValue(
-                model.version,
-                "V1"
-            )
-
-        ].join(" ");
+        safeValue(
+            model.name,
+            "Global Capital Regime Engine"
+        );
 
 
     setText(
@@ -306,16 +352,27 @@ function updateHomePage(data) {
     setText(
         "model-start-date",
         formatDate(
-            simulation.start_date
+            performance.start_date
         )
     );
 
 
     setText(
         "model-running-days",
-        safeValue(
-            simulation.running_days
-        )
+        performance.running_days
+    );
+
+
+
+    /* ==================================================
+       CURRENT REGIME
+       V2:
+       decision.macro_regime
+    ================================================== */
+
+    setText(
+        "macro-regime",
+        decision.macro_regime
     );
 
 
@@ -324,11 +381,10 @@ function updateHomePage(data) {
        NAV
     ================================================== */
 
-
     setText(
         "home-nav",
         formatNumber(
-            nav.nav,
+            performance.nav,
             4
         )
     );
@@ -337,7 +393,7 @@ function updateHomePage(data) {
     setText(
         "home-nav-date",
         formatDate(
-            nav.date
+            asOf.nav
         )
     );
 
@@ -347,11 +403,10 @@ function updateHomePage(data) {
        PERFORMANCE
     ================================================== */
 
-
     setText(
         "home-return",
         formatPercent(
-            performance.return,
+            performance.total_return,
             2
         )
     );
@@ -369,7 +424,7 @@ function updateHomePage(data) {
     setText(
         "home-sharpe",
         formatNumber(
-            performance.sharpe,
+            performance.sharpe_ratio,
             2
         )
     );
@@ -396,11 +451,22 @@ function updateHomePage(data) {
 
 
     /* ==================================================
-       MACRO
+       MACRO ENVIRONMENT
     ================================================== */
 
     updateMacroDashboard(
-        macro
+        macroEnvironment,
+        decision
+    );
+
+
+
+    /* ==================================================
+       OPTIONAL TRACKING
+    ================================================== */
+
+    updateTracking(
+        data.tracking
     );
 
 
@@ -409,13 +475,20 @@ function updateHomePage(data) {
        LAST UPDATED
     ================================================== */
 
+    /*
+    Do NOT use macro.date.
+    V2 does not contain macro.date.
+
+    Prefer macro as_of for a generic last-updated field
+    only if the corresponding DOM element exists.
+    */
+
     setText(
         "last-updated",
         formatDate(
-            macro.date
+            asOf.macro
         )
     );
-
 
 }
 
@@ -428,7 +501,6 @@ function updateHomePage(data) {
 function updatePortfolio(
     portfolio
 ) {
-
 
     const container =
         $("portfolio-allocation");
@@ -466,27 +538,63 @@ function updatePortfolio(
     portfolio.forEach(
         position => {
 
+            /*
+            V2:
+                asset
+                final_weight
 
-            const symbol =
+            Do NOT use:
+                symbol
+                weight
+            */
+
+
+            const asset =
                 safeValue(
-                    position.symbol,
+                    position.asset,
                     "--"
                 );
 
 
             const weight =
                 Number(
-                    position.weight || 0
+                    position.final_weight
                 );
 
 
+            const validWeight =
+                Number.isFinite(weight)
+                    ? weight
+                    : null;
+
+
+            /*
+            CSS bar width is percentage.
+
+            V2 weight:
+                0.25
+
+            CSS width:
+                25
+            */
+
+
             const width =
-                Math.max(
-                    0,
-                    Math.min(
-                        100,
-                        weight
-                    )
+                validWeight === null
+                    ? 0
+                    : Math.max(
+                        0,
+                        Math.min(
+                            100,
+                            validWeight * 100
+                        )
+                    );
+
+
+            const displayWeight =
+                formatWeight(
+                    validWeight,
+                    1
                 );
 
 
@@ -496,7 +604,7 @@ function updatePortfolio(
                 <div class="portfolio-row">
 
                     <div class="portfolio-symbol">
-                        ${symbol}
+                        ${asset}
                     </div>
 
 
@@ -512,7 +620,7 @@ function updatePortfolio(
 
                     <div class="portfolio-weight">
 
-                        ${weight.toFixed(1)}%
+                        ${displayWeight}
 
                     </div>
 
@@ -537,12 +645,15 @@ function updatePortfolio(
 ====================================================== */
 
 function updateMacroDashboard(
-    macro
+    macro,
+    decision
 ) {
 
 
     /* ================================================
        US 10Y
+       V2:
+       macro_environment.us10y
     ================================================ */
 
     setText(
@@ -557,6 +668,8 @@ function updateMacroDashboard(
 
     /* ================================================
        US 2Y
+       V2:
+       macro_environment.us02y
     ================================================ */
 
     setText(
@@ -613,39 +726,58 @@ function updateMacroDashboard(
 
     /* ================================================
        FED REGIME
+       V2:
+       decision.fed_regime
+
+       NOT:
+       macro.fed_regime
     ================================================ */
 
     setText(
         "macro-fed-regime",
-        safeValue(
-            macro.fed_regime
-        )
+        decision.fed_regime
     );
 
 
 
     /* ================================================
        ECONOMIC CYCLE
+       V2:
+       decision.economic_cycle
     ================================================ */
 
     setText(
         "macro-cycle",
-        safeValue(
-            macro.cycle
-        )
+        decision.economic_cycle
+    );
+
+
+
+    /* ================================================
+       MARKET CONDITION
+       V2:
+       decision.market_condition
+
+       Optional DOM element.
+       Current index.html does not contain it yet.
+    ================================================ */
+
+    setText(
+        "macro-market-condition",
+        decision.market_condition
     );
 
 
 
     /* ================================================
        MARKET TREND
+       V2:
+       macro_environment.market_trend
     ================================================ */
 
     setText(
         "macro-trend",
-        safeValue(
-            macro.trend
-        )
+        macro.market_trend
     );
 
 
@@ -676,6 +808,92 @@ function updateMacroDashboard(
         )
     );
 
+
+
+    /* ================================================
+       CRISIS STATE
+       V2:
+       decision.crisis_state
+
+       Optional DOM element.
+       Current value is null.
+       Therefore:
+           --
+    ================================================ */
+
+    setText(
+        "macro-crisis-state",
+        decision.crisis_state
+    );
+
+
+
+    /* ================================================
+       YIELD CURVE
+       V2:
+       macro_environment.yield_curve_10y2y
+
+       Current value is null.
+
+       We intentionally DO NOT calculate:
+           us10y - us02y
+    ================================================ */
+
+    setText(
+        "macro-yield-curve",
+        formatNumber(
+            macro.yield_curve_10y2y,
+            2
+        )
+    );
+
+}
+
+
+
+/* ======================================================
+   TRACKING
+====================================================== */
+
+function updateTracking(
+    tracking
+) {
+
+    const data =
+        tracking || {};
+
+
+    /*
+    Current V2:
+
+        available = false
+        latest_decision_date = null
+        decision_count = null
+
+    Therefore all unavailable values remain "--"
+    unless a corresponding DOM element exists.
+    */
+
+
+    setText(
+        "tracking-available",
+        data.available
+    );
+
+
+    setText(
+        "tracking-date",
+        formatDate(
+            data.latest_decision_date
+        )
+    );
+
+
+    setText(
+        "tracking-count",
+        data.decision_count
+    );
+
 }
 
 
@@ -687,7 +905,6 @@ function updateMacroDashboard(
 function showDataError(
     error
 ) {
-
 
     console.error(
         "GCRE Dashboard failed:",
@@ -702,6 +919,8 @@ function showDataError(
         "model-start-date",
 
         "model-running-days",
+
+        "macro-regime",
 
         "home-nav",
 
@@ -729,11 +948,25 @@ function showDataError(
 
         "macro-cycle",
 
+        "macro-market-condition",
+
         "macro-trend",
 
         "macro-liquidity",
 
-        "macro-inflection"
+        "macro-inflection",
+
+        "macro-crisis-state",
+
+        "macro-yield-curve",
+
+        "tracking-available",
+
+        "tracking-date",
+
+        "tracking-count",
+
+        "last-updated"
 
     ];
 
@@ -754,6 +987,7 @@ function showDataError(
 
         }
     );
+
 
 
     const portfolio =
@@ -788,7 +1022,7 @@ document.addEventListener(
     () => {
 
         console.log(
-            "GCRE: Dashboard starting..."
+            "GCRE: Dashboard V2 starting..."
         );
 
 
