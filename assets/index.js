@@ -2,16 +2,17 @@
 ========================================================
 GCRE WEB
 assets/script.js
-FINAL V1
+V2
 
 用途：
 
 1. 读取 reports/web_data.json
-2. 更新 Home Dashboard
-3. 更新 Portfolio Allocation
-4. 更新 Macro Risk Dashboard
-5. 不负责 Latest Markdown Report
-6. 不依赖第三方 CDN
+2. 更新 Home / Research Page
+3. 更新 Performance
+4. 更新 Portfolio Allocation
+5. 更新 Macro Environment
+6. 不负责 Latest Markdown Report
+7. 不依赖第三方 CDN
 ========================================================
 */
 
@@ -188,12 +189,13 @@ async function loadWebData() {
         );
 
 
-        const response = await fetch(
-            DATA_URL + "?t=" + Date.now(),
-            {
-                cache: "no-store"
-            }
-        );
+        const response =
+            await fetch(
+                DATA_URL + "?t=" + Date.now(),
+                {
+                    cache: "no-store"
+                }
+            );
 
 
         if (!response.ok) {
@@ -245,14 +247,13 @@ async function loadWebData() {
 
 
 /* ======================================================
-   HOME PAGE
+   HOME / RESEARCH PAGE
 ====================================================== */
 
 function updateHomePage(data) {
 
-
     console.log(
-        "GCRE: updating Home Dashboard"
+        "GCRE: updating page"
     );
 
 
@@ -260,27 +261,17 @@ function updateHomePage(data) {
         data.model || {};
 
 
-    const nav =
-        data.nav || {};
-
-
     const performance =
         data.performance || {};
 
 
-    const simulation =
-        data.simulation || {};
-
-
     const macro =
-        data.macro || {};
-
+        data.macro_environment || {};
 
 
     /* ==================================================
        MODEL
     ================================================== */
-
 
     const modelName =
         [
@@ -289,12 +280,13 @@ function updateHomePage(data) {
                 "Global Capital Regime Engine"
             ),
 
-            safeValue(
-                model.version,
-                "V1"
-            )
+            model.version
+                ? "V" + model.version
+                : ""
 
-        ].join(" ");
+        ]
+        .filter(Boolean)
+        .join(" ");
 
 
     setText(
@@ -303,10 +295,14 @@ function updateHomePage(data) {
     );
 
 
+    /* ==================================================
+       PERFORMANCE PERIOD
+    ================================================== */
+
     setText(
         "model-start-date",
         formatDate(
-            simulation.start_date
+            performance.start_date
         )
     );
 
@@ -314,21 +310,19 @@ function updateHomePage(data) {
     setText(
         "model-running-days",
         safeValue(
-            simulation.running_days
+            performance.running_days
         )
     );
-
 
 
     /* ==================================================
        NAV
     ================================================== */
 
-
     setText(
         "home-nav",
         formatNumber(
-            nav.nav,
+            performance.nav,
             4
         )
     );
@@ -337,21 +331,21 @@ function updateHomePage(data) {
     setText(
         "home-nav-date",
         formatDate(
-            nav.date
+            data.as_of
+                ? data.as_of.nav
+                : performance.end_date
         )
     );
-
 
 
     /* ==================================================
        PERFORMANCE
     ================================================== */
 
-
     setText(
         "home-return",
         formatPercent(
-            performance.return,
+            performance.total_return,
             2
         )
     );
@@ -369,7 +363,7 @@ function updateHomePage(data) {
     setText(
         "home-sharpe",
         formatNumber(
-            performance.sharpe,
+            performance.sharpe_ratio,
             2
         )
     );
@@ -384,7 +378,6 @@ function updateHomePage(data) {
     );
 
 
-
     /* ==================================================
        PORTFOLIO
     ================================================== */
@@ -392,7 +385,6 @@ function updateHomePage(data) {
     updatePortfolio(
         data.portfolio
     );
-
 
 
     /* ==================================================
@@ -404,7 +396,6 @@ function updateHomePage(data) {
     );
 
 
-
     /* ==================================================
        LAST UPDATED
     ================================================== */
@@ -412,10 +403,11 @@ function updateHomePage(data) {
     setText(
         "last-updated",
         formatDate(
-            macro.date
+            data.as_of
+                ? data.as_of.macro
+                : null
         )
     );
-
 
 }
 
@@ -428,7 +420,6 @@ function updateHomePage(data) {
 function updatePortfolio(
     portfolio
 ) {
-
 
     const container =
         $("portfolio-allocation");
@@ -458,9 +449,7 @@ function updatePortfolio(
     }
 
 
-
     let html = "";
-
 
 
     portfolio.forEach(
@@ -469,15 +458,26 @@ function updatePortfolio(
 
             const symbol =
                 safeValue(
-                    position.symbol,
+                    position.asset,
                     "--"
                 );
 
 
             const weight =
                 Number(
-                    position.weight || 0
+                    position.final_weight || 0
                 );
+
+
+            /*
+            final_weight is stored as decimal:
+
+            0.25 = 25%
+            0.20 = 20%
+            */
+
+            const percentage =
+                weight * 100;
 
 
             const width =
@@ -485,10 +485,9 @@ function updatePortfolio(
                     0,
                     Math.min(
                         100,
-                        weight
+                        percentage
                     )
                 );
-
 
 
             html += `
@@ -512,7 +511,7 @@ function updatePortfolio(
 
                     <div class="portfolio-weight">
 
-                        ${weight.toFixed(1)}%
+                        ${percentage.toFixed(1)}%
 
                     </div>
 
@@ -522,7 +521,6 @@ function updatePortfolio(
 
         }
     );
-
 
 
     container.innerHTML =
@@ -554,7 +552,6 @@ function updateMacroDashboard(
     );
 
 
-
     /* ================================================
        US 2Y
     ================================================ */
@@ -566,7 +563,6 @@ function updateMacroDashboard(
             2
         )
     );
-
 
 
     /* ================================================
@@ -582,7 +578,6 @@ function updateMacroDashboard(
     );
 
 
-
     /* ================================================
        MOVE
     ================================================ */
@@ -594,7 +589,6 @@ function updateMacroDashboard(
             2
         )
     );
-
 
 
     /* ================================================
@@ -610,7 +604,6 @@ function updateMacroDashboard(
     );
 
 
-
     /* ================================================
        FED REGIME
     ================================================ */
@@ -623,7 +616,6 @@ function updateMacroDashboard(
     );
 
 
-
     /* ================================================
        ECONOMIC CYCLE
     ================================================ */
@@ -631,10 +623,10 @@ function updateMacroDashboard(
     setText(
         "macro-cycle",
         safeValue(
-            macro.cycle
+            macro.economic_cycle
+                || macro.cycle
         )
     );
-
 
 
     /* ================================================
@@ -644,10 +636,10 @@ function updateMacroDashboard(
     setText(
         "macro-trend",
         safeValue(
-            macro.trend
+            macro.market_trend
+                || macro.trend
         )
     );
-
 
 
     /* ================================================
@@ -661,7 +653,6 @@ function updateMacroDashboard(
             2
         )
     );
-
 
 
     /* ================================================
@@ -687,7 +678,6 @@ function updateMacroDashboard(
 function showDataError(
     error
 ) {
-
 
     console.error(
         "GCRE Dashboard failed:",

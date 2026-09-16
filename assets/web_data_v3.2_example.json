@@ -1,0 +1,336 @@
+{
+    "environment": {
+ "regime": "REFLATION",
+
+
+    "economic_cycle": "EXPANSION",
+
+
+    "fed_regime": "PAUSE_HIGH_RATE",
+
+
+    "market_condition": "BULLISH",
+
+
+    "crisis_state": "NORMAL"
+    },
+
+
+    "macro": {
+
+
+        "parameters": {
+
+            "vix": 15.82,
+
+            "move": 92.40,
+
+            "hyoas": 2.74,
+
+            "10y": 4.48,
+
+            "2y": 4.17,
+
+            "cpi": 332.81,
+
+            "ip": 102.99,
+
+            "liquidity": "SUPPORTIVE"
+
+        },
+
+
+        "judgement": {
+
+
+            "decision": "REFLATION",
+
+            "growth": "STABLE",
+
+            "inflation": "MODERATING",
+
+            "liquidity": "SUPPORTIVE",
+
+            "policy": "RESTRICTIVE PAUSE",
+
+            "risk": "CONTROLLED",
+
+
+            "summary":
+
+            "Growth remains stable while inflation moderates. Liquidity conditions support risk assets."
+
+        },
+
+
+        "asset_class": {
+
+
+            "equity": "OVERWEIGHT",
+
+            "gold": "NEUTRAL",
+
+            "commodity": "SELECTIVE",
+
+            "duration": "UNDERWEIGHT",
+
+            "short_duration": "CORE",
+
+            "cash": "LOW"
+
+        }
+
+    },
+
+
+
+    "timing": {
+
+
+        "assets": {
+
+
+            "qqq": {
+
+                "trend":"BULLISH",
+
+                "momentum":"POSITIVE",
+
+                "score":82
+
+            },
+
+
+            "gld": {
+
+                "trend":"SIDEWAYS",
+
+                "momentum":"NEUTRAL",
+
+                "score":55
+
+            },
+
+
+            "uso": {
+
+                "trend":"RECOVERY",
+
+                "momentum":"POSITIVE",
+
+                "score":68
+
+            }
+
+        },
+
+
+
+        "judgement": {
+
+
+            "equity": {
+
+                "signal":"BUY",
+
+                "action":"MAINTAIN"
+
+            },
+
+
+            "gold": {
+
+                "signal":"HOLD",
+
+                "action":"NEUTRAL"
+
+            },
+
+
+            "commodity": {
+
+                "signal":"WATCH",
+
+                "action":"SELECTIVE"
+
+            },
+
+
+            "summary":
+
+            "Equity leadership remains dominant while commodities enter selective recovery."
+
+        },
+
+
+        "base_portfolio": {
+
+
+            "qqq":"35%",
+
+            "gld":"15%",
+
+            "uso":"10%",
+
+            "tlt":"10%",
+
+            "bil":"15%",
+
+            "cash":"15%"
+
+        }
+
+    },
+
+
+
+    "portfolio": {
+
+
+    "risk": {
+
+
+        "qqq":21.5,
+
+        "tqqq":34.2,
+
+        "shny":18.6,
+
+        "uco":29.8,
+
+        "tmf":32.5,
+
+        "bil":5.2
+
+    },
+
+
+
+    "leverage": {
+
+
+        "score":56.64,
+
+
+        "status":"WATCH",
+
+
+        "candidate":"TQQQ",
+
+
+        "reason":
+
+        "Risk capacity allows selective leverage but confirmation is required."
+
+    },
+
+
+
+    "decision": {
+
+
+        "current_regime":"REFLATION",
+
+        "risk_level":"MEDIUM",
+
+        "exposure":"RISK ON",
+
+        "leverage":"WATCH",
+
+
+        "selected_assets":
+
+        "QQQ / TQQQ / SHNY / UCO",
+
+
+        "logic":
+
+        "Macro regime supports growth assets. Leverage remains controlled by asset risk audit."
+
+    },
+
+
+
+    "final": {
+
+
+        "qqq":"30%",
+
+        "tqqq":"10%",
+
+        "shny":"20%",
+
+        "uco":"10%",
+
+        "tmf":"5%",
+
+        "bil":"15%",
+
+        "cash":"10%"
+
+    }
+
+
+},
+
+
+    "performance": {
+
+
+        "nav":125430,
+
+        "nav_date":"2026-09-14",
+
+        "return":"+25.43%",
+
+        "cagr":"31.20%",
+
+        "sharpe":"1.42",
+
+        "drawdown":"-8.35",
+
+        "start":"2026-07-30",
+
+        "days":"46",
+
+        "benchmark":"+12.85%"
+
+    },
+
+
+
+    "efficiency": {
+
+
+        "risk":"MEDIUM",
+
+        "exposure":"70%",
+
+        "leverage":"25%",
+
+        "score":"82"
+
+    },
+
+
+    "archive":[
+
+
+        {
+
+            "date":"2026-09-14",
+
+            "regime":"REFLATION",
+
+            "assets":"QQQ / UCO",
+
+            "return":"+0.42%",
+
+            "link":"#"
+
+        }
+
+
+    ]
+
+}

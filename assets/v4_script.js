@@ -16,7 +16,7 @@ assets/script.js
 */
 
 
-const DATA_URL = "./reports/web_data.json";
+const DATA_URL = "./reports/web_data_v32_example.json";
 
 
 /* ======================================================

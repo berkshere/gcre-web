@@ -2909,3 +2909,252 @@ button {
     text-align: center;
     overflow: hidden;
 }
+/* =====================================================
+   PERFORMANCE SUMMARY
+   ===================================================== */
+
+.performance-summary {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    border-top: 1px solid #d9e0e8;
+    border-bottom: 1px solid #d9e0e8;
+}
+
+.performance-metric {
+    min-width: 0;
+    padding: 24px 28px;
+    border-right: 1px solid #d9e0e8;
+}
+
+.performance-metric:last-child {
+    border-right: none;
+}
+
+.performance-metric-label {
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #68778a;
+}
+
+.performance-metric-value {
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #172334;
+    white-space: nowrap;
+}
+
+.performance-metric-sub {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #8a97a6;
+}
+
+
+/* =====================================================
+   PERFORMANCE PERIOD
+   ===================================================== */
+
+.performance-period {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding: 16px 0;
+    border-bottom: 1px solid #d9e0e8;
+}
+
+.performance-period-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.performance-period-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #7a8796;
+}
+
+.performance-period-value {
+    font-size: 13px;
+    color: #253447;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .performance-summary {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .performance-metric:nth-child(3) {
+        border-right: none;
+    }
+
+    .performance-metric:nth-child(-n + 3) {
+        border-bottom: 1px solid #d9e0e8;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .performance-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .performance-metric {
+        padding: 18px 16px;
+    }
+
+    .performance-metric:nth-child(2n) {
+        border-right: none;
+    }
+
+    .performance-metric:nth-child(3) {
+        border-right: 1px solid #d9e0e8;
+    }
+
+    .performance-metric-value {
+        font-size: 22px;
+    }
+
+    .performance-period {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+/* =====================================================
+   TRANSPARENCY
+===================================================== */
+
+.transparency-section {
+    border-top: 1px solid #d9e0e8;
+    padding-top: 72px;
+    padding-bottom: 80px;
+}
+
+.transparency-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    margin-top: 44px;
+    border-top: 1px solid #d9e0e8;
+    border-bottom: 1px solid #d9e0e8;
+}
+
+.transparency-item {
+    display: flex;
+    gap: 18px;
+    min-width: 0;
+    padding: 28px 26px;
+    border-right: 1px solid #d9e0e8;
+}
+
+.transparency-item:last-child {
+    border-right: none;
+}
+
+.transparency-number {
+    flex: 0 0 auto;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #8190a1;
+}
+
+.transparency-content {
+    min-width: 0;
+}
+
+.transparency-content h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1c2a3a;
+}
+
+.transparency-content p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #657386;
+}
+
+.transparency-principle {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    margin-top: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid #d9e0e8;
+}
+
+.transparency-principle-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #718094;
+}
+
+.transparency-principle p {
+    max-width: 760px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #35465a;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .transparency-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .transparency-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .transparency-item:nth-child(-n + 2) {
+        border-bottom: 1px solid #d9e0e8;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .transparency-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .transparency-item,
+    .transparency-item:nth-child(2) {
+        border-right: none;
+        border-bottom: 1px solid #d9e0e8;
+    }
+
+    .transparency-item:last-child {
+        border-bottom: none;
+    }
+
+    .transparency-principle {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+}

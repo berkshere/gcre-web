@@ -24,7 +24,7 @@ reports/GCRE_Sell_Side_Report_YYYYMMDD.md
 
 
 const DATA_URL =
-    "./reports/web_data.json";
+    "./reports/web_data_v32_example.json";
 
 
 

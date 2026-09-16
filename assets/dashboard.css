@@ -1,0 +1,1344 @@
+/* =====================================================
+   GCRE DASHBOARD SYSTEM V3
+   Research / Decision Platform
+===================================================== */
+
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+body {
+
+    margin: 0;
+
+    background: #f6f8fb;
+
+    color: #172033;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+
+}
+
+
+.dashboard-container {
+
+    width: 100%;
+
+    max-width: 1180px;
+
+    margin: 0 auto;
+
+    padding: 52px 30px 90px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.dashboard-hero {
+
+    margin-bottom: 58px;
+
+}
+
+
+.eyebrow {
+
+    margin-bottom: 13px;
+
+    font-size: 10px;
+
+    line-height: 1;
+
+    letter-spacing: 1.8px;
+
+    text-transform: uppercase;
+
+    color: #7b8798;
+
+    font-weight: 700;
+
+}
+
+
+.dashboard-hero h1 {
+
+    margin: 0 0 14px;
+
+    font-size: 38px;
+
+    line-height: 1.15;
+
+    font-weight: 700;
+
+    letter-spacing: -0.8px;
+
+    color: #101828;
+
+}
+
+
+.dashboard-hero p {
+
+    max-width: 680px;
+
+    margin: 0;
+
+    color: #667085;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.dashboard-section {
+
+    margin-bottom: 58px;
+
+}
+
+
+.section-label {
+
+    margin-bottom: 18px;
+
+    font-size: 10px;
+
+    line-height: 1;
+
+    letter-spacing: 1.7px;
+
+    text-transform: uppercase;
+
+    font-weight: 700;
+
+    color: #7b8798;
+
+}
+
+
+/* =====================================================
+   DECISION FLOW
+===================================================== */
+
+.decision-flow {
+
+    display: flex;
+
+    align-items: stretch;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    width: 100%;
+
+}
+
+
+.decision-step {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 22px 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e6ed;
+
+    border-radius: 9px;
+
+    box-sizing: border-box;
+
+}
+
+
+.step-number {
+
+    margin-bottom: 11px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    color: #98a2b3;
+
+    font-weight: 700;
+
+}
+
+
+.step-title {
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+.step-value {
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #667085;
+
+}
+
+.flow-arrow {
+
+    width:45px;
+
+    font-size:38px;
+
+    font-weight:900;
+
+    color:#334155;
+
+}
+
+
+.flow-line {
+
+    stroke: #a8b2c0;
+
+    stroke-width: 1.5;
+
+}
+
+
+.flow-node {
+
+    fill: #64748b;
+
+}
+
+
+/* =====================================================
+   STANDARD GRID
+===================================================== */
+
+.metric-grid {
+
+    display: grid;
+
+    gap: 12px;
+
+}
+
+
+.metric-grid.six {
+
+    grid-template-columns: repeat(6, 1fr);
+
+}
+
+
+.metric-card {
+
+    min-width: 0;
+
+    padding: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e6ed;
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+}
+
+
+.metric-label {
+
+    margin-bottom: 10px;
+
+    font-size: 10px;
+
+    line-height: 1.2;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: #7b8798;
+
+    font-weight: 600;
+
+}
+
+
+.metric-value {
+
+    font-size: 21px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+/* =====================================================
+   JUDGEMENT
+===================================================== */
+
+.judgement-panel {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+}
+
+
+.judgement-panel > div {
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 9px;
+
+    box-sizing: border-box;
+
+}
+
+
+.judgement-label {
+
+    margin-bottom: 12px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.1px;
+
+    text-transform: uppercase;
+
+    color: #7b8798;
+
+    font-weight: 600;
+
+}
+
+
+/* =====================================================
+   ASSET CLASS ALLOCATION
+===================================================== */
+
+.asset-class-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(6, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.asset-class-card {
+
+    min-width: 0;
+
+    padding: 19px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e6ed;
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+}
+
+
+.asset-class-card h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+.asset-class-card p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: #667085;
+
+}
+
+
+/* =====================================================
+   SIGNAL
+===================================================== */
+
+.signal-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+}
+
+
+.signal-card {
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 9px;
+
+    box-sizing: border-box;
+
+}
+
+
+.signal-class {
+
+    margin-bottom: 18px;
+
+    font-size: 15px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+.signal-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #edf0f4;
+
+    font-size: 12px;
+
+}
+
+
+.signal-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.signal-row span {
+
+    color: #7b8798;
+
+}
+
+
+.signal-row strong {
+
+    color: #172033;
+
+    font-weight: 700;
+
+}
+
+
+/* =====================================================
+   TIMING JUDGEMENT
+===================================================== */
+
+.judgement-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+}
+
+
+.decision-box {
+
+    padding: 23px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 9px;
+
+    text-align: center;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+/* =====================================================
+   STAGE ENGINE
+===================================================== */
+
+.stage-section {
+
+    width: 100%;
+
+    max-width: 1280px;
+
+    margin: 42px auto;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 14px;
+
+    box-sizing: border-box;
+
+}
+
+
+.stage-header {
+
+    margin-bottom: 32px;
+
+}
+
+
+.stage-number {
+
+    margin-bottom: 11px;
+
+    font-size: 10px;
+
+    line-height: 1;
+
+    letter-spacing: 2.5px;
+
+    text-transform: uppercase;
+
+    color: #718096;
+
+    font-weight: 700;
+
+}
+
+
+.stage-header h2 {
+
+    margin: 0;
+
+    font-size: 28px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.4px;
+
+    font-weight: 700;
+
+    color: #101828;
+
+}
+
+
+.stage-header p {
+
+    max-width: 680px;
+
+    margin: 10px 0 0;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    color: #667085;
+
+}
+
+
+/* =====================================================
+   STAGE HORIZONTAL FLOW
+===================================================== */
+
+.stage-horizontal {
+
+    display: flex;
+
+    align-items: stretch;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    width: 100%;
+
+}
+
+
+.engine-card {
+
+    flex: 1 1 0;
+
+    width: auto;
+
+    min-width: 0;
+
+    max-width: none;
+
+    min-height: 380px;
+
+    padding: 27px;
+
+    border-radius: 11px;
+
+    box-sizing: border-box;
+
+}
+
+
+.engine-card h3 {
+
+    margin: 0 0 22px;
+
+    font-size: 11px;
+
+    line-height: 1.3;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color: #475569;
+
+    font-weight: 700;
+
+}
+
+
+.engine-card.input {
+
+    background: #f8fafc;
+
+    border: 1px solid #dce3eb;
+
+}
+
+
+.engine-card.process {
+
+    background: #ffffff;
+
+    border: 1px solid #aeb9c7;
+
+    box-shadow: 0 7px 20px rgba(15, 23, 42, 0.055);
+
+}
+
+
+.engine-card.output {
+
+    background: #f8fafc;
+
+    border: 1px solid #dce3eb;
+
+}
+
+
+/* =====================================================
+   ASSET SIGNAL
+===================================================== */
+
+.asset-signal {
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #e8ecf1;
+
+}
+
+
+.asset-signal:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.asset-signal h4 {
+
+    margin: 0 0 10px;
+
+    font-size: 14px;
+
+    line-height: 1.35;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+.asset-signal h4 span {
+
+    margin-left: 4px;
+
+    font-size: 12px;
+
+    color: #7b8798;
+
+    font-weight: 500;
+
+}
+
+
+/* =====================================================
+   DECISION PANEL
+===================================================== */
+
+.decision-panel {
+
+    width: auto;
+
+    min-width: 0;
+
+}
+.decision-row p {
+
+    margin:0;
+
+}
+
+.decision-row {
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 0;
+
+    border-bottom:1px solid #e8ecf1;
+
+}
+
+
+.decision-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.decision-row span {
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: #7b8798;
+
+}
+
+
+.decision-row strong {
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+/* =====================================================
+   PORTFOLIO
+===================================================== */
+
+.portfolio-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid #e8ecf1;
+
+}
+
+
+.portfolio-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.portfolio-row strong {
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+/* =====================================================
+   CAPITAL EFFICIENCY
+===================================================== */
+
+.efficiency-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+}
+
+
+.efficiency-card {
+
+    padding: 23px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 9px;
+
+}
+
+
+.efficiency-card h3 {
+
+    margin: 0 0 16px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+
+.eff-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 9px 0;
+
+    font-size: 12px;
+
+    color: #667085;
+
+}
+
+
+.leverage-box {
+
+    margin-top: 18px;
+
+    padding: 14px;
+
+    background: #f7f9fc;
+
+    border: 1px solid #e5eaf0;
+
+    border-radius: 7px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+/* =====================================================
+   FINAL PORTFOLIO
+===================================================== */
+
+.final-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.final-card {
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 9px;
+
+}
+
+
+.final-card h3 {
+
+    margin: 0 0 13px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #172033;
+
+}
+
+
+.weight {
+
+    margin-top: 17px;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    color: #101828;
+
+}
+
+
+/* =====================================================
+   PERFORMANCE
+===================================================== */
+
+.performance-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.performance-card {
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe5ec;
+
+    border-radius: 9px;
+
+    box-sizing: border-box;
+
+}
+
+
+.performance-card label {
+
+    display: block;
+
+    font-size: 10px;
+
+    line-height: 1.2;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+
+    color: #7b8798;
+
+    font-weight: 600;
+
+}
+
+
+.performance-card strong {
+
+    display: block;
+
+    margin-top: 11px;
+
+    font-size: 26px;
+
+    line-height: 1.15;
+
+    font-weight: 700;
+
+    color: #101828;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .metric-grid.six,
+    .asset-class-grid {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+    .stage-horizontal {
+
+        gap: 12px;
+
+    }
+
+    .engine-card {
+
+        padding: 22px;
+
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .stage-horizontal {
+
+        flex-direction: column;
+
+    }
+
+    .engine-card {
+
+        width: 100%;
+
+        min-height: auto;
+
+    }
+
+    .stage-horizontal .flow-arrow {
+
+        flex: 0 0 30px;
+
+        transform: rotate(90deg);
+
+    }
+
+    .performance-grid {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+    .decision-flow {
+
+        flex-wrap: wrap;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .dashboard-container {
+
+        padding: 35px 18px 65px;
+
+    }
+
+    .stage-section {
+
+        margin: 30px 0;
+
+        padding: 25px 20px;
+
+        border-radius: 11px;
+
+    }
+
+    .stage-header h2 {
+
+        font-size: 24px;
+
+    }
+
+    .metric-grid.six,
+    .asset-class-grid,
+    .signal-grid,
+    .judgement-panel,
+    .judgement-grid,
+    .efficiency-grid,
+    .final-grid,
+    .performance-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .decision-flow {
+
+        flex-direction: column;
+
+    }
+
+    .decision-flow .flow-arrow {
+
+        transform: rotate(90deg);
+
+        min-height: 25px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .dashboard-hero h1 {
+
+        font-size: 30px;
+
+    }
+
+    .stage-section {
+
+        padding: 22px 17px;
+
+    }
+
+    .engine-card {
+
+        padding: 20px;
+
+    }
+
+}
+/* ===============================
+   STAGE CARD WIDTH CONTROL
+=============================== */
+
+.engine-card.input {
+
+    flex: 0 0 300px;
+
+}
+
+
+.engine-card.process {
+
+    flex: 0 0 260px;
+
+}
+
+
+.engine-card.output {
+
+    flex: 0 0 300px;
+
+}
+/* =================================
+   FIX GCRE JUDGEMENT WIDTH
+================================= */
+
+.stage-horizontal .engine-card {
+
+    flex-grow:0;
+
+}
+
+
+.stage-horizontal .engine-card.input {
+
+    flex:0 0 300px;
+
+}
+
+
+.stage-horizontal .engine-card.process {
+
+    flex:0 0 240px;
+
+}
+
+
+.stage-horizontal .engine-card.output {
+
+    flex:0 0 300px;
+
+}
+/* =================================
+   GCRE JUDGEMENT CENTER PANEL
+================================= */
+/* ===============================
+   FIX CENTER JUDGEMENT WIDTH
+================================ */
+
+.stage-horizontal > .decision-panel {
+
+    flex:0 0 260px !important;
+
+    width:260px !important;
+
+}
+.stage-horizontal > .engine-card {
+
+    flex:0 0 300px;
+
+    width:300px;
+
+}
+/* =====================================
+   FORCE JUDGEMENT PANEL SIZE
+===================================== */
+
+
+.stage-horizontal .decision-panel {
+
+    display:block !important;
+
+    flex-grow:0 !important;
+
+    flex-shrink:0 !important;
+
+    flex-basis:260px !important;
+
+    width:260px !important;
+
+    max-width:260px !important;
+
+    min-width:260px !important;
+
+    box-sizing:border-box !important;
+
+}/* =====================================
+   FIX DECISION FLOW LAYOUT
+===================================== */
+
+
+.decision-flow {
+
+    display:flex;
+
+    flex-direction:row;
+
+    align-items:stretch;
+
+    justify-content:center;
+
+    gap:18px;
+
+    width:100%;
+
+}
+
+
+.decision-flow .decision-panel {
+
+    flex:0 1 300px;
+
+    width:300px;
+
+    min-width:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+.decision-flow .flow-arrow {
+
+    flex:0 0 35px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}

@@ -499,7 +499,92 @@
      使用完全相同的 HTML。
 ====================================================== -->
 
+<header class="site-header">
 
+    <div class="site-header-inner">
+
+        <!-- BRAND -->
+        <div class="site-brand">
+
+            <a
+                href="./index.html"
+                class="site-logo"
+            >
+                <img
+                    src="./assets/logo.png"
+                    alt="金融海洋｜稳定航行"
+                >
+            </a>
+
+            <div class="site-brand-text">
+
+                
+                <h1>
+
+                    <span class="brand-title">
+                        GCRE
+                    </span>
+
+                </h1>
+
+               
+                <p>
+                    Global Capital Regime Engine
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="site-nav">
+
+
+            <a
+                href="./index.html"
+               
+            >
+                Home
+            </a>
+
+
+            <a
+                href="./dash_board.html"
+            >
+                Decision board
+            </a>
+
+
+            <a
+                href="./latest.html"
+            >
+                Research
+            </a>
+
+
+            <a
+                href="./archive.html"
+            >
+                Archive
+            </a>
+            <a href="./subscribe.html">
+                Subscribe
+            </a>
+
+<!--
+            <a
+                href="./about.html"
+            >
+                About
+            </a>
+          -->
+
+        </nav>
+
+    </div>
+
+</header>
 <div id="site-header"></div>
 
 
@@ -563,133 +648,6 @@ FINAL
 /* ======================================================
    HEADER
 ====================================================== */
-
-async function loadSiteHeader() {
-
-    const container =
-        document.getElementById(
-            "site-header"
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    try {
-
-        const response =
-            await fetch(
-                "./index.html?t=" +
-                Date.now(),
-                {
-                    cache:
-                        "no-store"
-                }
-            );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Unable to load index.html"
-            );
-
-        }
-
-
-        const html =
-            await response.text();
-
-
-        const parser =
-            new DOMParser();
-
-
-        const doc =
-            parser.parseFromString(
-                html,
-                "text/html"
-            );
-
-
-        const header =
-            doc.querySelector(
-                "header"
-            );
-
-
-        if (!header) {
-
-            throw new Error(
-                "Header not found in index.html"
-            );
-
-        }
-
-
-        container.innerHTML =
-            header.outerHTML;
-
-
-        /*
-        -----------------------------------------------
-        Active Latest navigation
-        -----------------------------------------------
-        */
-
-        const links =
-            container.querySelectorAll(
-                "a"
-            );
-
-
-        links.forEach(
-            link => {
-
-                const href =
-                    (
-                        link.getAttribute(
-                            "href"
-                        ) || ""
-                    ).toLowerCase();
-
-
-                if (
-                    href.includes(
-                        "latest"
-                    )
-                ) {
-
-                    link.classList.add(
-                        "active"
-                    );
-
-                }
-
-            }
-        );
-
-
-        console.log(
-            "GCRE: Header loaded from index.html"
-        );
-
-    }
-    catch (error) {
-
-        console.error(
-            "GCRE Header error:",
-            error
-        );
-
-    }
-
-}
-
 
 
 /* ======================================================

@@ -1,7 +1,4 @@
 {
-    "meta": {
-        "market_date": "2026-09-15"
-    },
     "environment": {
         "regime": "REFLATION",
         "economic_cycle": "REFLATION",
@@ -11,8 +8,8 @@
     },
     "macro": {
         "parameters": {
-            "vix": 17.2,
-            "move": 83.7087,
+            "vix": 17.45,
+            "move": 76.7413,
             "hyoas": 2.74,
             "10y": 4.48,
             "2y": 4.17,
@@ -21,34 +18,34 @@
             "liquidity": "SUPPORTIVE"
         },
         "judgement": {
-            "decision": "REFLATION",
-            "growth": "STABLE",
-            "inflation": "MODERATING",
-            "liquidity": "SUPPORTIVE",
-            "policy": "RESTRICTIVE PAUSE",
-            "risk": "CONTROLLED",
-            "summary": "Growth remains stable while inflation moderates. Liquidity conditions support risk assets."
+            "decision": "--",
+            "growth": "--",
+            "inflation": "--",
+            "liquidity": "--",
+            "policy": "--",
+            "risk": "--",
+            "summary": "--"
         },
         "asset_class": {
-            "equity": "OVERWEIGHT",
-            "gold": "NEUTRAL",
-            "commodity": "SELECTIVE",
-            "duration": "UNDERWEIGHT",
-            "short_duration": "CORE",
-            "cash": "LOW"
+            "equity": "--",
+            "gold": "--",
+            "commodity": "--",
+            "duration": "--",
+            "short_duration": "--",
+            "cash": "--"
         }
     },
     "timing": {
         "assets": {
             "qqq": {
                 "trend": "UPTREND",
-                "momentum": "STRONG",
-                "score": 75
+                "momentum": "--",
+                "score": 65
             },
             "gld": {
-                "trend": "WEAK",
+                "trend": "UPTREND",
                 "momentum": "--",
-                "score": 45
+                "score": 65
             },
             "uso": {
                 "trend": "STRONG_UPTREND",
@@ -58,8 +55,8 @@
         },
         "judgement": {
             "equity": {
-                "signal": "BUY",
-                "action": "MAINTAIN"
+                "signal": "HOLD",
+                "action": "HOLD"
             },
             "gold": {
                 "signal": "HOLD",
@@ -82,49 +79,39 @@
     },
     "portfolio": {
         "risk": {
-            "bil": 40.56136670159404,
-            "qqq": 26.485173490127757,
-            "shny": 48.22391598915989,
-            "tmf": 56.515516114982574,
-            "tqqq": 27.191425909794813,
-            "uco": 34.150091947348045
+            "bil": 42.80989163982824,
+            "qqq": 19.11543761022928,
+            "shny": 42.03841490299824,
+            "tmf": 54.718005952380956,
+            "tqqq": 21.443700396825395,
+            "uco": 32.59589947089947
         },
         "leverage": {
-            "score": 61.22576,
+            "score": 56.640483,
             "status": "WATCH",
             "candidate": "TQQQ",
             "reason": "Risk capacity allows selective leverage but confirmation is required."
         },
         "decision": {
             "current_regime": "REFLATION",
-            "risk_level": "MIXED",
-            "exposure": "NEUTRAL",
+            "risk_level": "RISING",
+            "exposure": "CAUTIOUS",
             "leverage": "WATCH",
-            "selected_assets": "QQQ,UUP",
+            "selected_assets": "UCO,GLD",
             "logic": "Macro regime supports growth assets. Leverage remains controlled by asset risk audit."
         },
-        "final": {
-            "cash": "25%",
-            "gld": "18%",
-            "shny": "2%",
-            "uso": "18%",
-            "uco": "2%",
-            "qqq": "12%",
-            "tqqq": "3%",
-            "bil": "15%",
-            "tlt": "5%"
-        }
+        "final": {}
     },
     "performance": {
-        "nav": 104986.49,
-        "nav_date": "2026-09-15",
-        "return": "4.99%",
-        "cagr": "45.92%",
-        "sharpe": "3.64",
+        "nav": 104638.25,
+        "nav_date": "2026-09-11",
+        "return": "4.64%",
+        "cagr": "46.94%",
+        "sharpe": "3.58",
         "drawdown": "-3.81%",
         "start": "2026-07-30",
-        "days": "47",
-        "benchmark": "3.75%"
+        "days": "43",
+        "benchmark": null
     },
     "efficiency": {
         "risk": "MEDIUM",
@@ -133,14 +120,6 @@
         "score": "82"
     },
     "archive": [
-        {
-            "date": "2026-09-16",
-            "regime": "REFLATION",
-            "assets": "QQQ,UUP",
-            "stance": "NEUTRAL",
-            "risk": "MIXED",
-            "crisis": "NORMAL"
-        },
         {
             "date": "2026-09-11",
             "regime": "REFLATION",

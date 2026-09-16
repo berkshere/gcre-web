@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        GCRE - Global Capital Regime Engine
+    </title>
+
+
+    <link
+        rel="stylesheet"
+        href="./assets/style.css"
+>
+     <link
+        rel="stylesheet"
+        href="./assets/dashboard.css"
+    >
+    <script src="./assets/dashboard.js"></script>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+
+    <div class="site-header-inner">
+
+
+        <div class="site-brand">
+
+
+            <a
+                href="./index.html"
+                class="site-logo"
+            >
+
+                <img
+                    src="./assets/logo.png"
+                    alt="GCRE"
+                >
+
+            </a>
+
+
+
+            <div class="site-brand-text">
+
+
+                <h1>
+
+                    <span class="brand-title">
+                        GCRE
+                    </span>
+
+                </h1>
+
+
+                <p>
+                    Global Capital Regime Engine
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+       <nav class="site-nav">
+
+
+            <a
+                href="./index.html"
+               
+            >
+                Home
+            </a>
+
+
+            <a
+                href="./dash_board.html"
+            >
+                Decision board
+            </a>
+
+
+            <a
+                href="./latest.html"
+            >
+                Research
+            </a>
+
+
+            <a
+                href="./archive.html"
+            >
+                Archive
+            </a>
+            <a href="./subscribe.html">
+                Subscribe
+            </a>
+
+<!--
+            <a
+                href="./about.html"
+            >
+                About
+            </a>
+          -->
+
+        </nav>
+
+
+    </div>
+
+
+</header>
+
+
+    
+<main class="container">
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+<div class="eyebrow">
+SYSTEMATIC CAPITAL DECISION ENGINE
+</div>
+
+
+<h1>
+GCRE Decision Engine
+</h1>
+
+
+<p>
+From macro observation to capital allocation.
+</p>
+
+
+</section>
+
+
+
+
+<!-- =====================================================
+ CURRENT ENVIRONMENT
+===================================================== -->
+
+
+<section class="stage-section">
+
+<div class="section-title">
+Market Date<strong id="market-date">
+--
+</strong>
+</div>
+<div class="section-title">
+CURRENT ENVIRONMENT
+</div>
+
+
+<div class="environment-grid">
+
+
+<div class="environment-card">
+
+<label>
+REGIME
+</label>
+
+<strong id="env-regime">
+--
+</strong>
+
+</div>
+
+
+
+<div class="environment-card">
+
+<label>
+ECONOMIC CYCLE
+</label>
+
+<strong id="env-cycle">
+--
+</strong>
+
+</div>
+
+
+
+<div class="environment-card">
+
+<label>
+FED REGIME
+</label>
+
+<strong id="env-fed">
+--
+</strong>
+
+</div>
+
+
+
+<div class="environment-card">
+
+<label>
+MARKET CONDITION
+</label>
+
+<strong id="env-market">
+--
+</strong>
+
+</div>
+
+
+
+<div class="environment-card">
+
+<label>
+CRISIS STATE
+</label>
+
+<strong id="env-crisis">
+--
+</strong>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!-- =====================================================
+ STAGE 01
+===================================================== -->
+
+
+<section class="stage-section">
+
+
+<div class="stage-title">
+
+<span>
+
+</span>
+
+
+<div>
+<div class="stage-header">
+<h2>
+01  STAGE----MACRO JUDGEMENT
+</h2>
+
+
+<p>
+What environment are we in?
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="decision-flow">
+
+
+
+<!-- LEFT -->
+
+
+<div class="decision-panel">
+
+
+<h3>
+MACRO PARAMETERS
+</h3>
+
+
+<div class="parameter-list">
+
+
+<div>
+VIX
+
+<strong id="macro-vix">
+--
+</strong>
+
+</div>
+
+
+<div>
+MOVE
+
+<strong id="macro-move">
+--
+</strong>
+
+</div>
+
+
+<div>
+HY OAS
+
+<strong id="macro-hyoas">
+--
+</strong>
+
+</div>
+
+
+
+<div>
+US 10Y
+
+<strong id="macro-10y">
+--
+</strong>
+
+</div>
+
+
+
+<div>
+US 2Y
+
+<strong id="macro-2y">
+--
+</strong>
+
+</div>
+
+
+
+<div>
+CPI
+
+<strong id="macro-cpi">
+--
+</strong>
+
+</div>
+
+
+
+<div>
+INDUSTRIAL PRODUCTION
+
+<strong id="macro-ip">
+--
+</strong>
+
+</div>
+
+
+
+<div>
+LIQUIDITY
+
+<strong id="macro-liquidity">
+--
+</strong>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="flow-arrow">
+    <h2>→</h2>
+
+</div>
+
+
+
+
+
+
+<!-- CENTER -->
+
+
+<div class="decision-panel">
+
+
+<h3>
+JUDGEMENT
+</h3>
+
+
+
+<strong class="judgement-large"
+id="macro-decision">
+
+--
+
+</strong>
+
+
+
+<div class="judgement-item">
+
+Growth
+
+<strong id="macro-growth">
+
+--
+
+</strong>
+
+</div>
+
+
+
+<div class="judgement-item">
+
+Inflation
+
+<strong id="macro-inflation">
+
+--
+
+</strong>
+
+</div>
+
+
+
+<div class="judgement-item">
+
+Liquidity
+
+<strong id="macro-liquidity-view">
+
+--
+
+</strong>
+
+</div>
+
+
+
+<div class="judgement-item">
+
+Policy
+
+<strong id="macro-policy">
+
+--
+
+</strong>
+
+</div>
+
+
+
+<div class="judgement-item">
+
+Risk
+
+<strong id="macro-risk">
+
+--
+
+</strong>
+
+</div>
+Summary
+
+
+
+<strong id="macro-summary">
+
+--
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+<div class="flow-arrow">
+<h2>→</h2>
+</div>
+
+
+
+
+
+
+
+<!-- RIGHT -->
+
+
+<div class="decision-panel ">
+
+
+<h3>
+OUTPUT
+</h3>
+
+
+<h4>
+REGIME ASSET CLASS PORTFOLIO
+</h4>
+
+
+
+<div id="regime-asset-class">
+
+
+<div>
+EQUITY --
+</div>
+
+
+<div>
+GOLD --
+</div>
+
+
+<div>
+COMMODITY --
+</div>
+
+
+<div>
+DURATION --
+</div>
+
+
+<div>
+SHORT DURATION --
+</div>
+
+
+<div>
+CASH --
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+<section class="stage-section" id="stage02-market-transition">
+
+
+<div class="stage-header">
+
+<h2>
+02 STAGE---MARKET TRANSITION
+</h2>
+
+<p>
+Detecting market regime changes,
+risk conditions and leadership shifts.
+</p>
+
+
+</div>
+
+
+
+
+
+<!-- <div class="stage-horizontal"> -->
+
+<div class="decision-flow">
+
+
+
+<!-- ================= -->
+<!-- COLUMN 1 -->
+<!-- INPUT -->
+<!-- ================= -->
+
+<div class="decision-panel">
+
+
+
+<h3>
+TIMING PARAMETERS
+</h3>
+
+
+
+<div class="asset-signal">
+
+
+<h4>
+QQQ
+<span>(EQUITY)</span>
+</h4>
+
+
+<div>
+Price Trend
+
+<strong id="s2-qqq-trend">
+--
+</strong>
+
+</div>
+
+
+<div>
+Momentum
+
+<strong id="s2-qqq-momentum">
+--
+</strong>
+
+</div>
+
+
+
+<div>
+Signal Score
+
+<strong id="s2-qqq-score">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="asset-signal">
+
+
+<h4>
+GLD
+<span>(GOLD)</span>
+</h4>
+
+
+<div>
+Price Trend
+
+<strong id="s2-gld-trend">
+--
+</strong>
+
+</div>
+
+
+<div>
+Momentum
+
+<strong id="s2-gld-momentum">
+--
+</strong>
+
+</div>
+
+
+<div>
+Signal Score
+
+<strong id="s2-gld-score">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="asset-signal">
+
+
+<h4>
+USO
+<span>(COMMODITY)</span>
+</h4>
+
+
+<div>
+Price Trend
+
+<strong id="s2-uso-trend">
+--
+</strong>
+
+</div>
+
+
+<div>
+Momentum
+
+<strong id="s2-uso-momentum">
+--
+</strong>
+
+</div>
+
+
+<div>
+Signal Score
+
+<strong id="s2-uso-score">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<div class="flow-arrow">
+<h2>→</h2>
+</div>
+
+
+
+
+
+
+<!-- ================= -->
+<!-- COLUMN 2 -->
+<!-- DECISION -->
+<!-- ================= -->
+
+<div class="decision-panel">
+
+
+
+
+<h3>
+TIMING + SIGNAL JUDGEMENT
+</h3>
+
+
+
+
+<!-- EQUITY -->
+
+<div class="decision-block">
+
+
+<h4>
+EQUITY
+</h4>
+
+
+<div class="decision-row">
+
+<p>
+Signal
+</p>
+
+<strong id="s2-equity-signal">
+--
+</strong>
+
+</div>
+
+
+
+<div class="decision-row">
+
+<p>
+Action
+</p>
+
+<strong id="s2-equity-action">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- GOLD -->
+
+<div class="decision-block">
+
+
+<h4>
+GOLD
+</h4>
+
+
+<div class="decision-row">
+
+<p>
+Signal
+</p>
+
+<strong id="s2-gold-signal">
+--
+</strong>
+
+</div>
+
+
+
+<div class="decision-row">
+
+<p>
+Action
+</p>
+
+<strong id="s2-gold-action">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- COMMODITY -->
+
+<div class="decision-block">
+
+
+<h4>
+COMMODITY
+</h4>
+
+
+<div class="decision-row">
+
+<p>
+Signal
+</p>
+
+<strong id="s2-commodity-signal">
+--
+</strong>
+
+</div>
+
+
+
+<div class="decision-row">
+
+<p>
+Action
+</p>
+
+<strong id="s2-commodity-action">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- SUMMARY -->
+
+
+
+<div class="decision-block">
+
+<p>
+SUMMARY
+</p>
+
+
+<strong id="s2-summary">
+--
+</strong>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="flow-arrow">
+<h2>→</h2>
+</div>
+
+
+
+
+
+<!-- ================= -->
+<!-- COLUMN 3 -->
+<!-- OUTPUT -->
+<!-- ================= -->
+
+<div class="decision-panel">
+
+
+
+<h3>
+BASE FINAL PORTFOLIO
+</h3>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+QQQ
+</span>
+
+
+<strong id="s2-base-qqq">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+GLD
+</span>
+
+
+<strong id="s2-base-gld">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+USO
+</span>
+
+
+<strong id="s2-base-uso">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+TLT
+</span>
+
+
+<strong id="s2-base-tlt">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+BIL
+</span>
+
+
+<strong id="s2-base-bil">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+CASH
+</span>
+
+
+<strong id="s2-base-cash">
+--
+</strong>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</section>
+<section class="stage-section" id="stage03-regime-portfolio">
+
+
+<div class="stage-header">
+
+
+
+<h2>
+03 STAGE----Risk and Leverage
+</h2>
+
+
+
+
+
+
+<p>
+Translating Asset risk and Leverage score into final portfolio.
+</p>
+
+
+</div>
+
+<div class="decision-flow">
+
+
+
+
+
+
+
+
+
+
+<!-- ======================== -->
+<!-- LEFT -->
+<!-- ASSET RISK PARAMETERS -->
+<!-- ======================== -->
+<div class="decision-panel">
+
+
+
+
+<h3>
+ASSET RISK PARAMETERS
+</h3>
+
+
+
+
+
+<div class="asset-risk-block">
+
+
+
+<h4>
+QQQ
+</h4>
+
+
+<div>
+
+Risk Index
+
+<strong id="s3-qqq-risk">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="asset-risk-block">
+
+
+
+<h4>
+TQQQ(QQQ)
+</h4>
+
+
+<div>
+
+Risk Index
+
+<strong id="s3-tqqq-risk">
+--
+</strong>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="asset-risk-block">
+
+
+<h4>
+SHNY(GOLD)
+</h4>
+
+
+<div>
+
+Risk Index
+
+<strong id="s3-shny-risk">
+--
+</strong>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="asset-risk-block">
+
+
+<h4>
+UCO(USO)
+</h4>
+
+
+<div>
+
+Risk Index
+
+<strong id="s3-uco-risk">
+--
+</strong>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="asset-risk-block">
+
+
+<h4>
+TMF(TLT)
+</h4>
+
+
+<div>
+
+Risk Index
+
+<strong id="s3-tmf-risk">
+--
+</strong>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="asset-risk-block">
+
+
+<h4>
+BIL(CASH)
+</h4>
+
+
+<div>
+
+Risk Index
+
+<strong id="s3-bil-risk">
+--
+</strong>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="asset-risk-block leverage">
+
+
+<h4>
+LEVERAGE ENGINE
+</h4>
+
+
+<div>
+Score
+
+<strong id="s3-leverage-score">
+--
+</strong>
+
+</div>
+
+
+<div>
+Status
+
+<strong id="s3-leverage-status">
+--
+</strong>
+
+</div>
+
+
+<div>
+Candidate
+
+<strong id="s3-leverage-candidate">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flow-arrow">
+<h2>→</h2>
+</div>
+
+
+
+
+
+
+
+<!-- ======================== -->
+<!-- CENTER -->
+<!-- PORTFOLIO DECISION -->
+<!-- ======================== -->
+<div class="decision-panel">
+
+
+<h3>
+PORTFOLIO DECISION
+</h3>
+
+
+
+
+
+<!-- CURRENT REGIME -->
+
+<div class="decision-row">
+
+
+<p>
+CURRENT REGIME
+</p>
+
+
+<strong id="s3-current-regime">
+--
+</strong>
+
+
+</div>
+
+
+
+
+
+<!-- RISK LEVEL -->
+
+<div class="decision-row">
+
+
+<p>
+RISK LEVEL
+</p>
+
+
+<strong id="s3-risk-level">
+--
+</strong>
+
+
+</div>
+
+
+
+
+
+<!-- EXPOSURE -->
+
+<div class="decision-row">
+
+
+<p>
+EXPOSURE
+</p>
+
+
+<strong id="s3-exposure">
+--
+</strong>
+
+
+</div>
+
+
+
+
+
+
+<!-- LEVERAGE -->
+
+<div class="decision-row">
+
+
+<p>
+LEVERAGE DECISION
+</p>
+
+
+<strong id="s3-leverage-decision">
+--
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- SELECTED ASSETS -->
+
+<div class="logic-box">
+
+
+<p>
+SELECTED ASSETS
+</p>
+
+
+<strong id="s3-selected-assets">
+--
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- PORTFOLIO LOGIC -->
+
+<div class="logic-box">
+
+
+<p>
+PORTFOLIO LOGIC
+</p>
+
+
+<strong id="s3-portfolio-logic">
+--
+</strong>
+
+
+</div>
+
+
+
+
+
+</div>
+
+<div class="flow-arrow">
+<h2>→</h2>
+</div>
+
+
+
+
+
+
+
+<!-- ======================== -->
+<!-- RIGHT -->
+<!-- FINAL PORTFOLIO -->
+<!-- ======================== -->
+
+<!-- ======================== -->
+<!-- RIGHT -->
+<!-- FINAL PORTFOLIO -->
+<!-- ======================== -->
+
+<div class="decision-panel">
+
+
+<h3>
+FINAL PORTFOLIO
+</h3>
+
+
+
+<div class="portfolio-row">
+
+<span>
+QQQ
+</span>
+
+<strong id="s3-final-qqq">
+--
+</strong>
+
+</div>
+
+
+
+<div class="portfolio-row">
+
+<span>
+TQQQ
+</span>
+
+<strong id="s3-final-tqqq">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+GLD
+</span>
+
+<strong id="s3-final-gld">
+--
+</strong>
+
+</div>
+
+
+
+<div class="portfolio-row">
+
+<span>
+SHNY
+</span>
+
+<strong id="s3-final-shny">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+USO
+</span>
+
+<strong id="s3-final-uso">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+UCO
+</span>
+
+<strong id="s3-final-uco">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+TLT
+</span>
+
+<strong id="s3-final-tlt">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+TMF
+</span>
+
+<strong id="s3-final-tmf">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+BIL
+</span>
+
+<strong id="s3-final-bil">
+--
+</strong>
+
+</div>
+
+
+
+
+<div class="portfolio-row">
+
+<span>
+CASH
+</span>
+
+<strong id="s3-final-cash">
+--
+</strong>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+<section class="stage-section" id="performance">
+
+
+<div class="stage-header">
+
+<h2>
+04 PERFORMANCE
+</h2>
+
+<p>
+Measuring portfolio outcome and capital efficiency.
+</p>
+
+</div>
+
+
+
+<div class="performance-grid">
+
+
+<div class="performance-card">
+
+<label>
+NAV
+</label>
+
+<strong id="perf-nav">
+--
+</strong>
+
+<span id="perf-nav-date">
+--
+</span>
+
+</div>
+
+
+
+
+<div class="performance-card">
+
+<label>
+TOTAL RETURN
+</label>
+
+<strong id="perf-return">
+--
+</strong>
+
+</div>
+
+
+
+
+
+<div class="performance-card">
+
+<label>
+CAGR
+</label>
+
+<strong id="perf-cagr">
+--
+</strong>
+
+</div>
+
+
+
+
+
+<div class="performance-card">
+
+<label>
+SHARPE
+</label>
+
+<strong id="perf-sharpe">
+--
+</strong>
+
+</div>
+
+
+
+
+
+<div class="performance-card">
+
+<label>
+MAX DRAWDOWN
+</label>
+
+<strong id="perf-drawdown">
+--
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+<div class="performance-period">
+
+
+START DATE
+
+<strong id="perf-start">
+--
+</strong>
+
+
+RUNNING DAYS
+
+<strong id="perf-days">
+--
+</strong>
+
+
+</div>
+<div class="performance-grid">
+<div class="performance-card">
+
+
+<label>
+BENCHMARK
+</label>
+
+<strong>
+QQQ
+</strong>
+
+</div>
+<div class="performance-card">
+
+
+<label>
+Period Return
+</label>
+
+
+<strong id="perf-qqq">
+--
+</strong>
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+</section>
+
+<section class="stage-section">
+
+
+<div class="stage-header">
+
+<h2>
+05 CAPITAL EFFICIENCY
+</h2>
+
+
+<p>
+Evaluating return efficiency under controlled risk exposure.
+</p>
+
+</div>
+
+
+
+<div class="efficiency-grid">
+
+
+<div>
+
+RISK LEVEL
+
+<strong>
+--
+</strong>
+
+</div>
+
+
+
+<div>
+
+EXPOSURE
+
+<strong>
+--
+</strong>
+
+</div>
+
+
+
+<div>
+
+LEVERAGE UTILIZATION
+
+<strong>
+--
+</strong>
+
+</div>
+
+
+
+<div>
+
+CAPITAL SCORE
+
+<strong>
+--
+</strong>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+<section class="stage-section">
+
+
+<div class="stage-header">
+
+<h2>
+06 RESEARCH ARCHIVE
+</h2>
+
+<p>
+Historical decision records and regime analysis.
+</p>
+
+
+</div>
+
+
+
+<div id="archive-list">
+
+
+<div class="archive-row">
+
+
+
+<a href="./archive.html">
+VIEW REPORT
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<!-- =====================================================
+     GCRE DATA SCRIPT
+===================================================== -->
+
+<!--    <script     src="./assets/index.js"></script> -->
+
+<footer class="site-footer">
+
+    <div>
+        GCRE · Global Capital Regime Engine
+    </div>
+   <div>
+
+<a href="./privacy.html">
+Privacy Policy
+</a>
+
+|
+
+<a href="./terms.html">
+Terms
+</a>
+
+</div>
+</footer>
+
+
+</body>
+
+
+</html>
