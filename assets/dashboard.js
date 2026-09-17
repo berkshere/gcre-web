@@ -1,4 +1,4 @@
-fetch("./reports/web_data.json")
+fetch("/reports/web_data.json")
 
 .then(response => response.json())
 

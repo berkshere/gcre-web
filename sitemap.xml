@@ -7,6 +7,11 @@
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
+    <url>
+        <loc>https://www.gcrelab.com/dash_board.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
 
     <url>
         <loc>https://www.gcrelab.com/latest.html</loc>
@@ -18,18 +23,27 @@
         <loc>https://www.gcrelab.com/archive.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://www.gcrelab.com/about.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
+    </url>    
 
     <url>
         <loc>https://www.gcrelab.com/subscribe.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
+    <url>
+    <loc>https://www.gcrelab.com/research.html</loc>
+</url>
+
+<url>
+    <loc>https://www.gcrelab.com/research/why-investors-buy-high-and-sell-low.html</loc>
+</url>
+
+<url>
+    <loc>https://www.gcrelab.com/research/what-is-market-regime.html</loc>
+</url>
+
+<url>
+    <loc>https://www.gcrelab.com/research/how-to-reduce-portfolio-drawdown.html</loc>
+</url>
 
 </urlset>
