@@ -1,6 +1,6 @@
 {
     "meta": {
-        "market_date": "2026-09-15"
+        "market_date": "2026-09-16"
     },
     "environment": {
         "regime": "REFLATION",
@@ -11,8 +11,8 @@
     },
     "macro": {
         "parameters": {
-            "vix": 17.2,
-            "move": 83.7087,
+            "vix": 17.71,
+            "move": 80.7276,
             "hyoas": 2.74,
             "10y": 4.48,
             "2y": 4.17,
@@ -42,8 +42,8 @@
         "assets": {
             "qqq": {
                 "trend": "UPTREND",
-                "momentum": "STRONG",
-                "score": 75
+                "momentum": "WEAK",
+                "score": 65
             },
             "gld": {
                 "trend": "WEAK",
@@ -58,8 +58,8 @@
         },
         "judgement": {
             "equity": {
-                "signal": "BUY",
-                "action": "MAINTAIN"
+                "signal": "HOLD",
+                "action": "HOLD"
             },
             "gold": {
                 "signal": "HOLD",
@@ -82,15 +82,15 @@
     },
     "portfolio": {
         "risk": {
-            "bil": 40.56136670159404,
-            "qqq": 26.485173490127757,
-            "shny": 48.22391598915989,
-            "tmf": 56.515516114982574,
-            "tqqq": 27.191425909794813,
-            "uco": 34.150091947348045
+            "bil": 36.53253334247965,
+            "qqq": 25.436830655957166,
+            "shny": 45.95830942818895,
+            "tmf": 54.484189735131,
+            "tqqq": 26.75315846720214,
+            "uco": 30.51558914228342
         },
         "leverage": {
-            "score": 61.22576,
+            "score": 61.371682,
             "status": "WATCH",
             "candidate": "TQQQ",
             "reason": "Risk capacity allows selective leverage but confirmation is required."
@@ -100,7 +100,7 @@
             "risk_level": "MIXED",
             "exposure": "NEUTRAL",
             "leverage": "WATCH",
-            "selected_assets": "QQQ,UUP",
+            "selected_assets": "UUP,QQQ",
             "logic": "Macro regime supports growth assets. Leverage remains controlled by asset risk audit."
         },
         "final": {
@@ -116,15 +116,15 @@
         }
     },
     "performance": {
-        "nav": 104986.49,
-        "nav_date": "2026-09-15",
-        "return": "4.99%",
-        "cagr": "45.92%",
-        "sharpe": "3.64",
+        "nav": 104109.77,
+        "nav_date": "2026-09-16",
+        "return": "4.11%",
+        "cagr": "35.83%",
+        "sharpe": "2.89",
         "drawdown": "-3.81%",
         "start": "2026-07-30",
-        "days": "47",
-        "benchmark": "3.75%"
+        "days": "48",
+        "benchmark": "3.10%"
     },
     "efficiency": {
         "risk": "MEDIUM",
@@ -133,6 +133,14 @@
         "score": "82"
     },
     "archive": [
+        {
+            "date": "2026-09-17",
+            "regime": "REFLATION",
+            "assets": "UUP,QQQ",
+            "stance": "NEUTRAL",
+            "risk": "MIXED",
+            "crisis": "NORMAL"
+        },
         {
             "date": "2026-09-16",
             "regime": "REFLATION",
