@@ -12,23 +12,23 @@
 
 **Positioning:** NEUTRAL
 
-**Rotation:** ROTATION_INCREASING
+**Rotation:** ROTATION_STABLE
 
-**Risk Pressure:** MIXED
+**Risk Pressure:** FALLING
 
 **Crisis Level:** NORMAL
 
-**Portfolio Stance:** NEUTRAL
+**Portfolio Stance:** RISK_ON
 
-**NAV:** 1.041098
+**NAV:** 1.048667
 
-**Portfolio Value:** $104,109.77
+**Portfolio Value:** $104,866.75
 
-**Cumulative Return:** 4.11%
+**Cumulative Return:** 4.87%
 
-**Daily Return:** -0.83%
+**Daily Return:** 0.73%
 
-**Drawdown:** -2.05%
+**Drawdown:** -1.33%
 
 ---
 
@@ -46,7 +46,7 @@
 
 ## 3. Market Risk
 
-- Risk Pressure: **MIXED**
+- Risk Pressure: **FALLING**
 - Crisis Level: **NORMAL**
 
 | Item | Value |
@@ -63,11 +63,11 @@
 
 ## 4. GCRE Judgment
 
-GCRE remains positioned within a **REFLATION** regime. Market positioning is **NEUTRAL**, while rotation is classified as **ROTATION_INCREASING**.
+GCRE remains positioned within a **REFLATION** regime. Market positioning is **NEUTRAL**, while rotation is classified as **ROTATION_STABLE**.
 
 Current leaders are **UUP,QQQ**, while **TLT,TMF** remain the weaker assets.
 
-Risk pressure is **MIXED** with the crisis level at **NORMAL**. The resulting portfolio stance is **NEUTRAL**.
+Risk pressure is **FALLING** with the crisis level at **NORMAL**. The resulting portfolio stance is **RISK_ON**.
 
 Flow 2 therefore applies leverage selectively: QQQ/TQQQ retains a **20%** leveraged share, USO/UCO retains a **10%** leveraged share, while TLT/TMF remains entirely in the base instrument.
 
@@ -93,14 +93,14 @@ The final portfolio is the result of the completed GCRE decision chain, with no 
 
 - Positioning: **NEUTRAL**
 - Structure: **BALANCED**
-- Trend: **STABLE**
-- Rotation: **ROTATION_INCREASING**
-- Positioning Spread: **40.00**
-- Previous Spread: **35.00**
+- Trend: **MIXED**
+- Rotation: **ROTATION_STABLE**
+- Positioning Spread: **42.50**
+- Previous Spread: **40.00**
 - Leaders: **UUP,QQQ**
 - Weak Assets: **TLT,TMF**
-- Portfolio Stance: **NEUTRAL**
-- Risk Pressure: **MIXED**
+- Portfolio Stance: **RISK_ON**
+- Risk Pressure: **FALLING**
 - Crisis Level: **NORMAL**
 
 ↓
@@ -124,10 +124,10 @@ The final portfolio is the result of the completed GCRE decision chain, with no 
 
 | Pair | Base Score | Leveraged Score | Score Diff | Profile | Leveraged Share | Pair Risk |
 | --- | ---: | ---: | ---: | --- | ---: | --- |
-| QQQ_TQQQ | 61.355772 | 61.313561 | -0.042211 | NEUTRAL | 20.00% | L1 |
-| TLT_TMF | 55.588081 | 56.341136 | +0.753055 | NEUTRAL | 0.00% | L3 |
-| USO_UCO | 63.318649 | 66.444697 | +3.126048 | NEUTRAL | 10.00% | L2 |
-| GLD_SHNY | 55.761981 | 56.490787 | +0.728806 | NEUTRAL | 10.00% | L2 |
+| QQQ_TQQQ | 58.869079 | 59.193192 | +0.324113 | NEUTRAL | 20.00% | L1 |
+| TLT_TMF | 58.520128 | 59.879925 | +1.359797 | NEUTRAL | 0.00% | L3 |
+| USO_UCO | 66.168805 | 68.598734 | +2.429929 | NEUTRAL | 10.00% | L2 |
+| GLD_SHNY | 54.882149 | 54.341616 | -0.540533 | NEUTRAL | 10.00% | L2 |
 
 ↓
 
@@ -172,9 +172,9 @@ Flow 2 does not create capital. It converts a portion of an existing base-pair a
 
 - Base Asset: QQQ
 - Leveraged Asset: TQQQ
-- Base Score: 61.355772
-- Leveraged Score: 61.313561
-- Score Diff: -0.042211
+- Base Score: 58.869079
+- Leveraged Score: 59.193192
+- Score Diff: +0.324113
 - Profile: NEUTRAL
 - Leveraged Share: 20.00%
 - Pair Risk: L1
@@ -183,9 +183,9 @@ Flow 2 does not create capital. It converts a portion of an existing base-pair a
 
 - Base Asset: TLT
 - Leveraged Asset: TMF
-- Base Score: 55.588081
-- Leveraged Score: 56.341136
-- Score Diff: +0.753055
+- Base Score: 58.520128
+- Leveraged Score: 59.879925
+- Score Diff: +1.359797
 - Profile: NEUTRAL
 - Leveraged Share: 0.00%
 - Pair Risk: L3
@@ -194,9 +194,9 @@ Flow 2 does not create capital. It converts a portion of an existing base-pair a
 
 - Base Asset: USO
 - Leveraged Asset: UCO
-- Base Score: 63.318649
-- Leveraged Score: 66.444697
-- Score Diff: +3.126048
+- Base Score: 66.168805
+- Leveraged Score: 68.598734
+- Score Diff: +2.429929
 - Profile: NEUTRAL
 - Leveraged Share: 10.00%
 - Pair Risk: L2
@@ -205,9 +205,9 @@ Flow 2 does not create capital. It converts a portion of an existing base-pair a
 
 - Base Asset: GLD
 - Leveraged Asset: SHNY
-- Base Score: 55.761981
-- Leveraged Score: 56.490787
-- Score Diff: +0.728806
+- Base Score: 54.882149
+- Leveraged Score: 54.341616
+- Score Diff: -0.540533
 - Profile: NEUTRAL
 - Leveraged Share: 10.00%
 - Pair Risk: L2
@@ -218,15 +218,15 @@ Flow 2 does not create capital. It converts a portion of an existing base-pair a
 
 | Asset | Base Asset | Risk Index | Risk Level | Trend | Persistence | Action | Strength | Confidence | Multiplier |
 | --- | --- | ---: | --- | --- | --- | --- | --- | ---: | ---: |
-| UCO | USO | 30.5156 | L2 | FALLING | PERSISTENT | HOLD_REDUCED_EXPOSURE | LOW | 47.2 | 0.85 |
-| BIL | BIL | 36.5444 | L2 | FALLING | PERSISTENT | NORMAL_HOLD | LOW | 49.9 | 0.85 |
-| GLD | GLD | 44.0891 | L2 | N/A | N/A | N/A | N/A | N/A | 0.85 |
-| QQQ | QQQ | 25.4606 | L1 | RISING | PERSISTENT | MONITOR | LOW | 44.5 | 1.00 |
-| SHNY | GLD | 45.9702 | L2 | RISING | PERSISTENT | REDUCE_RISK | MODERATE | 48.4 | 0.85 |
-| TLT | TLT | 55.1371 | L3 | FALLING | PERSISTENT | HOLD_REDUCED_EXPOSURE | MODERATE | 45.9 | 0.70 |
-| TMF | TLT | 54.4842 | L3 | FALLING | PERSISTENT | HOLD_REDUCED_EXPOSURE | MODERATE | 46.2 | 0.70 |
-| TQQQ | QQQ | 26.7770 | L1 | RISING | PERSISTENT | MONITOR | LOW | 44.1 | 1.00 |
-| USO | USO | 41.7294 | L2 | FALLING | PERSISTENT | HOLD_REDUCED_EXPOSURE | LOW | 47.8 | 0.85 |
+| UCO | USO | 28.5570 | L2 | FALLING | PERSISTENT | HOLD_REDUCED_EXPOSURE | LOW | 46.5 | 0.85 |
+| BIL | BIL | 39.1478 | L2 | FALLING | PERSISTENT | NORMAL_HOLD | LOW | 47.9 | 0.85 |
+| GLD | GLD | 36.7644 | L2 | N/A | N/A | N/A | N/A | N/A | 0.85 |
+| QQQ | QQQ | 23.4615 | L1 | FALLING | PERSISTENT | NORMAL_HOLD | LOW | 47.5 | 1.00 |
+| SHNY | GLD | 39.0612 | L2 | FALLING | PERSISTENT | HOLD_REDUCED_EXPOSURE | LOW | 48.6 | 0.85 |
+| TLT | TLT | 48.0991 | L3 | FALLING | PERSISTENT | HOLD_REDUCED_EXPOSURE | MODERATE | 43.3 | 0.70 |
+| TMF | TLT | 46.2114 | L2 | FALLING | NEW | HOLD_REDUCED_EXPOSURE | LOW | 44.1 | 0.85 |
+| TQQQ | QQQ | 23.0839 | L1 | FALLING | PERSISTENT | NORMAL_HOLD | LOW | 48.9 | 1.00 |
+| USO | USO | 42.2811 | L2 | RISING | PERSISTENT | REDUCE_RISK | MODERATE | 47.2 | 0.85 |
 
 ---
 
@@ -234,18 +234,18 @@ Flow 2 does not create capital. It converts a portion of an existing base-pair a
 
 | Metric | Value |
 | --- | ---: |
-| NAV | 1.041098 |
-| Portfolio Value | $104,109.77 |
-| Daily Return | -0.83% |
-| Cumulative Return | 4.11% |
+| NAV | 1.048667 |
+| Portfolio Value | $104,866.75 |
+| Daily Return | 0.73% |
+| Cumulative Return | 4.87% |
 | Peak NAV | 1.062835 |
-| Drawdown | -2.05% |
+| Drawdown | -1.33% |
 
 ---
 
 ## 9. Historical NAV
 
-Historical NAV observations: **24**
+Historical NAV observations: **25**
 
 | Date | NAV | Drawdown |
 | --- | ---: | ---: |
@@ -273,8 +273,9 @@ Historical NAV observations: **24**
 | 2026-09-14 | 1.043550 | -1.81% |
 | 2026-09-15 | 1.049784 | -1.23% |
 | 2026-09-16 | 1.041098 | -2.05% |
+| 2026-09-17 | 1.048667 | -1.33% |
 
-**Current NAV:** 1.041098
+**Current NAV:** 1.048667
 
 ---
 

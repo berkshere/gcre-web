@@ -1,6 +1,6 @@
 {
     "meta": {
-        "market_date": "2026-09-16"
+        "market_date": "2026-09-17"
     },
     "environment": {
         "regime": "REFLATION",
@@ -41,9 +41,9 @@
     "timing": {
         "assets": {
             "qqq": {
-                "trend": "UPTREND",
+                "trend": "STRONG_UPTREND",
                 "momentum": "WEAK",
-                "score": 65
+                "score": 70
             },
             "gld": {
                 "trend": "WEAK",
@@ -82,23 +82,23 @@
     },
     "portfolio": {
         "risk": {
-            "bil": 36.54443810438441,
-            "qqq": 25.460640179766685,
-            "shny": 45.970214190093714,
-            "tmf": 54.484189735131,
-            "tqqq": 26.776967991011666,
-            "uco": 30.51558914228342
+            "bil": 39.14776328554072,
+            "qqq": 23.461483283433132,
+            "shny": 39.0612005156354,
+            "tmf": 46.2114119974337,
+            "tqqq": 23.08387985932896,
+            "uco": 28.557002067293986
         },
         "leverage": {
-            "score": 61.355772,
+            "score": 58.869079,
             "status": "WATCH",
             "candidate": "TQQQ",
             "reason": "Risk capacity allows selective leverage but confirmation is required."
         },
         "decision": {
             "current_regime": "REFLATION",
-            "risk_level": "MIXED",
-            "exposure": "NEUTRAL",
+            "risk_level": "FALLING",
+            "exposure": "RISK_ON",
             "leverage": "WATCH",
             "selected_assets": "UUP,QQQ",
             "logic": "Macro regime supports growth assets. Leverage remains controlled by asset risk audit."
@@ -116,15 +116,15 @@
         }
     },
     "performance": {
-        "nav": 104109.77,
-        "nav_date": "2026-09-16",
-        "return": "4.11%",
-        "cagr": "35.83%",
-        "sharpe": "2.89",
+        "nav": 104866.75,
+        "nav_date": "2026-09-17",
+        "return": "4.87%",
+        "cagr": "42.47%",
+        "sharpe": "3.31",
         "drawdown": "-3.81%",
         "start": "2026-07-30",
-        "days": "48",
-        "benchmark": "3.10%"
+        "days": "49",
+        "benchmark": "4.88%"
     },
     "efficiency": {
         "risk": "MEDIUM",
@@ -137,8 +137,8 @@
             "date": "2026-09-18",
             "regime": "REFLATION",
             "assets": "UUP,QQQ",
-            "stance": "NEUTRAL",
-            "risk": "MIXED",
+            "stance": "RISK_ON",
+            "risk": "FALLING",
             "crisis": "NORMAL"
         },
         {
