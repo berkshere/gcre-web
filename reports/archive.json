@@ -1,13 +1,23 @@
 {
-  "updated": "2026-09-18T17:49:00.657277",
+  "updated": "2026-09-21T20:21:43.251978",
   "reports": [
+    {
+      "date": "2026-09-21",
+      "file": "GCRE_Sell_Side_Report_20260921.md",
+      "nav_data_date": "2026-09-18",
+      "macro_data_date": "2026-09-21",
+      "NAV": 1.049961929701086,
+      "cumulative_return": 0.049961929701086,
+      "VIX": 14.76,
+      "economic_cycle": "REFLATION"
+    },
     {
       "date": "2026-09-18",
       "file": "GCRE_Sell_Side_Report_20260918.md",
-      "nav_data_date": "2026-09-17",
+      "nav_data_date": "2026-09-18",
       "macro_data_date": "2026-09-18",
-      "NAV": 1.0486674529400717,
-      "cumulative_return": 0.0486674529400716,
+      "NAV": 1.049961929701086,
+      "cumulative_return": 0.049961929701086,
       "VIX": 15.44,
       "economic_cycle": "REFLATION"
     },
