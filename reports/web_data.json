@@ -1,41 +1,41 @@
 {
     "meta": {
-        "market_date": "2026-09-18"
+        "market_date": "2026-09-25"
     },
     "environment": {
-        "regime": "REFLATION",
+        "regime": "SOVEREIGN_STRESS",
         "economic_cycle": "REFLATION",
-        "fed_regime": "PAUSE_HIGH_RATE",
-        "market_condition": "NEUTRAL",
+        "fed_regime": "TIGHTENING",
+        "market_condition": "RISK_ON",
         "crisis_state": "NORMAL"
     },
     "macro": {
         "parameters": {
-            "vix": 14.76,
-            "move": 80.635,
-            "hyoas": 2.74,
-            "10y": 4.48,
-            "2y": 4.17,
+            "vix": 15.0,
+            "move": 104.58,
+            "hyoas": 2.68,
+            "10y": 5.01,
+            "2y": 4.76,
             "cpi": 334.131,
             "ip": 103.0682,
             "liquidity": "SUPPORTIVE"
         },
         "judgement": {
-            "decision": "REFLATION",
-            "growth": "STABLE",
-            "inflation": "MODERATING",
-            "liquidity": "SUPPORTIVE",
-            "policy": "RESTRICTIVE PAUSE",
-            "risk": "CONTROLLED",
-            "summary": "Growth remains stable while inflation moderates. Liquidity conditions support risk assets."
+            "decision": "SOVEREIGN_STRESS",
+            "growth": "--",
+            "inflation": "--",
+            "liquidity": "--",
+            "policy": "--",
+            "risk": "--",
+            "summary": "--"
         },
         "asset_class": {
-            "equity": "OVERWEIGHT",
-            "gold": "NEUTRAL",
-            "commodity": "SELECTIVE",
-            "duration": "UNDERWEIGHT",
-            "short_duration": "CORE",
-            "cash": "LOW"
+            "equity": "--",
+            "gold": "--",
+            "commodity": "--",
+            "duration": "--",
+            "short_duration": "--",
+            "cash": "--"
         }
     },
     "timing": {
@@ -43,17 +43,17 @@
             "qqq": {
                 "trend": "STRONG_UPTREND",
                 "momentum": "STRONG",
-                "score": 80
+                "score": 90
             },
             "gld": {
                 "trend": "WEAK",
-                "momentum": "WEAK",
-                "score": 55
+                "momentum": "--",
+                "score": 45
             },
             "uso": {
-                "trend": "STRONG_UPTREND",
-                "momentum": "--",
-                "score": 60
+                "trend": "UPTREND",
+                "momentum": "STRONG",
+                "score": 75
             }
         },
         "judgement": {
@@ -66,65 +66,61 @@
                 "action": "NEUTRAL"
             },
             "commodity": {
-                "signal": "HOLD",
-                "action": "HOLD"
+                "signal": "WATCH",
+                "action": "SELECTIVE"
             },
             "summary": "Equity leadership remains dominant while commodities enter selective recovery."
         },
         "base_portfolio": {
-            "bil": "15%",
-            "cash": "25%",
+            "bil": "30%",
+            "cash": "40%",
             "gld": "20%",
-            "qqq": "15%",
-            "tlt": "5%",
-            "uso": "20%"
+            "qqq": "0%",
+            "tlt": "10%",
+            "uso": "0%"
         }
     },
     "portfolio": {
         "risk": {
-            "bil": 37.99718555900621,
-            "qqq": 21.276537698412696,
-            "shny": 36.51785714285714,
-            "tmf": 45.09945436507937,
-            "tqqq": 18.596478174603174,
-            "uco": 27.578373015873012
+            "bil": 29.366983023485915,
+            "qqq": 26.14653437241949,
+            "shny": 33.93952450166113,
+            "tmf": 68.21494901255076,
+            "tqqq": 28.57773505596844,
+            "uco": 20.32717907899594
         },
         "leverage": {
-            "score": 58.573902,
+            "score": 69.704344,
             "status": "WATCH",
             "candidate": "TQQQ",
             "reason": "Risk capacity allows selective leverage but confirmation is required."
         },
         "decision": {
-            "current_regime": "REFLATION",
-            "risk_level": "MIXED",
-            "exposure": "NEUTRAL",
+            "current_regime": "SOVEREIGN_STRESS",
+            "risk_level": "RISING",
+            "exposure": "CAUTIOUS",
             "leverage": "WATCH",
-            "selected_assets": "QQQ,TQQQ",
+            "selected_assets": "QQQ,SPY",
             "logic": "Macro regime supports growth assets. Leverage remains controlled by asset risk audit."
         },
         "final": {
-            "cash": "25%",
+            "cash": "40%",
+            "bil": "30%",
             "gld": "18%",
             "shny": "2%",
-            "uso": "15%",
-            "uco": "5%",
-            "qqq": "12%",
-            "tqqq": "3%",
-            "bil": "15%",
-            "tlt": "5%"
+            "tlt": "10%"
         }
     },
     "performance": {
-        "nav": 104996.19,
-        "nav_date": "2026-09-18",
-        "return": "5.00%",
-        "cagr": "42.75%",
-        "sharpe": "3.33",
+        "nav": 104220.81,
+        "nav_date": "2026-09-25",
+        "return": "4.22%",
+        "cagr": "30.31%",
+        "sharpe": "2.65",
         "drawdown": "-3.81%",
         "start": "2026-07-30",
-        "days": "50",
-        "benchmark": "5.54%"
+        "days": "57",
+        "benchmark": "9.01%"
     },
     "efficiency": {
         "risk": "MEDIUM",
@@ -133,6 +129,38 @@
         "score": "82"
     },
     "archive": [
+        {
+            "date": "2026-09-26",
+            "regime": "SOVEREIGN_STRESS",
+            "assets": "QQQ,SPY",
+            "stance": "CAUTIOUS",
+            "risk": "RISING",
+            "crisis": "WARNING"
+        },
+        {
+            "date": "2026-09-25",
+            "regime": "SOVEREIGN_STRESS",
+            "assets": "QQQ,TQQQ",
+            "stance": "CAUTIOUS",
+            "risk": "RISING",
+            "crisis": "WARNING"
+        },
+        {
+            "date": "2026-09-23",
+            "regime": "SOVEREIGN_STRESS",
+            "assets": "QQQ,SPY",
+            "stance": "CAUTIOUS",
+            "risk": "RISING",
+            "crisis": "NORMAL"
+        },
+        {
+            "date": "2026-09-22",
+            "regime": "SOVEREIGN_STRESS",
+            "assets": "QQQ,SPY",
+            "stance": "NEUTRAL",
+            "risk": "MIXED",
+            "crisis": "NORMAL"
+        },
         {
             "date": "2026-09-21",
             "regime": "REFLATION",
