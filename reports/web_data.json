@@ -1,6 +1,6 @@
 {
     "meta": {
-        "market_date": "2026-09-25"
+        "market_date": "2026-09-29"
     },
     "environment": {
         "regime": "SOVEREIGN_STRESS",
@@ -11,8 +11,8 @@
     },
     "macro": {
         "parameters": {
-            "vix": 15.0,
-            "move": 104.58,
+            "vix": 16.04,
+            "move": 106.603,
             "hyoas": 2.68,
             "10y": 5.01,
             "2y": 4.76,
@@ -52,8 +52,8 @@
             },
             "uso": {
                 "trend": "UPTREND",
-                "momentum": "STRONG",
-                "score": 75
+                "momentum": "WEAK",
+                "score": 65
             }
         },
         "judgement": {
@@ -66,61 +66,65 @@
                 "action": "NEUTRAL"
             },
             "commodity": {
-                "signal": "WATCH",
-                "action": "SELECTIVE"
+                "signal": "HOLD",
+                "action": "HOLD"
             },
             "summary": "Equity leadership remains dominant while commodities enter selective recovery."
         },
         "base_portfolio": {
-            "bil": "30%",
-            "cash": "40%",
-            "gld": "20%",
-            "qqq": "0%",
-            "tlt": "10%",
-            "uso": "0%"
+            "bil": "27%",
+            "cash": "30%",
+            "gld": "27%",
+            "qqq": "5%",
+            "tlt": "5%",
+            "uso": "5%"
         }
     },
     "portfolio": {
         "risk": {
-            "bil": 29.366983023485915,
-            "qqq": 26.14653437241949,
-            "shny": 33.93952450166113,
-            "tmf": 68.21494901255076,
-            "tqqq": 28.57773505596844,
-            "uco": 20.32717907899594
+            "bil": 33.49342261904762,
+            "qqq": 30.02026785714286,
+            "shny": 45.207811644772846,
+            "tmf": 69.30953236179529,
+            "tqqq": 32.81173611111112,
+            "uco": 18.902709359605915
         },
         "leverage": {
-            "score": 69.704344,
+            "score": 72.032284,
             "status": "WATCH",
             "candidate": "TQQQ",
             "reason": "Risk capacity allows selective leverage but confirmation is required."
         },
         "decision": {
             "current_regime": "SOVEREIGN_STRESS",
-            "risk_level": "RISING",
-            "exposure": "CAUTIOUS",
+            "risk_level": "MIXED",
+            "exposure": "NEUTRAL",
             "leverage": "WATCH",
-            "selected_assets": "QQQ,SPY",
+            "selected_assets": "QQQ,UCO",
             "logic": "Macro regime supports growth assets. Leverage remains controlled by asset risk audit."
         },
         "final": {
-            "cash": "40%",
-            "bil": "30%",
-            "gld": "18%",
-            "shny": "2%",
-            "tlt": "10%"
+            "cash": "30%",
+            "gld": "24%",
+            "shny": "3%",
+            "bil": "27%",
+            "qqq": "5%",
+            "tqqq": "1%",
+            "uso": "5%",
+            "uco": "1%",
+            "tlt": "5%"
         }
     },
     "performance": {
-        "nav": 104220.81,
-        "nav_date": "2026-09-25",
-        "return": "4.22%",
-        "cagr": "30.31%",
-        "sharpe": "2.65",
+        "nav": 103477.1,
+        "nav_date": "2026-09-29",
+        "return": "3.48%",
+        "cagr": "22.69%",
+        "sharpe": "2.13",
         "drawdown": "-3.81%",
         "start": "2026-07-30",
-        "days": "57",
-        "benchmark": "9.01%"
+        "days": "61",
+        "benchmark": "7.96%"
     },
     "efficiency": {
         "risk": "MEDIUM",
@@ -129,6 +133,14 @@
         "score": "82"
     },
     "archive": [
+        {
+            "date": "2026-09-30",
+            "regime": "SOVEREIGN_STRESS",
+            "assets": "QQQ,UCO",
+            "stance": "NEUTRAL",
+            "risk": "MIXED",
+            "crisis": "NORMAL"
+        },
         {
             "date": "2026-09-26",
             "regime": "SOVEREIGN_STRESS",
