@@ -1,6 +1,6 @@
 {
     "meta": {
-        "market_date": "2026-10-02"
+        "market_date": "2026-10-05"
     },
     "environment": {
         "regime": "SOVEREIGN_STRESS",
@@ -43,17 +43,17 @@
             "qqq": {
                 "trend": "STRONG_UPTREND",
                 "momentum": "--",
-                "score": 70
+                "score": 60
             },
             "gld": {
                 "trend": "WEAK",
                 "momentum": "--",
-                "score": 45
+                "score": 30
             },
             "uso": {
                 "trend": "UPTREND",
-                "momentum": "WEAK",
-                "score": 65
+                "momentum": "--",
+                "score": 55
             }
         },
         "judgement": {
@@ -82,23 +82,23 @@
     },
     "portfolio": {
         "risk": {
-            "bil": 32.508404672730514,
-            "qqq": 26.81494393169253,
-            "shny": 40.9029417204735,
-            "tmf": 67.67180774145817,
-            "tqqq": 29.412904628143394,
-            "uco": 20.103115751950497
+            "bil": 30.39617418196329,
+            "qqq": 23.04747772013834,
+            "shny": 35.689748863028356,
+            "tmf": 66.19119515783842,
+            "tqqq": 24.6881165757737,
+            "uco": 13.736116684501516
         },
         "leverage": {
-            "score": 68.404681,
+            "score": 71.691058,
             "status": "WATCH",
             "candidate": "TQQQ",
             "reason": "Risk capacity allows selective leverage but confirmation is required."
         },
         "decision": {
             "current_regime": "SOVEREIGN_STRESS",
-            "risk_level": "MIXED",
-            "exposure": "NEUTRAL",
+            "risk_level": "RISING",
+            "exposure": "CAUTIOUS",
             "leverage": "WATCH",
             "selected_assets": "UCO,SPY",
             "logic": "Macro regime supports growth assets. Leverage remains controlled by asset risk audit."
@@ -116,15 +116,15 @@
         }
     },
     "performance": {
-        "nav": 103373.06,
-        "nav_date": "2026-10-02",
-        "return": "3.37%",
-        "cagr": "20.83%",
-        "sharpe": "2.04",
+        "nav": 103274.47,
+        "nav_date": "2026-10-05",
+        "return": "3.27%",
+        "cagr": "19.19%",
+        "sharpe": "1.95",
         "drawdown": "-3.81%",
         "start": "2026-07-30",
-        "days": "64",
-        "benchmark": "9.66%"
+        "days": "67",
+        "benchmark": "10.27%"
     },
     "efficiency": {
         "risk": "MEDIUM",
@@ -137,8 +137,8 @@
             "date": "2026-10-05",
             "regime": "SOVEREIGN_STRESS",
             "assets": "UCO,SPY",
-            "stance": "NEUTRAL",
-            "risk": "MIXED",
+            "stance": "CAUTIOUS",
+            "risk": "RISING",
             "crisis": "NORMAL"
         },
         {

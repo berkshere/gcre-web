@@ -1,6 +1,16 @@
 {
-  "updated": "2026-10-05T21:23:01.070373",
+  "updated": "2026-10-05T23:29:42.617244",
   "reports": [
+    {
+      "date": "2026-10-05",
+      "file": "GCRE_Sell_Side_Report_20261005.md",
+      "nav_data_date": "2026-10-05",
+      "macro_data_date": "2026-10-05",
+      "NAV": 1.0327446910539737,
+      "cumulative_return": 0.0327446910539737,
+      "VIX": 16.12,
+      "economic_cycle": "REFLATION"
+    },
     {
       "date": "2026-09-30",
       "file": "GCRE_Sell_Side_Report_20260930.md",
