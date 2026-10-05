@@ -1,18 +1,18 @@
 {
     "meta": {
-        "market_date": "2026-09-29"
+        "market_date": "2026-10-02"
     },
     "environment": {
         "regime": "SOVEREIGN_STRESS",
         "economic_cycle": "REFLATION",
         "fed_regime": "TIGHTENING",
-        "market_condition": "RISK_ON",
+        "market_condition": "TRENDING",
         "crisis_state": "NORMAL"
     },
     "macro": {
         "parameters": {
-            "vix": 16.04,
-            "move": 106.603,
+            "vix": 16.12,
+            "move": 113.515,
             "hyoas": 2.68,
             "10y": 5.01,
             "2y": 4.76,
@@ -42,8 +42,8 @@
         "assets": {
             "qqq": {
                 "trend": "STRONG_UPTREND",
-                "momentum": "STRONG",
-                "score": 90
+                "momentum": "--",
+                "score": 70
             },
             "gld": {
                 "trend": "WEAK",
@@ -58,8 +58,8 @@
         },
         "judgement": {
             "equity": {
-                "signal": "BUY",
-                "action": "MAINTAIN"
+                "signal": "HOLD",
+                "action": "HOLD"
             },
             "gold": {
                 "signal": "HOLD",
@@ -82,15 +82,15 @@
     },
     "portfolio": {
         "risk": {
-            "bil": 33.49342261904762,
-            "qqq": 30.02026785714286,
-            "shny": 45.207811644772846,
-            "tmf": 69.30953236179529,
-            "tqqq": 32.81173611111112,
-            "uco": 18.902709359605915
+            "bil": 32.508404672730514,
+            "qqq": 26.81494393169253,
+            "shny": 40.9029417204735,
+            "tmf": 67.67180774145817,
+            "tqqq": 29.412904628143394,
+            "uco": 20.103115751950497
         },
         "leverage": {
-            "score": 72.032284,
+            "score": 68.404681,
             "status": "WATCH",
             "candidate": "TQQQ",
             "reason": "Risk capacity allows selective leverage but confirmation is required."
@@ -100,7 +100,7 @@
             "risk_level": "MIXED",
             "exposure": "NEUTRAL",
             "leverage": "WATCH",
-            "selected_assets": "QQQ,UCO",
+            "selected_assets": "UCO,SPY",
             "logic": "Macro regime supports growth assets. Leverage remains controlled by asset risk audit."
         },
         "final": {
@@ -110,21 +110,21 @@
             "bil": "27%",
             "qqq": "5%",
             "tqqq": "1%",
-            "uso": "5%",
-            "uco": "1%",
+            "uso": "3%",
+            "uco": "2%",
             "tlt": "5%"
         }
     },
     "performance": {
-        "nav": 103477.1,
-        "nav_date": "2026-09-29",
-        "return": "3.48%",
-        "cagr": "22.69%",
-        "sharpe": "2.13",
+        "nav": 103373.06,
+        "nav_date": "2026-10-02",
+        "return": "3.37%",
+        "cagr": "20.83%",
+        "sharpe": "2.04",
         "drawdown": "-3.81%",
         "start": "2026-07-30",
-        "days": "61",
-        "benchmark": "7.96%"
+        "days": "64",
+        "benchmark": "9.66%"
     },
     "efficiency": {
         "risk": "MEDIUM",
@@ -133,6 +133,22 @@
         "score": "82"
     },
     "archive": [
+        {
+            "date": "2026-10-05",
+            "regime": "SOVEREIGN_STRESS",
+            "assets": "UCO,SPY",
+            "stance": "NEUTRAL",
+            "risk": "MIXED",
+            "crisis": "NORMAL"
+        },
+        {
+            "date": "2026-10-01",
+            "regime": "SOVEREIGN_STRESS",
+            "assets": "QQQ,UCO",
+            "stance": "CAUTIOUS",
+            "risk": "RISING",
+            "crisis": "NORMAL"
+        },
         {
             "date": "2026-09-30",
             "regime": "SOVEREIGN_STRESS",
@@ -195,22 +211,6 @@
             "assets": "UUP,QQQ",
             "stance": "NEUTRAL",
             "risk": "MIXED",
-            "crisis": "NORMAL"
-        },
-        {
-            "date": "2026-09-16",
-            "regime": "REFLATION",
-            "assets": "QQQ,UUP",
-            "stance": "NEUTRAL",
-            "risk": "MIXED",
-            "crisis": "NORMAL"
-        },
-        {
-            "date": "2026-09-11",
-            "regime": "REFLATION",
-            "assets": "UCO,GLD",
-            "stance": "CAUTIOUS",
-            "risk": "RISING",
             "crisis": "NORMAL"
         }
     ]
