@@ -699,6 +699,52 @@
                 letter-spacing: -1px;
             }
         }
+        .nav-chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  min-height: 240px;
+}
+
+#nav-chart {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.chart-message {
+  margin-top: 8px;
+  color: #9eacbd;
+  font-size: 13px;
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #9eacbd;
+  font-size: 13px;
+}
+
+.chart-legend-line {
+  display: inline-block;
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  background: #d9b56d;
+}
+
+@media (max-width: 600px) {
+  .nav-chart-wrap {
+    height: 260px;
+  }
+}
     </style>
     <link rel="stylesheet" href="assets/css/live-results.css">
 </head>
@@ -1017,22 +1063,33 @@
                 </p>
 
                 <div class="chart-placeholder">
-                    <div>
-                        <strong>
-                            Historical NAV series not included in this feed
-                        </strong>
+                    <div class="chart-legend">
+  <span class="chart-legend-item">
+    <span class="chart-legend-line" aria-hidden="true"></span>
+    <span id="chart-model-label">Base Portfolio NAV</span>
+  </span>
+</div>
 
-                        <p>
-                            The current web_data.json provides summary
-                            performance statistics but does not contain a
-                            daily NAV time series. The chart will be enabled
-                            when historical NAV data is supplied.
-                        </p>
-                    </div>
+<div class="nav-chart-wrap">
+  <canvas
+    id="nav-chart"
+    role="img"
+    aria-label="Historical daily net asset value chart">
+    Your browser does not support canvas charts.
+  </canvas>
+</div>
+
+<p
+  id="nav-chart-message"
+  class="chart-message"
+  role="status"
+  aria-live="polite">
+  Loading historical NAV data...
+</p>
                 </div>
 
                 <p class="muted small" style="margin: 14px 0 0">
-                    No synthetic chart data is generated.
+                   
                 </p>
             </div>
         </div>
@@ -1127,12 +1184,24 @@
 <script>
 "use strict";
 
+/* =========================================================
+   GCRE LIVE RESULTS
+   Existing performance data + independent daily NAV chart
+   ========================================================= */
+
 const DATA_URL = "./data/web_data.json";
+const NAV_DATA_URL = "./data/daily_nav.json";
 
 let webData = null;
+let navData = null;
 let selectedModel = "base";
 
 const $ = (id) => document.getElementById(id);
+
+
+/* =========================================================
+   1. EXISTING FORMAT AND DISPLAY HELPERS
+   ========================================================= */
 
 function displayValue(value, fallback = "Not Available") {
     if (value === null || value === undefined || value === "") {
@@ -1199,11 +1268,23 @@ function formatRatio(value) {
 }
 
 function setText(id, value, fallback = "Not Available") {
-    $(id).textContent = displayValue(value, fallback);
+    const element = $(id);
+
+    if (!element) {
+        console.warn(`GCRE: HTML element #${id} was not found.`);
+        return;
+    }
+
+    element.textContent = displayValue(value, fallback);
 }
 
 function setMetric(id, value, formatter) {
     const element = $(id);
+
+    if (!element) {
+        console.warn(`GCRE: Metric element #${id} was not found.`);
+        return;
+    }
 
     element.textContent = formatter(value);
     element.classList.remove("positive", "negative");
@@ -1219,21 +1300,38 @@ function setMetric(id, value, formatter) {
     }
 }
 
+
+/* =========================================================
+   2. EXISTING PORTFOLIO SELECTION
+   ========================================================= */
+
 function getPortfolio(model) {
     return webData?.performance?.live?.[model] ?? null;
 }
 
 function updateModelButtons() {
-    $("base-button").setAttribute(
-        "aria-pressed",
-        String(selectedModel === "base")
-    );
+    const baseButton = $("base-button");
+    const premiumButton = $("premium-button");
 
-    $("premium-button").setAttribute(
-        "aria-pressed",
-        String(selectedModel === "premium")
-    );
+    if (baseButton) {
+        baseButton.setAttribute(
+            "aria-pressed",
+            String(selectedModel === "base")
+        );
+    }
+
+    if (premiumButton) {
+        premiumButton.setAttribute(
+            "aria-pressed",
+            String(selectedModel === "premium")
+        );
+    }
 }
+
+
+/* =========================================================
+   3. EXISTING PERFORMANCE RENDERING
+   ========================================================= */
 
 function renderPortfolio() {
     const portfolio = getPortfolio(selectedModel);
@@ -1241,22 +1339,41 @@ function renderPortfolio() {
     updateModelButtons();
 
     if (!portfolio) {
-        $("results").hidden = true;
-        $("load-error").hidden = false;
+        const results = $("results");
+        const loadError = $("load-error");
+        const errorMessage = $("error-message");
 
-        $("error-message").textContent =
-            `The performance.live.${selectedModel} object is missing from web_data.json.`;
+        if (results) {
+            results.hidden = true;
+        }
 
+        if (loadError) {
+            loadError.hidden = false;
+        }
+
+        if (errorMessage) {
+            errorMessage.textContent =
+                `The performance.live.${selectedModel} object is missing from web_data.json.`;
+        }
+
+        drawNavChartSafely();
         return;
     }
 
-    $("load-error").hidden = true;
-    $("results").hidden = false;
+    if ($("load-error")) {
+        $("load-error").hidden = true;
+    }
 
-    $("selected-model").textContent =
+    if ($("results")) {
+        $("results").hidden = false;
+    }
+
+    setText(
+        "selected-model",
         selectedModel === "base"
             ? "Base Portfolio"
-            : "Premium Portfolio";
+            : "Premium Portfolio"
+    );
 
     setText(
         "simulation-period",
@@ -1266,28 +1383,35 @@ function renderPortfolio() {
     setText("as-of", formatDate(portfolio.as_of));
 
     setMetric("current-nav", portfolio.current_nav, formatMoney);
+
     setMetric(
         "cumulative-return",
         portfolio.cumulative_return,
         formatPercent
     );
+
     setMetric(
         "current-drawdown",
         portfolio.current_drawdown,
         formatPercent
     );
+
     setMetric(
         "maximum-drawdown",
         portfolio.maximum_drawdown,
         formatPercent
     );
+
     setMetric(
         "initial-capital",
         portfolio.initial_capital,
         formatMoney
     );
+
     setMetric("cagr", portfolio.cagr, formatPercent);
+
     setMetric("sharpe", portfolio.sharpe, formatRatio);
+
     setMetric(
         "volatility",
         portfolio.annualized_volatility,
@@ -1297,37 +1421,53 @@ function renderPortfolio() {
     const statisticsAvailable =
         portfolio.statistics_available === true;
 
-    $("statistics-badge").textContent = statisticsAvailable
-        ? "STATISTICS AVAILABLE"
-        : "LIMITED HISTORY";
+    const statisticsBadge = $("statistics-badge");
 
-    $("statistics-badge").className = statisticsAvailable
-        ? "badge badge-good"
-        : "badge badge-warning";
+    if (statisticsBadge) {
+        statisticsBadge.textContent = statisticsAvailable
+            ? "STATISTICS AVAILABLE"
+            : "LIMITED HISTORY";
 
-    $("qualification").replaceChildren();
+        statisticsBadge.className = statisticsAvailable
+            ? "badge badge-good"
+            : "badge badge-warning";
+    }
 
-    const qualificationTitle = document.createElement("strong");
-    qualificationTitle.textContent = "Performance qualification: ";
+    const qualification = $("qualification");
 
-    const qualificationText = document.createElement("span");
+    if (qualification) {
+        qualification.replaceChildren();
 
-    qualificationText.textContent = displayValue(
-        portfolio.qualification_note,
-        statisticsAvailable
-            ? "Statistics are marked available by the source."
-            : "Some performance statistics are unavailable."
-    );
+        const qualificationTitle = document.createElement("strong");
+        qualificationTitle.textContent = "Performance qualification: ";
 
-    $("qualification").append(
-        qualificationTitle,
-        qualificationText
-    );
+        const qualificationText = document.createElement("span");
 
-    // Dates are sourced from the selected portfolio data.
+        qualificationText.textContent = displayValue(
+            portfolio.qualification_note,
+            statisticsAvailable
+                ? "Statistics are marked available by the source."
+                : "Some performance statistics are unavailable."
+        );
+
+        qualification.append(
+            qualificationTitle,
+            qualificationText
+        );
+    }
+
+    // Existing chart date labels.
     setText("chart-start", formatDate(portfolio.simulation_start));
     setText("chart-end", formatDate(portfolio.as_of));
+
+    // NEW: Update the NAV chart after selecting a portfolio.
+    drawNavChartSafely();
 }
+
+
+/* =========================================================
+   4. EXISTING MARKET ASSESSMENT RENDERING
+   ========================================================= */
 
 function renderAssessment() {
     const assessment = webData?.gcre_assessment ?? {};
@@ -1340,10 +1480,14 @@ function renderAssessment() {
     setText("confidence", assessment.confidence);
     setText("crisis-status", crisis.crisis_status);
 
-    $("assessment-badge").textContent = displayValue(
-        assessment.market_assessment,
-        "NOT AVAILABLE"
-    );
+    const assessmentBadge = $("assessment-badge");
+
+    if (assessmentBadge) {
+        assessmentBadge.textContent = displayValue(
+            assessment.market_assessment,
+            "NOT AVAILABLE"
+        );
+    }
 
     const envMap = {
         "env-growth": environment.growth,
@@ -1358,6 +1502,11 @@ function renderAssessment() {
     }
 }
 
+
+/* =========================================================
+   5. EXISTING PAGE RENDERING
+   ========================================================= */
+
 function renderPage() {
     const meta = webData?.meta ?? {};
 
@@ -1368,9 +1517,23 @@ function renderPage() {
     renderAssessment();
 }
 
+
+/* =========================================================
+   6. EXISTING SUMMARY DATA LOADER
+   NAV LOADING IS SEPARATE, SO IT CANNOT BLOCK METRICS.
+   ========================================================= */
+
 async function loadData() {
-    $("data-status").textContent = "Loading...";
-    $("load-error").hidden = true;
+    const dataStatus = $("data-status");
+    const loadError = $("load-error");
+
+    if (dataStatus) {
+        dataStatus.textContent = "Loading...";
+    }
+
+    if (loadError) {
+        loadError.hidden = true;
+    }
 
     try {
         const response = await fetch(DATA_URL, {
@@ -1403,42 +1566,471 @@ async function loadData() {
                 : "premium";
         }
 
-        $("data-status").textContent = "Loaded";
+        if (dataStatus) {
+            dataStatus.textContent = "Loaded";
+        }
 
         renderPage();
 
     } catch (error) {
-        $("data-status").textContent = "Unavailable";
-        $("results").hidden = true;
-        $("load-error").hidden = false;
+        console.error("GCRE summary data loading error:", error);
 
-        $("error-message").textContent =
-            error instanceof Error
-                ? error.message
-                : "An unexpected data-loading error occurred.";
+        if (dataStatus) {
+            dataStatus.textContent = "Unavailable";
+        }
+
+        if ($("results")) {
+            $("results").hidden = true;
+        }
+
+        if (loadError) {
+            loadError.hidden = false;
+        }
+
+        if ($("error-message")) {
+            $("error-message").textContent =
+                error instanceof Error
+                    ? error.message
+                    : "An unexpected data-loading error occurred.";
+        }
     }
 }
 
-$("base-button").addEventListener("click", () => {
-    selectedModel = "base";
 
-    if (webData) {
-        renderPortfolio();
+/* =========================================================
+   7. NEW: DAILY NAV DATA VALIDATION
+   Expected file: ./data/daily_nav.json
+   ========================================================= */
+
+function validateNavSeries(series, seriesName) {
+    if (!Array.isArray(series)) {
+        throw new Error(
+            `${seriesName} NAV data must be an array.`
+        );
     }
-});
 
-$("premium-button").addEventListener("click", () => {
-    selectedModel = "premium";
+    let previousDate = "";
 
-    if (webData) {
-        renderPortfolio();
+    return series.map((point, index) => {
+        if (
+            !point ||
+            typeof point.date !== "string" ||
+            !/^\d{4}-\d{2}-\d{2}$/.test(point.date) ||
+            point.date <= previousDate ||
+            typeof point.nav !== "number" ||
+            !Number.isFinite(point.nav) ||
+            point.nav <= 0
+        ) {
+            throw new Error(
+                `${seriesName} NAV record ${index + 1} is invalid, unsorted, or duplicated.`
+            );
+        }
+
+        previousDate = point.date;
+
+        return {
+            date: point.date,
+            nav: point.nav
+        };
+    });
+}
+
+async function loadNavData() {
+    const message = $("nav-chart-message");
+
+    if (message) {
+        message.textContent = "Loading historical NAV data...";
     }
-});
 
-$("retry-button").addEventListener("click", loadData);
+    try {
+        const response = await fetch(NAV_DATA_URL, {
+            cache: "no-store"
+        });
 
+        if (!response.ok) {
+            throw new Error(
+                `HTTP ${response.status}: unable to retrieve ${NAV_DATA_URL}`
+            );
+        }
+
+        const json = await response.json();
+
+        if (
+            !json ||
+            typeof json !== "object" ||
+            !json.series
+        ) {
+            throw new Error(
+                "The daily NAV file does not contain a series object."
+            );
+        }
+
+        const baseSeries = validateNavSeries(
+            json.series.base,
+            "Base"
+        );
+
+        const premiumSeries = validateNavSeries(
+            json.series.premium,
+            "Premium"
+        );
+
+        if (baseSeries.length === 0 || premiumSeries.length === 0) {
+            throw new Error(
+                "The daily NAV file contains an empty portfolio series."
+            );
+        }
+
+        navData = {
+            meta: json.meta ?? {},
+            series: {
+                base: baseSeries,
+                premium: premiumSeries
+            }
+        };
+
+        console.info(
+            "GCRE NAV data loaded:",
+            {
+                baseRows: baseSeries.length,
+                premiumRows: premiumSeries.length,
+                baseStart: baseSeries[0].date,
+                baseEnd: baseSeries[baseSeries.length - 1].date
+            }
+        );
+
+        drawNavChartSafely();
+
+    } catch (error) {
+        // NAV failures must not remove the existing performance metrics.
+        console.error("GCRE NAV data loading error:", error);
+
+        navData = null;
+
+        if (message) {
+            message.textContent =
+                "Historical NAV data could not be loaded. Check the browser console.";
+        }
+
+        drawNavChartSafely();
+    }
+}
+
+
+/* =========================================================
+   8. NEW: NAV CHART RENDERING
+   ========================================================= */
+
+function drawNavChartSafely() {
+    try {
+        drawNavChart();
+    } catch (error) {
+        console.error("GCRE NAV chart rendering error:", error);
+
+        const message = $("nav-chart-message");
+
+        if (message) {
+            message.textContent =
+                "NAV chart rendering failed. Check the browser console.";
+        }
+    }
+}
+
+function drawNavChart() {
+    const canvas = $("nav-chart");
+    const message = $("nav-chart-message");
+    const label = $("chart-model-label");
+
+    // The rest of the page can still operate if the canvas is missing.
+    if (!canvas) {
+        return;
+    }
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+        if (message) {
+            message.textContent =
+                "This browser does not support the NAV chart.";
+        }
+        return;
+    }
+
+    const seriesName =
+        selectedModel === "premium" ? "premium" : "base";
+
+    const portfolio = getPortfolio(seriesName);
+
+    if (label) {
+        label.textContent =
+            seriesName === "base"
+                ? "Base Portfolio NAV"
+                : "Premium Portfolio NAV";
+    }
+
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+
+    if (width <= 0 || height <= 0) {
+        return;
+    }
+
+    const pixelRatio = Math.max(
+        1,
+        window.devicePixelRatio || 1
+    );
+
+    const targetWidth = Math.round(width * pixelRatio);
+    const targetHeight = Math.round(height * pixelRatio);
+
+    if (
+        canvas.width !== targetWidth ||
+        canvas.height !== targetHeight
+    ) {
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+    }
+
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+
+    if (!navData) {
+        if (message) {
+            message.textContent =
+                "Loading historical NAV data...";
+        }
+        return;
+    }
+
+    let points = navData.series[seriesName];
+
+    // Align the NAV series to the selected portfolio's period.
+    if (portfolio?.simulation_start) {
+        points = points.filter(
+            point => point.date >= portfolio.simulation_start
+        );
+    }
+
+    if (portfolio?.as_of) {
+        points = points.filter(
+            point => point.date <= portfolio.as_of
+        );
+    }
+
+    if (!points.length) {
+        if (message) {
+            message.textContent =
+                "No NAV records are available for this reporting period.";
+        }
+        return;
+    }
+
+    if (message) {
+        message.textContent =
+            `${points.length} daily NAV records · ` +
+            `${points[0].date} to ${points[points.length - 1].date}`;
+    }
+
+    // Chart layout.
+    const left = 82;
+    const right = 18;
+    const top = 20;
+    const bottom = 42;
+
+    const plotWidth = width - left - right;
+    const plotHeight = height - top - bottom;
+
+    if (plotWidth <= 0 || plotHeight <= 0) {
+        if (message) {
+            message.textContent =
+                "The chart container is too small to display the NAV series.";
+        }
+        return;
+    }
+
+    const values = points.map(point => point.nav);
+    const minValue = Math.min(...values);
+    const maxValue = Math.max(...values);
+    const dataRange = maxValue - minValue;
+
+    const padding = dataRange > 0
+        ? dataRange * 0.12
+        : Math.max(Math.abs(maxValue) * 0.005, 1);
+
+    const yMin = minValue - padding;
+    const yMax = maxValue + padding;
+
+    function x(index) {
+        if (points.length === 1) {
+            return left + plotWidth / 2;
+        }
+
+        return left +
+            (index / (points.length - 1)) * plotWidth;
+    }
+
+    function y(value) {
+        return top +
+            ((yMax - value) / (yMax - yMin)) * plotHeight;
+    }
+
+    // Grid and Y-axis labels.
+    ctx.font = "11px Arial, sans-serif";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(158, 172, 189, 0.18)";
+    ctx.fillStyle = "#9eacbd";
+
+    const gridLines = 4;
+
+    for (let i = 0; i <= gridLines; i++) {
+        const value =
+            yMin + ((yMax - yMin) * i) / gridLines;
+
+        const py = y(value);
+
+        ctx.beginPath();
+        ctx.moveTo(left, py);
+        ctx.lineTo(width - right, py);
+        ctx.stroke();
+
+        ctx.fillText(
+            "$" + Math.round(value).toLocaleString("en-US"),
+            left - 10,
+            py
+        );
+    }
+
+    // NAV line.
+    ctx.beginPath();
+
+    points.forEach((point, index) => {
+        const px = x(index);
+        const py = y(point.nav);
+
+        if (index === 0) {
+            ctx.moveTo(px, py);
+        } else {
+            ctx.lineTo(px, py);
+        }
+    });
+
+    ctx.strokeStyle = "#d9b56d";
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+    ctx.stroke();
+
+    // Start and end markers.
+    const markerIndices = points.length === 1
+        ? [0]
+        : [0, points.length - 1];
+
+    for (const index of markerIndices) {
+        ctx.beginPath();
+        ctx.arc(
+            x(index),
+            y(points[index].nav),
+            3.5,
+            0,
+            Math.PI * 2
+        );
+        ctx.fillStyle = "#d9b56d";
+        ctx.fill();
+    }
+
+    // X-axis date labels.
+    ctx.fillStyle = "#9eacbd";
+    ctx.font = "11px Arial, sans-serif";
+    ctx.textBaseline = "top";
+
+    ctx.textAlign = "left";
+    ctx.fillText(
+        points[0].date,
+        left,
+        top + plotHeight + 12
+    );
+
+    ctx.textAlign = "right";
+    ctx.fillText(
+        points[points.length - 1].date,
+        width - right,
+        top + plotHeight + 12
+    );
+}
+
+
+/* =========================================================
+   9. NEW: REDRAW CHART WHEN CONTAINER RESIZES
+   ========================================================= */
+
+function setupNavChartResize() {
+    const canvas = $("nav-chart");
+
+    if (!canvas) {
+        return;
+    }
+
+    if (typeof ResizeObserver !== "undefined") {
+        const observer = new ResizeObserver(() => {
+            drawNavChartSafely();
+        });
+
+        observer.observe(canvas);
+    } else {
+        window.addEventListener("resize", drawNavChartSafely);
+    }
+}
+
+
+/* =========================================================
+   10. EXISTING BUTTONS + NAV INITIALIZATION
+   ========================================================= */
+
+const baseButton = $("base-button");
+const premiumButton = $("premium-button");
+const retryButton = $("retry-button");
+
+if (baseButton) {
+    baseButton.addEventListener("click", () => {
+        selectedModel = "base";
+
+        if (webData) {
+            renderPortfolio();
+        } else {
+            updateModelButtons();
+        }
+    });
+}
+
+if (premiumButton) {
+    premiumButton.addEventListener("click", () => {
+        selectedModel = "premium";
+
+        if (webData) {
+            renderPortfolio();
+        } else {
+            updateModelButtons();
+        }
+    });
+}
+
+if (retryButton) {
+    retryButton.addEventListener("click", () => {
+        loadData();
+        loadNavData();
+    });
+}
+
+// Initialize chart resizing before loading the data.
+setupNavChartResize();
+
+// Load the two feeds independently.
+// A NAV loading error must not block the summary metrics.
 loadData();
-</script>
+loadNavData();
 
+</script>
 </body>
 </html>
