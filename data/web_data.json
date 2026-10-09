@@ -1,0 +1,57 @@
+{
+    "meta": {
+        "market_date": "2026-10-06"
+    },
+    "market_environment": {
+        "growth": "Current economic-state data is not available for the report date.",
+        "inflation": "Current inflation-state data is not available for the report date.",
+        "rates": "Interest-rate conditions are incorporated into the broader portfolio assessment.",
+        "liquidity_credit": "Liquidity and credit conditions are monitored as part of the broader portfolio assessment.",
+        "market_risk": "Market-risk conditions are monitored alongside the broader market environment."
+    },
+    "gcre_assessment": {
+        "market_assessment": "DATA LIMITED",
+        "risk_level": "NOT DETERMINED",
+        "trend": "NOT DETERMINED",
+        "confidence": "LOW"
+    },
+    "risk_crisis": {
+        "crisis_status": "NONE"
+    },
+    "performance": {
+        "live": {
+            "base": {
+                "simulation_start": "2026-09-01",
+                "as_of": "2026-10-06",
+                "initial_capital": 100000.0,
+                "current_nav": 107532.07657702181,
+                "cumulative_return": 0.07532076577021818,
+                "current_drawdown": 0.0,
+                "maximum_drawdown": -0.02005680914739494,
+                "cagr": null,
+                "sharpe": null,
+                "sortino": null,
+                "calmar": null,
+                "annualized_volatility": null,
+                "statistics_available": false,
+                "qualification_note": "Live performance history is less than one year."
+            },
+            "premium": {
+                "simulation_start": "2026-09-01",
+                "as_of": "2026-10-06",
+                "initial_capital": 100000.0,
+                "current_nav": 107532.07657702181,
+                "cumulative_return": 0.07532076577021818,
+                "current_drawdown": 0.0,
+                "maximum_drawdown": -0.02005680914739494,
+                "cagr": null,
+                "sharpe": null,
+                "sortino": null,
+                "calmar": null,
+                "annualized_volatility": null,
+                "statistics_available": false,
+                "qualification_note": "Live performance history is less than one year."
+            }
+        }
+    }
+}

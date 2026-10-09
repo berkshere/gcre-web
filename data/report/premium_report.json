@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "report_metadata": {
+    "report_date": "2026-10-06",
+    "report_mode": "NORMAL",
+    "report_status": "DRAFT",
+    "product": "GCRE PREMIUM",
+    "data_as_of": "2026-10-06"
+  },
+  "executive_brief": {
+    "summary": "GCRE continues to monitor the market environment and maintain the current portfolio allocation.",
+    "significance": "No portfolio asset rotation has occurred relative to the previous valid portfolio observation.",
+    "gcre_action_summary": "Base: HOLD QQQ. Premium: HOLD QQQ.",
+    "key_risk": "Market conditions can change materially and may cause future portfolio decisions to change.",
+    "confidence": "LOW"
+  },
+  "market_environment": {
+    "summary": "The current market environment is assessed using systematic economic, inflation, rates, liquidity, credit, and market-risk information.",
+    "growth": "Current economic-state data is not available for the report date.",
+    "inflation": "Current inflation-state data is not available for the report date.",
+    "rates": "Interest-rate conditions are incorporated into the broader portfolio assessment.",
+    "liquidity_credit": "Liquidity and credit conditions are monitored as part of the broader portfolio assessment.",
+    "market_risk": "Market-risk conditions are monitored alongside the broader market environment."
+  },
+  "gcre_assessment": {
+    "market_assessment": "DATA LIMITED",
+    "risk_level": "NOT DETERMINED",
+    "trend": "NOT DETERMINED",
+    "confidence": "LOW"
+  },
+  "portfolio_decision": {
+    "base": {
+      "previous_asset": "QQQ",
+      "current_asset": "QQQ",
+      "previous_weight": 1.0,
+      "current_weight": 1.0,
+      "action": "HOLD"
+    },
+    "premium": {
+      "previous_asset": "QQQ",
+      "current_asset": "QQQ",
+      "previous_weight": 1.0,
+      "current_weight": 1.0,
+      "action": "HOLD"
+    }
+  },
+  "decision_rationale": {
+    "market_change": "No portfolio asset rotation occurred relative to the previous valid portfolio observation.",
+    "historical_context": "Both economic and inflation state fields are NOT_AVAILABLE. The combined macro state has no applicable state-specific historical research evidence, so GCRE uses its predefined fallback allocation rather than claiming a historically optimal asset for this state.",
+    "portfolio_implication": "The Base and Premium portfolios continue to hold their current allocations, including QQQ.",
+    "full_rationale": "No portfolio asset rotation occurred relative to the previous valid portfolio observation. Both economic and inflation state fields are NOT_AVAILABLE. The combined macro state has no applicable state-specific historical research evidence, so GCRE uses its predefined fallback allocation rather than claiming a historically optimal asset for this state. The Base and Premium portfolios continue to hold their current allocations, including QQQ."
+  },
+  "risk_crisis_intelligence": {
+    "crisis_status": "NONE",
+    "risk_summary": "No critical crisis signal is active as of the report date.",
+    "key_risk": "Market conditions can change materially and may cause future portfolio decisions to change.",
+    "critical_crisis_intelligence": null
+  },
+  "historical_evidence": {
+    "evidence_period": {
+      "start": "2016-09-23",
+      "end": "2026-09-18"
+    },
+    "evidence_summary": "Historical backtest results provide long-term evidence of the behavior of the GCRE portfolio processes across the approved historical period.",
+    "historical_support": "The evidence includes return, drawdown, volatility, risk-adjusted performance, worst-year performance, and trading activity for the Base and Premium portfolios alongside QQQ and TQQQ benchmarks.",
+    "historical_risk_context": "Historical results demonstrate that higher historical return potential can also involve materially higher drawdown and volatility. Historical results should therefore be evaluated on both return and risk.",
+    "evidence_quality": "HIGH"
+  },
+  "performance": {
+    "live": {
+      "base": {
+        "simulation_start": "2026-09-01",
+        "initial_capital": 100000.0,
+        "current_nav": 107532.07657702181,
+        "cumulative_return": 0.07532076577021818,
+        "current_drawdown": 0.0,
+        "maximum_drawdown": -0.02005680914739494,
+        "long_term_statistics_available": false,
+        "qualification_note": "Live performance history is currently insufficient to establish long-term annualized performance characteristics."
+      },
+      "premium": {
+        "simulation_start": "2026-09-01",
+        "initial_capital": 100000.0,
+        "current_nav": 107532.07657702181,
+        "cumulative_return": 0.07532076577021818,
+        "current_drawdown": 0.0,
+        "maximum_drawdown": -0.02005680914739494,
+        "long_term_statistics_available": false,
+        "qualification_note": "Live performance history is currently insufficient to establish long-term annualized performance characteristics."
+      }
+    },
+    "historical_backtest": {
+      "period": {
+        "start": "2016-09-23",
+        "end": "2026-09-18"
+      },
+      "base": {
+        "cagr": 36.02,
+        "maximum_drawdown": -26.16,
+        "volatility": 25.37,
+        "calmar": 1.3768,
+        "worst_year": -6.59,
+        "trades": 56
+      },
+      "premium": {
+        "cagr": 75.69,
+        "maximum_drawdown": -56.21,
+        "volatility": 44.59,
+        "calmar": 1.3466,
+        "worst_year": -35.05,
+        "trades": 36
+      },
+      "benchmarks": {
+        "QQQ": {
+          "cagr": 20.22,
+          "maximum_drawdown": -35.62,
+          "volatility": 22.53,
+          "calmar": 0.5678
+        },
+        "TQQQ": {
+          "cagr": 40.61,
+          "maximum_drawdown": -81.75,
+          "volatility": 66.68,
+          "calmar": 0.4968
+        }
+      }
+    }
+  },
+  "view_change_conditions": {
+    "summary": "The current portfolio view would be reconsidered if the market environment changes materially enough to alter the system's portfolio assessment."
+  },
+  "disclosure": {
+    "methodology_summary": "GCRE V2 uses a systematic assessment of market conditions and historical evidence to adapt portfolio allocation among a defined set of liquid ETFs.",
+    "historical_performance": "Approved historical backtest results cover 2016-09-23 through 2026-09-18 and include the Base and Premium portfolios alongside QQQ and TQQQ benchmarks.",
+    "performance_disclosure": "Historical backtest results are hypothetical and do not represent actual client performance or a guarantee of future results.",
+    "limitations": [
+      "Past performance does not guarantee future results.",
+      "Historical backtests may not reflect live implementation conditions.",
+      "Live performance history may be insufficient to establish long-term characteristics.",
+      "Market conditions can differ materially from historical periods.",
+      "Systematic decisions may underperform during environments not adequately represented in historical research."
+    ],
+    "proprietary_methodology_notice": "GCRE V2 uses proprietary systematic models and historical research to determine portfolio allocations. Specific model rules, state definitions, selection mappings, research parameters, and other implementation details are proprietary and are not disclosed."
+  }
+}

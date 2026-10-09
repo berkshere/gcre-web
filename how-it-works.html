@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>How It Works | GCRE</title>
+  <meta
+    name="description"
+    content="Learn how GCRE connects market intelligence, asset selection, critical crisis management, and transparent portfolio decisions."
+  >
+  <meta name="theme-color" content="#0b1220">
+   <link rel="stylesheet" href="assets/css/main.css">
+<style>
+    :root {
+        --bg: #07111f;
+        --bg-soft: #0b1728;
+        --panel: #0e1c30;
+        --panel-light: #17253a;
+        --border: rgba(255, 255, 255, 0.10);
+        --line: rgba(255, 255, 255, 0.10);
+        --text: #f4f7fb;
+        --muted: #9eacbd;
+        --subtle: #788ba3;
+        --accent: #d9b56d;
+        --accent-soft: rgba(217, 181, 109, 0.10);
+        --blue: #8bb8ff;
+        --warning: #f1c777;
+        --max-width: 1240px;
+        --radius: 18px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+    }
+
+    body {
+        margin: 0;
+        background:
+            radial-gradient(
+                ellipse at 80% 0%,
+                rgba(48, 91, 117, 0.15),
+                transparent 38%
+            ),
+            var(--bg);
+        color: var(--text);
+        font-family:
+            Inter,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Arial,
+            sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button {
+        font: inherit;
+    }
+
+    .container {
+        width: min(calc(100% - 48px), var(--max-width));
+        margin: 0 auto;
+    }
+
+    /* ========================================
+       SITE HEADER — MATCH INDEX.HTML
+    ======================================== */
+
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(7, 17, 31, 0.94);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+    }
+
+    .nav-container {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+        color: var(--text);
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+    }
+
+    /* Compatibility if the existing HTML still contains these elements */
+    .brand-mark {
+        display: none;
+    }
+
+    .brand-name {
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+    }
+
+    .brand-subtitle {
+        display: none;
+    }
+
+    .main-nav,
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+
+    .main-nav a,
+    .nav-links a {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    
+        .main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px 22px;
+        }
+
+        .main-nav a {
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a[aria-current="page"] {
+            color: var(--text);
+        }
+
+        .main-nav a[aria-current="page"] {
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+
+    .nav-links .nav-cta {
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        color: var(--muted);
+    }
+
+    .nav-links .nav-cta:hover {
+        color: var(--text);
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 105px 0 86px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero::after {
+        content: "";
+        position: absolute;
+        top: 60px;
+        right: -140px;
+        width: 420px;
+        height: 420px;
+        border: 1px solid rgba(217, 181, 109, 0.09);
+        border-radius: 50%;
+        box-shadow:
+            0 0 0 48px rgba(217, 181, 109, 0.025),
+            0 0 0 96px rgba(217, 181, 109, 0.018);
+        pointer-events: none;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 24px;
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 750;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+        content: "";
+        width: 23px;
+        height: 1px;
+        background: var(--accent);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        margin-top: 0;
+    }
+
+    h1 {
+        max-width: 820px;
+        margin-bottom: 25px;
+        font-size: clamp(42px, 6vw, 70px);
+        font-weight: 720;
+        line-height: 1.08;
+        letter-spacing: -0.055em;
+    }
+
+    .accent-text {
+        color: var(--accent);
+    }
+
+    .hero-description {
+        max-width: 730px;
+        margin-bottom: 34px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 13px;
+    }
+
+    .button {
+        display: inline-flex;
+        min-height: 45px;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 18px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 650;
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .button:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent);
+    }
+
+    .button-primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #07111f;
+    }
+
+    .button-primary:hover {
+        background: #e7c98d;
+        border-color: #e7c98d;
+    }
+
+    .button-secondary {
+        background: rgba(255, 255, 255, 0.025);
+    }
+
+    /* ========================================
+       GENERAL SECTIONS
+    ======================================== */
+
+    .section {
+        padding: 88px 0;
+    }
+
+    .section-muted {
+        background: rgba(11, 23, 40, 0.48);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section-heading {
+        max-width: 740px;
+        margin-bottom: 42px;
+    }
+
+    .section-kicker {
+        margin-bottom: 13px;
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 750;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        margin-bottom: 18px;
+        font-size: clamp(30px, 4vw, 44px);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.035em;
+    }
+
+    .section-description {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    /* ========================================
+       SYSTEM FLOW
+    ======================================== */
+
+    .flow-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .flow-card {
+        position: relative;
+        min-width: 0;
+        padding: 25px 21px 24px;
+        background: linear-gradient(
+            155deg,
+            rgba(23, 37, 58, 0.95),
+            rgba(14, 28, 48, 0.9)
+        );
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+    }
+
+    .flow-card:not(:last-child)::after {
+        content: "→";
+        position: absolute;
+        top: 31px;
+        right: -15px;
+        z-index: 2;
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        color: var(--accent);
+        font-size: 15px;
+    }
+
+    .flow-number {
+        display: inline-flex;
+        width: 37px;
+        height: 37px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 25px;
+        border: 1px solid rgba(217, 181, 109, 0.38);
+        border-radius: 11px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .flow-card h3 {
+        margin-bottom: 12px;
+        font-size: 17px;
+        line-height: 1.4;
+    }
+
+    .flow-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .flow-tag {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 5px 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 6px;
+        color: var(--subtle);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .flow-tag-critical {
+        border-color: rgba(241, 199, 119, 0.35);
+        background: rgba(241, 199, 119, 0.06);
+        color: var(--warning);
+    }
+
+    .flow-note {
+        display: flex;
+        gap: 13px;
+        align-items: flex-start;
+        margin-top: 25px;
+        padding: 18px 20px;
+        border: 1px solid rgba(217, 181, 109, 0.2);
+        border-radius: 12px;
+        background: rgba(217, 181, 109, 0.045);
+    }
+
+    .flow-note-mark {
+        flex-shrink: 0;
+        color: var(--accent);
+        font-size: 17px;
+        font-weight: 800;
+    }
+
+    .flow-note p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .flow-note strong {
+        color: var(--text);
+    }
+
+    /* ========================================
+       MAIN FRAMEWORK CARDS
+    ======================================== */
+
+    .framework-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .framework-card {
+        padding: 30px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: rgba(14, 28, 48, 0.76);
+    }
+
+    .framework-card-top {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 22px;
+    }
+
+    .framework-icon {
+        width: 46px;
+        height: 46px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(139, 184, 255, 0.28);
+        border-radius: 13px;
+        background: rgba(139, 184, 255, 0.07);
+        color: var(--blue);
+        font-size: 18px;
+        font-weight: 750;
+    }
+
+    .framework-icon-green {
+        border-color: rgba(217, 181, 109, 0.28);
+        background: var(--accent-soft);
+        color: var(--accent);
+    }
+
+    .framework-icon-amber {
+        border-color: rgba(241, 199, 119, 0.3);
+        background: rgba(241, 199, 119, 0.07);
+        color: var(--warning);
+    }
+
+    .framework-card h3 {
+        margin-bottom: 7px;
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .framework-subtitle {
+        margin-bottom: 0;
+        color: var(--subtle);
+        font-size: 12px;
+    }
+
+    .framework-card > p {
+        margin-bottom: 20px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+    .feature-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .feature-list li {
+        display: flex;
+        gap: 11px;
+        align-items: flex-start;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.75;
+    }
+
+    .feature-list li::before {
+        content: "✓";
+        flex-shrink: 0;
+        color: var(--accent);
+        font-weight: 800;
+    }
+
+    /* ========================================
+       CRITICAL CRISIS MANAGEMENT
+    ======================================== */
+
+    .crisis-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .crisis-panel {
+        padding: clamp(25px, 5vw, 48px);
+        border: 1px solid rgba(241, 199, 119, 0.25);
+        border-radius: 22px;
+        background:
+            radial-gradient(
+                ellipse at 100% 0%,
+                rgba(241, 199, 119, 0.08),
+                transparent 42%
+            ),
+            rgba(14, 28, 48, 0.9);
+    }
+
+    .crisis-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+        gap: 42px;
+        align-items: start;
+        margin-bottom: 35px;
+    }
+
+    .crisis-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 17px;
+        color: var(--warning);
+        font-size: 11px;
+        font-weight: 750;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .crisis-label::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--warning);
+    }
+
+    .crisis-header h2 {
+        margin-bottom: 15px;
+    }
+
+    .crisis-header p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .crisis-principle {
+        padding: 23px;
+        border: 1px solid rgba(241, 199, 119, 0.22);
+        border-radius: 14px;
+        background: rgba(241, 199, 119, 0.045);
+    }
+
+    .crisis-principle h3 {
+        margin-bottom: 10px;
+        color: var(--warning);
+        font-size: 15px;
+    }
+
+    .crisis-principle p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .crisis-steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .crisis-step {
+        padding: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        border-radius: 13px;
+        background: rgba(7, 17, 31, 0.42);
+    }
+
+    .crisis-step-number {
+        margin-bottom: 14px;
+        color: var(--warning);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+    }
+
+    .crisis-step h3 {
+        margin-bottom: 9px;
+        font-size: 15px;
+    }
+
+    .crisis-step p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .crisis-boundary {
+        margin-top: 22px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.10);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.9;
+    }
+
+    .crisis-boundary strong {
+        color: var(--text);
+    }
+
+    /* ========================================
+       DECISION TRANSPARENCY
+    ======================================== */
+
+    .decision-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 45px;
+        align-items: center;
+    }
+
+    .decision-copy p {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .decision-copy .section-kicker {
+        margin-bottom: 13px;
+    }
+
+    .decision-example {
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(14, 28, 48, 0.9);
+    }
+
+    .decision-example-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 20px 22px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .decision-example-title {
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .example-label {
+        padding: 5px 8px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        color: var(--subtle);
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .decision-row {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 15px;
+        padding: 17px 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .decision-row:last-child {
+        border-bottom: 0;
+    }
+
+    .decision-key {
+        color: var(--subtle);
+        font-size: 12px;
+    }
+
+    .decision-value {
+        color: var(--text);
+        font-size: 12px;
+        line-height: 1.75;
+    }
+
+    .decision-value.muted {
+        color: var(--muted);
+    }
+
+    /* ========================================
+       PRINCIPLES
+    ======================================== */
+
+    .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 17px;
+    }
+
+    .principle-card {
+        padding: 25px;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        background: rgba(14, 28, 48, 0.56);
+    }
+
+    .principle-card h3 {
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .principle-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.85;
+    }
+
+    /* ========================================
+       CALL TO ACTION
+    ======================================== */
+
+    .cta-section {
+        padding: 78px 0 90px;
+    }
+
+    .cta-panel {
+        padding: clamp(30px, 5vw, 55px);
+        border: 1px solid rgba(217, 181, 109, 0.24);
+        border-radius: 22px;
+        background:
+            radial-gradient(
+                ellipse at 100% 0%,
+                rgba(217, 181, 109, 0.09),
+                transparent 45%
+            ),
+            var(--bg-soft);
+        text-align: center;
+    }
+
+    .cta-panel h2 {
+        max-width: 680px;
+        margin: 0 auto 18px;
+    }
+
+    .cta-panel p {
+        max-width: 660px;
+        margin: 0 auto 27px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+
+        .site-footer {
+            margin-top: 30px;
+            padding: 38px 0 28px;
+            background: #07111f;
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .footer-brand {
+            flex-shrink: 0;
+            color: #f4f7fb;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-decoration: none;
+        }
+
+        .footer-brand span {
+            color: #d9b56d;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 12px 20px;
+        }
+
+        .footer-links a {
+            color: #9eacbd;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d9b56d;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px 24px;
+            padding: 18px 0;
+            margin-bottom: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: #9eacbd;
+            font-size: 12px;
+        }
+
+        .footer-contact a {
+            color: #d9b56d;
+            overflow-wrap: anywhere;
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-disclaimer {
+            max-width: 1000px;
+            margin: 0;
+            color: #77879b;
+            font-size: 11px;
+            line-height: 1.85;
+        }
+
+        .footer-copyright {
+            margin: 18px 0 0;
+            color: #77879b;
+            font-size: 10px;
+            letter-spacing: 0.04em;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 1050px) {
+        .main-nav,
+        .nav-links {
+            gap: 14px;
+        }
+
+        .flow-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .flow-card::after {
+            display: none !important;
+        }
+
+        .crisis-header {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .decision-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+    }
+
+    @media (max-width: 760px) {
+        .container {
+            width: min(calc(100% - 32px), var(--max-width));
+        }
+
+        .nav-container {
+            min-height: auto;
+            padding: 20px 0;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .main-nav,
+        .nav-links {
+            justify-content: flex-start;
+            gap: 12px 16px;
+        }
+
+        .main-nav a,
+        .nav-links a {
+            font-size: 11px;
+        }
+
+        .hero {
+            padding: 72px 0 62px;
+        }
+
+        .hero-description {
+            font-size: 15px;
+        }
+
+        .section {
+            padding: 62px 0;
+        }
+
+        .flow-grid,
+        .framework-grid,
+        .crisis-steps,
+        .principles-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .flow-card {
+            padding: 23px;
+        }
+
+        .flow-number {
+            margin-bottom: 17px;
+        }
+
+        .framework-card {
+            padding: 23px;
+        }
+
+        .crisis-panel {
+            padding: 22px;
+        }
+
+        .decision-row {
+            grid-template-columns: 95px minmax(0, 1fr);
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .decision-example-header {
+            padding: 16px;
+        }
+
+        .footer-inner {
+            flex-direction: column;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+
+        <a href="index.html" class="brand">
+            GCRE
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="index.html#home">HOME</a>
+            <a href="product-demo.html#technology">PRODUCT DEMO</a>
+            <a href="live-results.html#results">LIVE RESULTS</a>
+            <a class="active" href="how-it-works.html"
+               aria-current="page">HOW IT WORKS</a>
+            <a href="faq.html#faq">FAQ</a>
+            <a href="partner.html">BE A PARTNER</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+
+    </div>
+</header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">The GCRE Framework</div>
+
+        <h1>
+          Understand the market.
+          <span class="accent-text">Structure the response.</span>
+        </h1>
+
+        <p class="hero-description">
+          GCRE is a systematic portfolio intelligence framework that connects
+          market conditions, asset selection, critical crisis management, and
+          portfolio decisions in one coherent process. Its purpose is to make
+          portfolio behavior more structured, explainable, and consistent
+          with defined investment objectives.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="./live-results.html">
+            View Live Results
+          </a>
+          <a class="button button-secondary" href="#framework">
+            Explore the Framework
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section" id="framework">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">The Decision Process</div>
+
+          <h2>Four connected layers. Distinct responsibilities.</h2>
+
+          <p class="section-description">
+            Each layer has a defined role. Market intelligence describes the
+            environment. Asset selection translates that understanding into
+            portfolio choices. Critical Crisis management addresses exceptional
+            events. The final decision layer brings the outputs together.
+          </p>
+        </div>
+
+        <div class="flow-grid">
+          <article class="flow-card">
+            <div class="flow-number">01</div>
+
+            <h3>Market Intelligence</h3>
+
+            <p>
+              Assess economic growth, inflation, interest rates, liquidity,
+              credit conditions, and market risk to build a structured view
+              of the market environment.
+            </p>
+
+            <span class="flow-tag">Understand</span>
+          </article>
+
+          <article class="flow-card">
+            <div class="flow-number">02</div>
+
+            <h3>Asset Selection</h3>
+
+            <p>
+              Evaluate the prevailing market state and identify the base
+              asset that best fits the system's defined state-to-asset
+              mapping rules.
+            </p>
+
+            <span class="flow-tag">Select</span>
+          </article>
+
+          <article class="flow-card">
+            <div class="flow-number">03</div>
+
+            <h3>Critical Crisis Management</h3>
+
+            <p>
+              Apply a separate response mechanism when an event meets
+              defined Critical Crisis criteria, rather than reacting to
+              every ordinary market fluctuation.
+            </p>
+
+            <span class="flow-tag flow-tag-critical">Exceptional Events</span>
+          </article>
+
+          <article class="flow-card">
+            <div class="flow-number">04</div>
+
+            <h3>Portfolio Decisions</h3>
+
+            <p>
+              Consolidate the relevant system outputs into a portfolio
+              decision with a traceable explanation of the assessment
+              and applicable response.
+            </p>
+
+            <span class="flow-tag">Explain</span>
+          </article>
+        </div>
+
+        <div class="flow-note">
+          <div class="flow-note-mark">i</div>
+          <p>
+            <strong>Important distinction:</strong>
+            ordinary market-risk analysis informs market understanding and
+            asset selection. The Critical Crisis mechanism is a separate,
+            exceptional-event safeguard. It is not intended to act as a
+            routine market-timing or daily exposure-adjustment engine.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Intelligence and Asset Selection -->
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Market Understanding</div>
+
+          <h2>From market conditions to portfolio choices.</h2>
+
+          <p class="section-description">
+            GCRE separates the process of understanding the market from the
+            process of deciding which asset to hold. This creates a clearer
+            connection between the conditions being observed and the resulting
+            portfolio position.
+          </p>
+        </div>
+
+        <div class="framework-grid">
+          <article class="framework-card">
+            <div class="framework-card-top">
+              <div class="framework-icon">01</div>
+
+              <div>
+                <h3>Market Intelligence</h3>
+                <p class="framework-subtitle">
+                  Build a structured market assessment
+                </p>
+              </div>
+            </div>
+
+            <p>
+              Multiple dimensions of the market are considered together.
+              No single indicator is intended to represent the entire
+              investment environment.
+            </p>
+
+            <ul class="feature-list">
+              <li>
+                <span>
+                  <strong>Economic growth:</strong>
+                  assess the direction and condition of economic activity.
+                </span>
+              </li>
+
+              <li>
+                <span>
+                  <strong>Inflation:</strong>
+                  evaluate inflation conditions in their broader economic context.
+                </span>
+              </li>
+
+              <li>
+                <span>
+                  <strong>Interest rates:</strong>
+                  consider rate levels and their implications for assets.
+                </span>
+              </li>
+
+              <li>
+                <span>
+                  <strong>Liquidity and credit:</strong>
+                  monitor broader funding and credit conditions.
+                </span>
+              </li>
+
+              <li>
+                <span>
+                  <strong>Market risk:</strong>
+                  assess risk conditions as part of the overall market picture.
+                </span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="framework-card">
+            <div class="framework-card-top">
+              <div class="framework-icon framework-icon-green">02</div>
+
+              <div>
+                <h3>Asset Selection</h3>
+                <p class="framework-subtitle">
+                  Translate market states into asset decisions
+                </p>
+              </div>
+            </div>
+
+            <p>
+              GCRE uses defined state-to-asset mapping rules to connect
+              its market assessment with the base asset selected by the
+              portfolio engine.
+            </p>
+
+            <ul class="feature-list">
+              <li>
+                <span>
+                  <strong>State-aware mapping:</strong>
+                  asset choices are linked to defined market states.
+                </span>
+              </li>
+
+              <li>
+                <span>
+                  <strong>Explicit portfolio output:</strong>
+                  the system identifies the applicable base asset.
+                </span>
+              </li>
+
+              <li>
+                <span>
+                  <strong>Traceable decisions:</strong>
+                  portfolio outputs can be reviewed against their
+                  governing rules and input data.
+                </span>
+              </li>
+
+              <li>
+                <span>
+                  <strong>Systematic process:</strong>
+                  decisions follow a defined framework rather than
+                  relying solely on discretionary market commentary.
+                </span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Critical Crisis Management -->
+    <section class="section crisis-section" id="critical-crisis">
+      <div class="container">
+        <div class="crisis-panel">
+          <div class="crisis-header">
+            <div>
+              <div class="crisis-label">Exceptional Risk Safeguard</div>
+
+              <h2>
+                Critical Crisis Management is not routine risk timing.
+              </h2>
+
+              <p>
+                GCRE separates exceptional crisis response from ordinary
+                market-risk assessment. The Critical Crisis mechanism is
+                designed for extreme events with potentially substantial
+                human, economic, and systemic consequences—not for every
+                market decline, volatility spike, or change in sentiment.
+              </p>
+            </div>
+
+            <aside class="crisis-principle">
+              <h3>Designed to avoid unnecessary intervention</h3>
+
+              <p>
+                Ordinary market fluctuations remain within the broader
+                market assessment and asset-selection process. The Critical
+                Crisis mechanism is reserved for events that meet its
+                predefined criteria, helping distinguish exceptional
+                intervention from routine portfolio management.
+              </p>
+            </aside>
+          </div>
+
+          <div class="crisis-steps">
+            <article class="crisis-step">
+              <div class="crisis-step-number">STEP 01</div>
+
+              <h3>Identify an exceptional event</h3>
+
+              <p>
+                Evaluate whether an event meets the defined Critical Crisis
+                standard, considering its severity, potential duration,
+                human impact, economic loss, and possible systemic
+                or cross-market consequences.
+              </p>
+            </article>
+
+            <article class="crisis-step">
+              <div class="crisis-step-number">STEP 02</div>
+
+              <h3>Apply the defined crisis response</h3>
+
+              <p>
+                When an event is formally classified as a qualifying
+                Critical Crisis, the dedicated mechanism can activate
+                its predefined portfolio safeguard, subject to the
+                configured rules.
+              </p>
+            </article>
+
+            <article class="crisis-step">
+              <div class="crisis-step-number">STEP 03</div>
+
+              <h3>Record and explain the action</h3>
+
+              <p>
+                Keep the crisis classification, supporting rationale,
+                applicable response, and effective dates available
+                for review, subject to the information recorded
+                by the system.
+              </p>
+            </article>
+          </div>
+
+          <div class="crisis-boundary">
+            <strong>Scope boundary:</strong>
+            Critical Crisis Management is a dedicated exceptional-event
+            mechanism. It does not replace the normal market assessment,
+            predict every market decline, or automatically imply that
+            every risk indicator change should trigger a trade. Specific
+            actions depend on the active system configuration and
+            recorded crisis event.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Decisions -->
+    <section class="section section-muted" id="portfolio-decisions">
+      <div class="container">
+        <div class="decision-grid">
+          <div class="decision-copy">
+            <div class="section-kicker">Decision Transparency</div>
+
+            <h2>
+              More than an asset name. A decision that can be examined.
+            </h2>
+
+            <p>
+              A useful portfolio system should help users understand
+              not only what the portfolio holds, but also how the system
+              arrived at its assessment and which rules govern its response.
+            </p>
+
+            <p>
+              GCRE is structured around an auditable sequence: market
+              information, state assessment, asset mapping, applicable
+              crisis controls, and final portfolio output. The detail
+              available to each user depends on the product tier.
+            </p>
+
+            <a class="button button-secondary" href="./product-demo.html">
+              Explore Product Demo
+            </a>
+          </div>
+
+          <div class="decision-example">
+            <div class="decision-example-header">
+              <div class="decision-example-title">
+                Illustrative Decision Record
+              </div>
+
+              <span class="example-label">Conceptual Example</span>
+            </div>
+
+            <div class="decision-row">
+              <div class="decision-key">Market context</div>
+
+              <div class="decision-value muted">
+                Economic, inflation, rate, liquidity, credit,
+                and market-risk assessment
+              </div>
+            </div>
+
+            <div class="decision-row">
+              <div class="decision-key">State assessment</div>
+
+              <div class="decision-value muted">
+                Current state classification and the available
+                supporting evidence
+              </div>
+            </div>
+
+            <div class="decision-row">
+              <div class="decision-key">Asset decision</div>
+
+              <div class="decision-value muted">
+                Base asset selected under the applicable mapping rules
+              </div>
+            </div>
+
+            <div class="decision-row">
+              <div class="decision-key">Crisis control</div>
+
+              <div class="decision-value muted">
+                Whether a qualifying Critical Crisis event and
+                its defined response apply
+              </div>
+            </div>
+
+            <div class="decision-row">
+              <div class="decision-key">Final output</div>
+
+              <div class="decision-value muted">
+                Resulting portfolio position and relevant decision rationale
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Design Principles</div>
+
+          <h2>Built around disciplined portfolio management.</h2>
+
+          <p class="section-description">
+            The framework emphasizes clear responsibilities, consistent
+            rules, and reviewable outputs rather than presenting a
+            collection of disconnected market signals.
+          </p>
+        </div>
+
+        <div class="principles-grid">
+          <article class="principle-card">
+            <h3>Defined responsibilities</h3>
+
+            <p>
+              Market assessment, asset selection, and exceptional crisis
+              response have distinct roles instead of being treated as
+              one undifferentiated risk signal.
+            </p>
+          </article>
+
+          <article class="principle-card">
+            <h3>Controlled intervention</h3>
+
+            <p>
+              The dedicated Critical Crisis mechanism is reserved for
+              qualifying exceptional events. Ordinary market changes
+              should not automatically become crisis actions.
+            </p>
+          </article>
+
+          <article class="principle-card">
+            <h3>Transparent reasoning</h3>
+
+            <p>
+              The system is designed to make portfolio decisions easier
+              to inspect by connecting outputs with market assessments
+              and defined operating rules.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="section-kicker">See the System in Practice</div>
+
+          <h2>
+            Understand the process behind the portfolio.
+          </h2>
+
+          <p>
+            Explore GCRE's product demonstration and published results
+            to see how the framework is presented and what information
+            is currently available.
+          </p>
+
+          <div class="cta-actions">
+            <a class="button button-primary" href="./product-demo.html">
+              View Product Demo
+            </a>
+
+            <a class="button button-secondary" href="./live-results.html">
+              View Live Results
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-top">
+            <a href="index.html"
+               class="footer-brand"
+               aria-label="GCRE Home">
+                GCRE<span>.</span>
+            </a>
+
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="index.html">Home</a>
+                <a href="product-demo.html">Product Demo</a>
+                <a href="live-results.html" aria-current="page">
+                    Live Results
+                </a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="faq.html">FAQ</a>
+                <a href="partner.html">Be a Partner</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+
+        <div class="footer-contact">
+            <span>Product &amp; Research</span>
+            <span>Partnerships</span>
+            <a href="mailto:stern.wang@outlook.com">
+                stern.wang@outlook.com
+            </a>
+        </div>
+
+        <p class="footer-disclaimer">
+            GCRE provides systematic market research and portfolio analysis.
+            Historical performance and backtested results do not guarantee
+            future outcomes. Information is provided for informational and
+            research purposes and is not a guarantee of returns or avoidance
+            of losses. Services and activities are subject to applicable
+            legal and regulatory requirements.
+        </p>
+
+        <p class="footer-copyright">
+            &copy; <span id="copyright-year">2026</span> GCRE.
+            All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+  <script>
+    (function () {
+      var yearElement = document.getElementById("current-year");
+
+      if (yearElement) {
+        yearElement.textContent = String(new Date().getFullYear());
+      }
+    })();
+  </script>
+</body>
+</html>

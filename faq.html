@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ | GCRE</title>
+    <meta
+        name="description"
+        content="Learn how GCRE works, how it evaluates market conditions, how portfolio decisions are generated, and how to interpret its backtest results."
+    >
+
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg-soft: #0b1728;
+            --panel: #0e1c30;
+            --text: #f4f7fb;
+            --muted: #9eacbd;
+            --subtle: #788ba3;
+            --line: rgba(255, 255, 255, 0.10);
+            --accent: #d9b56d;
+            --accent-soft: rgba(217, 181, 109, 0.08);
+            --max-width: 1240px;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(
+                    ellipse at 80% 0%,
+                    rgba(48, 91, 117, 0.13),
+                    transparent 38%
+                ),
+                var(--bg);
+            color: var(--text);
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(calc(100% - 48px), var(--max-width));
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           HEADER
+        ======================================== */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 17, 31, 0.94);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(14px);
+        }
+
+        .nav-container {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .brand {
+            flex-shrink: 0;
+            color: var(--text);
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .main-nav a {
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px 22px;
+        }
+
+        .main-nav a {
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a[aria-current="page"] {
+            color: var(--text);
+        }
+
+        .main-nav a[aria-current="page"] {
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+
+        /* ========================================
+           HERO
+        ======================================== */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 94px 0 72px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 25px;
+            right: -160px;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(217, 181, 109, 0.08);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 48px rgba(217, 181, 109, 0.025),
+                0 0 0 96px rgba(217, 181, 109, 0.015);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 22px;
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 750;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 23px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            max-width: 780px;
+            margin-bottom: 22px;
+            font-size: clamp(42px, 6vw, 66px);
+            font-weight: 720;
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+        }
+
+        .accent-text {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            max-width: 720px;
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.85;
+        }
+
+        /* ========================================
+           MAIN LAYOUT
+        ======================================== */
+
+        .faq-section {
+            padding: 76px 0 90px;
+        }
+
+        .faq-layout {
+            display: grid;
+            grid-template-columns: 245px minmax(0, 1fr);
+            gap: 64px;
+            align-items: start;
+        }
+
+        .faq-sidebar {
+            position: sticky;
+            top: 112px;
+        }
+
+        .sidebar-title {
+            margin-bottom: 18px;
+            color: var(--subtle);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .category-nav {
+            display: grid;
+            gap: 5px;
+        }
+
+        .category-nav a {
+            display: block;
+            padding: 11px 13px;
+            border-left: 2px solid transparent;
+            border-radius: 0 7px 7px 0;
+            color: var(--muted);
+            font-size: 13px;
+            transition:
+                color 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .category-nav a:hover {
+            background: rgba(255, 255, 255, 0.025);
+            color: var(--text);
+        }
+
+        .category-nav a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .sidebar-note {
+            margin-top: 28px;
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: rgba(14, 28, 48, 0.55);
+        }
+
+        .sidebar-note strong {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 12px;
+        }
+
+        .sidebar-note p {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* ========================================
+           FAQ GROUPS
+        ======================================== */
+
+        .faq-group {
+            margin-bottom: 48px;
+            scroll-margin-top: 110px;
+        }
+
+        .faq-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .group-heading {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .group-kicker {
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .group-heading h2 {
+            margin-bottom: 8px;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+        }
+
+        .group-description {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .faq-item {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: rgba(14, 28, 48, 0.62);
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .faq-item[open] {
+            border-color: rgba(217, 181, 109, 0.28);
+            background: rgba(14, 28, 48, 0.9);
+        }
+
+        .faq-item summary {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 22px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 650;
+            line-height: 1.6;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: "+";
+            flex-shrink: 0;
+            color: var(--accent);
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .faq-item[open] summary::after {
+            content: "−";
+        }
+
+        .faq-item summary:hover {
+            color: var(--accent);
+        }
+
+        .faq-item summary:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: -4px;
+            border-radius: 10px;
+        }
+
+        .faq-answer {
+            padding: 0 22px 22px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .faq-answer p {
+            margin-bottom: 12px;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer strong {
+            color: var(--text);
+            font-weight: 650;
+        }
+
+        .faq-answer ul {
+            display: grid;
+            gap: 8px;
+            margin: 10px 0 14px;
+            padding-left: 20px;
+        }
+
+        .faq-answer li {
+            padding-left: 3px;
+        }
+
+        .inline-link {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: rgba(217, 181, 109, 0.4);
+            text-underline-offset: 3px;
+        }
+
+        .inline-link:hover {
+            text-decoration-color: var(--accent);
+        }
+
+        /* ========================================
+           CTA
+        ======================================== */
+
+        .cta-section {
+            padding: 0 0 90px;
+        }
+
+        .cta-panel {
+            padding: clamp(30px, 5vw, 52px);
+            border: 1px solid rgba(217, 181, 109, 0.22);
+            border-radius: 20px;
+            background:
+                radial-gradient(
+                    ellipse at 100% 0%,
+                    rgba(217, 181, 109, 0.08),
+                    transparent 45%
+                ),
+                var(--bg-soft);
+            text-align: center;
+        }
+
+        .cta-kicker {
+            margin-bottom: 13px;
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .cta-panel h2 {
+            max-width: 670px;
+            margin: 0 auto 16px;
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.2;
+            letter-spacing: -0.035em;
+        }
+
+        .cta-panel > p {
+            max-width: 630px;
+            margin: 0 auto 25px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 18px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            color: var(--text);
+            font-size: 12px;
+            font-weight: 700;
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            border-color: var(--accent);
+        }
+
+        .button-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #07111f;
+        }
+
+        .button-primary:hover {
+            background: #e7c98d;
+            border-color: #e7c98d;
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        .site-footer {
+            margin-top: 30px;
+            padding: 38px 0 28px;
+            background: #07111f;
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .footer-brand {
+            flex-shrink: 0;
+            color: #f4f7fb;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-decoration: none;
+        }
+
+        .footer-brand span {
+            color: #d9b56d;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 12px 20px;
+        }
+
+        .footer-links a {
+            color: #9eacbd;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d9b56d;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px 24px;
+            padding: 18px 0;
+            margin-bottom: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: #9eacbd;
+            font-size: 12px;
+        }
+
+        .footer-contact a {
+            color: #d9b56d;
+            overflow-wrap: anywhere;
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-disclaimer {
+            max-width: 1000px;
+            margin: 0;
+            color: #77879b;
+            font-size: 11px;
+            line-height: 1.85;
+        }
+
+        .footer-copyright {
+            margin: 18px 0 0;
+            color: #77879b;
+            font-size: 10px;
+            letter-spacing: 0.04em;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+
+        @media (max-width: 1050px) {
+            .main-nav {
+                gap: 14px;
+            }
+
+            .faq-layout {
+                grid-template-columns: 200px minmax(0, 1fr);
+                gap: 35px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                width: min(calc(100% - 32px), var(--max-width));
+            }
+
+            .nav-container {
+                min-height: auto;
+                padding: 20px 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .main-nav {
+                justify-content: flex-start;
+                gap: 12px 16px;
+            }
+
+            .main-nav a {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 70px 0 55px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .faq-section {
+                padding: 55px 0 65px;
+            }
+
+            .faq-layout {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .faq-sidebar {
+                position: static;
+                padding-bottom: 22px;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .category-nav {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 5px 12px;
+            }
+
+            .sidebar-note {
+                margin-top: 20px;
+            }
+
+            .faq-group {
+                margin-bottom: 38px;
+                scroll-margin-top: 20px;
+            }
+
+            .group-heading h2 {
+                font-size: 23px;
+            }
+
+            .faq-item summary {
+                padding: 17px;
+                font-size: 13px;
+            }
+
+            .faq-answer {
+                padding: 0 17px 19px;
+                font-size: 12px;
+            }
+
+            .cta-section {
+                padding-bottom: 65px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .category-nav {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+        <div class="container nav-container">
+
+            <a href="index.html" class="brand">GCRE</a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">HOME</a>
+                <a href="product-demo.html">PRODUCT DEMO</a>
+                <a href="live-results.html">LIVE RESULTS</a>
+                <a href="how-it-works.html">HOW IT WORKS</a>
+                <a href="faq.html" aria-current="page">FAQ</a>
+                <a href="partner.html">BE A PARTNER</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+            <div class="container">
+
+                <div class="eyebrow">Frequently Asked Questions</div>
+
+                <h1>
+                    Understand the system.
+                    <span class="accent-text">Understand the risk.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Learn how GCRE evaluates market conditions, translates
+                    its analysis into portfolio decisions, and approaches
+                    risk management. These answers explain the system's
+                    intended role, capabilities, and limitations.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- FAQ CONTENT -->
+
+        <section class="faq-section">
+            <div class="container">
+
+                <div class="faq-layout">
+
+                    <!-- SIDEBAR -->
+
+                    <aside class="faq-sidebar">
+
+                        <div class="sidebar-title">Browse by topic</div>
+
+                        <nav class="category-nav" aria-label="FAQ categories">
+                            <a href="#general">GCRE Basics</a>
+                            <a href="#methodology">Methodology</a>
+                            <a href="#risk">Risk Management</a>
+                            <a href="#performance">Performance & Backtests</a>
+                            <a href="#product">Product & Access</a>
+                        </nav>
+
+                        <div class="sidebar-note">
+                            <strong>Looking for the full picture?</strong>
+                            <p>
+                                Explore the system workflow and see how
+                                market analysis connects to portfolio decisions.
+                            </p>
+                            <p style="margin-top: 12px;">
+                                <a class="inline-link" href="how-it-works.html">
+                                    How It Works →
+                                </a>
+                            </p>
+                        </div>
+
+                    </aside>
+
+                    <!-- QUESTIONS -->
+
+                    <div class="faq-content">
+
+                        <!-- GENERAL -->
+
+                        <section class="faq-group" id="general">
+
+                            <div class="group-heading">
+                                <div class="group-kicker">01 / Overview</div>
+                                <h2>GCRE Basics</h2>
+                                <p class="group-description">
+                                    What GCRE is designed to do and the
+                                    investment problem it addresses.
+                                </p>
+                            </div>
+
+                            <div class="faq-list">
+
+                                <details class="faq-item" open>
+                                    <summary>What is GCRE?</summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            GCRE is a systematic portfolio
+                                            research and decision-support
+                                            framework. It evaluates market
+                                            conditions and translates its
+                                            analysis into structured asset
+                                            selection and portfolio decisions.
+                                        </p>
+                                        <p>
+                                            Its purpose is to make the
+                                            reasoning behind portfolio
+                                            positioning more explicit,
+                                            consistent, and reviewable,
+                                            rather than relying entirely on
+                                            discretionary market judgments.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        What makes GCRE different from a
+                                        conventional buy-and-hold portfolio?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            A conventional buy-and-hold
+                                            portfolio generally maintains
+                                            predetermined holdings or target
+                                            weights. GCRE is designed to
+                                            reassess market conditions and
+                                            use a systematic process to
+                                            determine which eligible asset
+                                            is more appropriate under the
+                                            current conditions.
+                                        </p>
+                                        <p>
+                                            The objective is not to trade
+                                            continuously. Portfolio changes
+                                            should follow the system's
+                                            defined decision rules, not
+                                            short-term market noise.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Is GCRE a stock-picking or price-prediction service?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            GCRE focuses on market-state
+                                            assessment, asset selection,
+                                            and portfolio positioning.
+                                            It is not presented as a system
+                                            that can reliably predict every
+                                            market move or identify every
+                                            market turning point in advance.
+                                        </p>
+                                        <p>
+                                            Its decisions are based on
+                                            defined inputs, mappings, and
+                                            rules. Those decisions can be
+                                            wrong, and investment outcomes
+                                            remain uncertain.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>Who is GCRE designed for?</summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            GCRE is being developed for
+                                            investors who want a more
+                                            systematic way to evaluate
+                                            market conditions, understand
+                                            portfolio positioning, and
+                                            review the rationale behind
+                                            investment decisions.
+                                        </p>
+                                        <p>
+                                            Suitability depends on an
+                                            investor's objectives, time
+                                            horizon, liquidity needs,
+                                            financial circumstances, and
+                                            tolerance for losses. GCRE
+                                            should not be assumed to be
+                                            suitable for every investor.
+                                        </p>
+                                    </div>
+                                </details>
+
+                            </div>
+                        </section>
+
+                        <!-- METHODOLOGY -->
+
+                        <section class="faq-group" id="methodology">
+
+                            <div class="group-heading">
+                                <div class="group-kicker">02 / Process</div>
+                                <h2>Methodology</h2>
+                                <p class="group-description">
+                                    How market intelligence is translated
+                                    into portfolio decisions.
+                                </p>
+                            </div>
+
+                            <div class="faq-list">
+
+                                <details class="faq-item">
+                                    <summary>
+                                        How does GCRE turn market data into a portfolio decision?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            GCRE follows a structured
+                                            decision process:
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <strong>Market Intelligence:</strong>
+                                                evaluate relevant economic,
+                                                inflation, interest-rate,
+                                                liquidity, credit, and market-risk
+                                                information.
+                                            </li>
+                                            <li>
+                                                <strong>Asset Selection:</strong>
+                                                map the assessed market state
+                                                to an eligible base asset using
+                                                defined rules.
+                                            </li>
+                                            <li>
+                                                <strong>Portfolio Risk Management:</strong>
+                                                apply the appropriate risk
+                                                controls and separately handle
+                                                qualifying critical-crisis events.
+                                            </li>
+                                            <li>
+                                                <strong>Portfolio Decisions:</strong>
+                                                produce a structured portfolio
+                                                output that can be reviewed
+                                                against the system's rules.
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            The goal is to make the connection
+                                            between market conditions and
+                                            portfolio positioning easier to
+                                            inspect and evaluate.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Which assets can GCRE use?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            The eligible asset universe is
+                                            defined by the applicable system
+                                            configuration and strategy.
+                                            It may include liquid ETFs
+                                            representing different market
+                                            exposures, such as equities,
+                                            gold, Treasury securities,
+                                            commodities, or cash-like assets.
+                                        </p>
+                                        <p>
+                                            The presence of an asset in the
+                                            eligible universe does not mean
+                                            that it will always be selected
+                                            or that it is appropriate for
+                                            every investor.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Does GCRE always hold multiple assets?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            Not necessarily. Depending on
+                                            the strategy and its configured
+                                            rules, a portfolio decision may
+                                            designate a single base asset
+                                            or cash rather than a diversified
+                                            multi-asset allocation.
+                                        </p>
+                                        <p>
+                                            Investors should review the
+                                            actual strategy rules and
+                                            portfolio outputs rather than
+                                            assume that the system always
+                                            maintains a particular number
+                                            of holdings.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        How often does GCRE change its portfolio?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            Changes depend on the system's
+                                            decision rules, the available
+                                            data, and whether the assessed
+                                            market state justifies a change.
+                                            A change is not required merely
+                                            because a new trading day has begun.
+                                        </p>
+                                        <p>
+                                            The system is designed to avoid
+                                            unnecessary turnover. Actual
+                                            trading frequency, execution
+                                            timing, and transaction costs
+                                            must be evaluated using the
+                                            applicable strategy and
+                                            implementation rules.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Can I understand why a portfolio decision was made?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            Transparency is a core design
+                                            objective. The intended workflow
+                                            connects the assessed market
+                                            situation with asset selection,
+                                            risk controls, and the resulting
+                                            portfolio decision.
+                                        </p>
+                                        <p>
+                                            The level of detail available
+                                            depends on the report and
+                                            product tier. The system's
+                                            displayed rationale should be
+                                            interpreted alongside the
+                                            underlying data, methodology,
+                                            and limitations.
+                                        </p>
+                                    </div>
+                                </details>
+
+                            </div>
+                        </section>
+
+                        <!-- RISK -->
+
+                        <section class="faq-group" id="risk">
+
+                            <div class="group-heading">
+                                <div class="group-kicker">03 / Protection</div>
+                                <h2>Risk Management</h2>
+                                <p class="group-description">
+                                    How ordinary market risk differs from
+                                    critical-crisis response.
+                                </p>
+                            </div>
+
+                            <div class="faq-list">
+
+                                <details class="faq-item">
+                                    <summary>
+                                        How does GCRE approach ordinary market risk?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            Ordinary market risk is addressed
+                                            through the system's market-state
+                                            assessment, asset-selection rules,
+                                            and applicable portfolio controls.
+                                            These components are intended to
+                                            inform portfolio positioning as
+                                            conditions change.
+                                        </p>
+                                        <p>
+                                            Ordinary volatility or a routine
+                                            market decline does not, by itself,
+                                            qualify as a critical crisis event.
+                                            Treating every fluctuation as an
+                                            emergency could cause unnecessary
+                                            trading.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        What is Critical Crisis Management?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            Critical Crisis Management is a
+                                            separate mechanism for exceptional
+                                            events that meet predefined
+                                            critical-crisis criteria. It is
+                                            not intended to predict all crises
+                                            or replace the ordinary market-risk
+                                            framework.
+                                        </p>
+                                        <p>
+                                            A qualifying event may trigger a
+                                            predefined response under the
+                                            system's configured rules. The
+                                            mechanism is designed to provide
+                                            a controlled response to extreme
+                                            circumstances, rather than react
+                                            to every market movement.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Does GCRE predict a crisis before it happens?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            No such guarantee is made.
+                                            Critical Crisis Management should
+                                            not be interpreted as a reliable
+                                            advance-prediction system.
+                                        </p>
+                                        <p>
+                                            Extreme events can occur suddenly,
+                                            information may be incomplete,
+                                            and the system's response may
+                                            not eliminate losses. Crisis
+                                            identification and response are
+                                            distinct from predicting an event
+                                            before it occurs.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Does a critical-crisis response eliminate investment losses?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            No. A predefined response may
+                                            change portfolio exposure according
+                                            to the configured rules, but it
+                                            cannot guarantee capital protection.
+                                            Markets can gap, liquidity can
+                                            deteriorate, and execution can
+                                            differ from assumptions.
+                                        </p>
+                                        <p>
+                                            Investors should consider the
+                                            possibility of substantial losses,
+                                            including losses that occur before
+                                            a response can be implemented.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Is GCRE's target drawdown a maximum-loss guarantee?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            No. A drawdown target is a
+                                            research and portfolio-design
+                                            objective, not a guaranteed
+                                            maximum loss.
+                                        </p>
+                                        <p>
+                                            Actual drawdowns may exceed
+                                            historical results or stated
+                                            targets. Future market conditions
+                                            may differ from the conditions
+                                            observed during development and
+                                            testing.
+                                        </p>
+                                    </div>
+                                </details>
+
+                            </div>
+                        </section>
+
+                        <!-- PERFORMANCE -->
+
+                        <section class="faq-group" id="performance">
+
+                            <div class="group-heading">
+                                <div class="group-kicker">04 / Evidence</div>
+                                <h2>Performance & Backtests</h2>
+                                <p class="group-description">
+                                    How to interpret historical simulations
+                                    and evaluate the evidence.
+                                </p>
+                            </div>
+
+                            <div class="faq-list">
+
+                                <details class="faq-item">
+                                    <summary>
+                                        What does a GCRE backtest show?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            A backtest simulates how a
+                                            strategy would have behaved
+                                            over a specified historical
+                                            period under a defined set
+                                            of assumptions and rules.
+                                        </p>
+                                        <p>
+                                            Depending on the report, relevant
+                                            measures may include compound
+                                            annual growth rate (CAGR),
+                                            maximum drawdown, and comparison
+                                            with a benchmark.
+                                        </p>
+                                        <p>
+                                            These results describe the
+                                            historical simulation. They do
+                                            not establish what the strategy
+                                            will earn in the future.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        What is CAGR?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            CAGR stands for compound annual
+                                            growth rate. It expresses the
+                                            constant annual growth rate that
+                                            would produce the same ending
+                                            value over a specified period,
+                                            assuming the starting and ending
+                                            values are known.
+                                        </p>
+                                        <p>
+                                            CAGR does not show the path taken
+                                            to reach the ending value. Two
+                                            strategies with similar CAGR can
+                                            experience very different
+                                            drawdowns and volatility.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        What is maximum drawdown?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            Maximum drawdown measures the
+                                            largest peak-to-trough decline
+                                            in portfolio value during the
+                                            period being evaluated.
+                                        </p>
+                                        <p>
+                                            For example, a maximum drawdown
+                                            of −20% means the portfolio
+                                            experienced a decline of 20%
+                                            from a previous peak to a later
+                                            trough during that measurement
+                                            period. It does not mean the
+                                            portfolio can never lose more
+                                            than 20%.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Can historical performance be repeated?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            There is no guarantee that
+                                            historical performance will
+                                            continue. Market structure,
+                                            interest rates, correlations,
+                                            liquidity, and other conditions
+                                            can change.
+                                        </p>
+                                        <p>
+                                            Backtest results may also be
+                                            affected by data availability,
+                                            model choices, execution
+                                            assumptions, transaction costs,
+                                            taxes, and other implementation
+                                            factors. These limitations
+                                            should be considered before
+                                            drawing conclusions from
+                                            historical results.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Why compare GCRE with a benchmark?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            A benchmark provides context
+                                            for evaluating a strategy.
+                                            Comparing return, drawdown,
+                                            and the period covered helps
+                                            show how a strategy behaved
+                                            relative to a reference
+                                            investment.
+                                        </p>
+                                        <p>
+                                            A meaningful comparison should
+                                            use consistent dates and
+                                            clearly stated assumptions.
+                                            Differences in leverage,
+                                            exposure, fees, and asset
+                                            availability can materially
+                                            affect the result.
+                                        </p>
+                                    </div>
+                                </details>
+
+                            </div>
+                        </section>
+
+                        <!-- PRODUCT -->
+
+                        <section class="faq-group" id="product">
+
+                            <div class="group-heading">
+                                <div class="group-kicker">05 / Access</div>
+                                <h2>Product & Access</h2>
+                                <p class="group-description">
+                                    Explore the available product information
+                                    and ways to learn more about GCRE.
+                                </p>
+                            </div>
+
+                            <div class="faq-list">
+
+                                <details class="faq-item">
+                                    <summary>
+                                        What is the difference between Free and Premium?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            The Free experience is intended
+                                            to provide an introduction to
+                                            GCRE's market assessment and
+                                            portfolio decision framework.
+                                        </p>
+                                        <p>
+                                            Premium is intended to provide
+                                            a more complete view of the
+                                            system's research, decision
+                                            rationale, and portfolio analysis.
+                                            The exact feature availability
+                                            should be confirmed against the
+                                            current product description.
+                                        </p>
+                                        <p>
+                                            See the
+                                            <a class="inline-link" href="product-demo.html">
+                                                Product Demo
+                                            </a>
+                                            for the current product presentation.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Can I review GCRE's results before making a decision?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            You can review the information
+                                            made available on the
+                                            <a class="inline-link" href="live-results.html">
+                                                Live Results
+                                            </a>
+                                            page to understand the displayed
+                                            portfolio history and results.
+                                        </p>
+                                        <p>
+                                            Review the measurement period,
+                                            benchmark, methodology, and
+                                            applicable assumptions before
+                                            interpreting any performance
+                                            figures.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        Does GCRE automatically manage my brokerage account?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            Do not assume that viewing GCRE
+                                            analysis or portfolio outputs
+                                            automatically authorizes trades
+                                            in a brokerage account.
+                                            Account integration and trade
+                                            execution are separate capabilities
+                                            that must be explicitly supported
+                                            and documented by the product.
+                                        </p>
+                                        <p>
+                                            Review the current product scope
+                                            before relying on any account
+                                            integration or execution feature.
+                                        </p>
+                                    </div>
+                                </details>
+
+                                <details class="faq-item">
+                                    <summary>
+                                        How can I learn more or discuss a partnership?
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <p>
+                                            Visit the
+                                            <a class="inline-link" href="how-it-works.html">
+                                                How It Works
+                                            </a>
+                                            page for the system overview,
+                                            the
+                                            <a class="inline-link" href="product-demo.html">
+                                                Product Demo
+                                            </a>
+                                            page for the product presentation,
+                                            or the
+                                            <a class="inline-link" href="contact.html">
+                                                Contact
+                                            </a>
+                                            page to get in touch.
+                                        </p>
+                                        <p>
+                                            Partnership inquiries can be
+                                            submitted through
+                                            <a class="inline-link" href="partner.html">
+                                                Be a Partner
+                                            </a>.
+                                        </p>
+                                    </div>
+                                </details>
+
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+
+        <section class="cta-section">
+            <div class="container">
+
+                <div class="cta-panel">
+
+                    <div class="cta-kicker">Explore GCRE</div>
+
+                    <h2>
+                        Go beyond the headline.
+                        <span class="accent-text">Understand the decision.</span>
+                    </h2>
+
+                    <p>
+                        Explore how GCRE connects market conditions,
+                        asset selection, risk controls, and portfolio
+                        decisions within a structured framework.
+                    </p>
+
+                    <div class="cta-actions">
+                        <a class="button button-primary" href="product-demo.html">
+                            Explore Product Demo
+                        </a>
+
+                        <a class="button button-secondary" href="how-it-works.html">
+                            How It Works
+                        </a>
+
+                        <a class="button button-secondary" href="contact.html">
+                            Contact GCRE
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-top">
+            <a href="index.html"
+               class="footer-brand"
+               aria-label="GCRE Home">
+                GCRE<span>.</span>
+            </a>
+
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="index.html">Home</a>
+                <a href="product-demo.html">Product Demo</a>
+                <a href="live-results.html" aria-current="page">
+                    Live Results
+                </a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="faq.html">FAQ</a>
+                <a href="partner.html">Be a Partner</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+
+        <div class="footer-contact">
+            <span>Product &amp; Research</span>
+            <span>Partnerships</span>
+            <a href="mailto:stern.wang@outlook.com">
+                stern.wang@outlook.com
+            </a>
+        </div>
+
+        <p class="footer-disclaimer">
+            GCRE provides systematic market research and portfolio analysis.
+            Historical performance and backtested results do not guarantee
+            future outcomes. Information is provided for informational and
+            research purposes and is not a guarantee of returns or avoidance
+            of losses. Services and activities are subject to applicable
+            legal and regulatory requirements.
+        </p>
+
+        <p class="footer-copyright">
+            &copy; <span id="copyright-year">2026</span> GCRE.
+            All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+</body>
+</html>
