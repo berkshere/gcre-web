@@ -21,10 +21,11 @@
   "performance": {
     "live": {
       "base": {
+        "currency": "USD",
         "simulation_start": "2026-09-28",
         "as_of": "2026-10-16",
-        "initial_capital": 1.0,
-        "current_nav": 1.0639991873727048,
+        "initial_capital": 10000.0,
+        "current_nav": 10639.99187373,
         "cumulative_return": 0.06399918737270482,
         "current_drawdown": 0.0,
         "maximum_drawdown": -0.026254514253122863,
@@ -37,10 +38,11 @@
         "qualification_note": "Live performance history is less than one year."
       },
       "premium": {
+        "currency": "USD",
         "simulation_start": "2026-09-28",
         "as_of": "2026-10-16",
-        "initial_capital": 1.0,
-        "current_nav": 1.082109748641975,
+        "initial_capital": 10000.0,
+        "current_nav": 10821.09748642,
         "cumulative_return": 0.08210974864197507,
         "current_drawdown": 0.0,
         "maximum_drawdown": -0.007462077760839847,
